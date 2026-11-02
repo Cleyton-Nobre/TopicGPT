@@ -1,0 +1,338 @@
+Horário UTC: 2026-11-02T11:24:15.098016+00:00
+Lote: 1
+Tentativa: 1
+Status: OK
+Tempo: 19.491s
+Uso: {"prompt_tokens": 3944, "completion_tokens": 1062, "total_tokens": 5006}
+
+=== SYSTEM ===
+Você é um pesquisador especializado em análise temática. Sua tarefa é identificar novos tópicos em títulos de vídeos do YouTube
+sobre medicamentos para emagrecimento. Um tópico representa um assunto temático recorrente, e não apenas uma palavra ou medicamento mencionado.
+
+Você receberá:
+1. Os tópicos identificados nos lotes anteriores, um por linha, no formato - rótulo: descrição.
+2. Um novo lote de títulos, um por linha, no formato video_id<TAB>título (separados por tabulação).
+
+Regras:
+- Considere os tópicos existentes antes de propor um novo.
+- Crie tópicos somente quando houver um tema relevante que ainda não seja contemplado pelos tópicos existentes.
+- Não crie tópicos apenas por diferenças de palavras, medicamentos ou estilo dos títulos.
+- Evite tópicos redundantes ou excessivamente específicos.
+- Não altere, renomeie, combine ou exclua tópicos existentes.
+- Considere o assunto do título, não a veracidade de suas afirmações.
+- Não force a criação de tópicos: se nenhum tema novo for necessário, retorne uma lista vazia.
+- Tópicos apresentados na lista TÓPICOS IDENTIFICADOS ATÉ AGORA já existem. Não repita seus rótulos.
+- Uma resposta com new_topics: [] está correta quando os temas já foram cobertos.
+- evidence_video_ids deve conter SOMENTE identificadores exatos (primeira coluna antes do TAB), nunca títulos, nomes de tópicos ou nomes de medicamentos.
+- Não repita IDs de evidência dentro do mesmo tópico. Selecione apenas IDs do lote atual que realmente sustentem o tema.
+- Os nomes e descrições devem estar em português.
+
+Para cada tópico novo, forneça:
+- label: nome curto e conciso.
+- description: descrição em uma frase.
+- evidence_video_ids: exemplos de IDs de um ou mais títulos do lote que justificam a criação do tópico.
+
+Retorne somente um objeto JSON com a propriedade new_topics contendo os tópicos novos.
+
+=== USER ===
+TÓPICOS IDENTIFICADOS ATÉ AGORA (0):
+(nenhum tópico ainda)
+
+NOVO LOTE DE TÍTULOS (video_id<TAB>título):
+GMXjayYMuL8	🚨‼️ Mounjaro: 1x na semana ? Qual a dose ?
+Bl8eTjj3F0c	Ozempic ou Wegovy, qual melhor para emagrecer?
+cvrTYWadkjI	ERROS comuns nas aplicações de: MOUNJARO, WEGOVY e OZEMPIC - Patrícia Santafé
+_wklxfaf84s	Posso usar Ozempic em Jejum? #saude #estilodevida #fitness #ozempic #reposicaohormonal #fitness
+s7BPCqOohOM	EMAGRECIMENTO RÁPIDO COM OZEMPIC E OUTRAS PARADAS ! | ADAM ABBAS e ZAMBROTTA
+cMGXoPo8Sbk	Respondendo Inscritos. Sua dúvida sobre Ozempic está aqui.
+1Ngu5fHsJo8	Quando é necessário fazer a cirurgia bariátrica? [OZEMPIC PARA EMAGRECER]
+lJ0QvnAbrwE	TÔ SECANDO APLICANDO OZEMPIC #emagrecer#ozempic#portugal#abdominoplastia#
+1AHFMSk06Ec	Você já ouviu falar em Bumbum de Ozempic?
+cc5wy-rbX90	WEGOVY (SEMAGLUTIDA) - PARA QUE SERVE, COMO USAR, EFEITOS COLATERAIS - REMÉDIO PARA EMAGRECER
+ak5w_5bHzKI	Vivendo meu processo de auto cura! #emagrecimento #tirzepatide #motivational #vidareal #mounjaro
+vIYQ-EFzHH8	A Verdadeira Relação entre Ozempic e Depressão
+VC-I0j4NapI	Horário correto para aplicar o Ozempic
+lgzz5vZJWQo	O Ozempic ajuda mesmo a emagrecer?? Endocrino explica!
+rVCGeS4xMR4	Ozempic em comprimido: Rybelsus Semaglutida (oral)❗
+t-EpPg-kOsw	#012 - SEMAGLUTIDA NO TRATAMENTO DA OBESIDADE
+G6zfn3GfCCw	OZEMPIC E VENVANSE #ozempic
+XATj1ClNfa4	EVITE OS EFEITOS COLATERAIS DO OZEMPIC E MOUNJARO AGORA! | Dr. Claudio Guimarães
+6pRvYLp9zjg	Ozempic e Mounjaro: Quanto Dá pra Emagrecer?
+gj2DM370WtY	Ozempic e outros inibidores de apetite podem causar perda muscular: como evitar? #g1 #notícias
+Fagrgo0Ra7Q	MOUNJARO, usar ou não usar?
+1Zi31Dnyrcc	Você sabe se Maiara da dupla com Maraisa usou Ozempic? Conheça Mais sobre o medicamento
+BQpmOzWme04	Mounjaro (Tirzepatida) | Perdi 20kg | Voltei a usar tamanho 40 | O que eu fiz ?
+IBfHG8Dq-CQ	Mounjaro e a saúde ginecológica
+DnhIckjGcRA	Essa medicação é melhor que o #ozempic?!
+btGZuAEQklw	"WEGOVY"ESTRATÉGIA DE CLICKS PARA 90 DIAS.@Drcidaalves.6838
+kVIfYO9RSUo	VLOG: COMO USAR O MOUNJARO (VISÃO MÉDICO)
+aCPzu2oZIg8	OZEMPIC PARA GORDURA NO FÍGADO NA MENOPAUSA
+mzZFGp7kHeE	Ozempic (Semaglutida)pode causar Diabetes ?
+xX3wSANK7gI	OZEMPIC: EFEITO COLATERAL DA OZEMPIC E OS PERIGOS Á SAÚDE USANDO A OZEMPIC POR CONTA PRÓPRIA
+QL-zkJNmvho	Você está pesando também? #meme #viralshorts #ozempic
+ugwZFu3eWww	Mounjaro e Ozempic qual deles tem os piores efeitos colaterais
+QD8xAZ_5Awg	OZEMPIC E EMAGRECIMENTO
+F0K_z1RYorc	Quem tem diabetes tipo 1 pode usar ozempic? #biabética
+Mxt6lu7kUHk	Vem comigo #wegovy #cuidadoscomapele #fypyoutube #dieta #disbiose #amor #autoconhecimento #beleza
+s7CZYpL1KxE	Se inscreve pra ver toda minha experiência com #OZEMPIC
+7-DlSvybSnw	Tirzepatida: A maior perda de peso já vista!👀😯
+lz7oRgSWexc	TOMEI REMÉDIO PARA EMAGRECER NA DOSE ERRADA! #ozempic #emagrecimento
+FyxRPk2vvmg	Não use MOUNJARO antes de ver esse vídeo #nutricionista #nutricao #mounjaro
+Ef90Or_NPVk	É isso que te faz engordar #saúde #ozempic #conselhomédico #médicos#emagrecimento #emagrecer
+14Opfg5Q76o	Efeitos do Ozempic, é preciso Discutir. #emagrecimento #saxenda #semaglutida
+KA10-EygjhE	Nesse páreo, ainda sou mais #ozempic #shortsviral #shorts #funnyvideo #meme #memes
+yzZ7QW1ZLMk	Quem usa Mounjaro fica lerdo | Renato Cariani
+M5kL3kzRYDw	Ozempic e Mounjaro: Dicas para Alcançar Resultados de Sucesso no Emagrecimento
+xp7xUUdJfwc	Semaglutida para Doença Arterial Periférica? Estudo STRIDE
+wIgjUO2g15I	Mounjaro funciona para gordura no fígado? O que a ciência já sabe!
+AZ92ZcYQkAY	Desmame do Mounjaro: preciso fazer? #tirzepatida #mounjaro #mounjaroupdate
+G-u_TYiXLkw	MELHOR que o Ozempic e Mounjaro? 1 copo por dia tira a fome, queima gordura e baixa a glicose
+Mprx7VAwGqM	MOUNJARO x WEGOVY: qual é melhor para o ❤️? #emagrecimento #mounjaro #wegovy
+dL9R12aiMGo	Como funciona a contagem dos cliques da caneta do Ozempic?
+OxTbM_tDesw	DANI DIZ e a VERDADE sobre OZEMPIC, falência e muito mais - VACA CAST #108
+U1tP0L-A81U	REMÉDIO para EMAGRECER: OZEMPIC e WEGOVY (SEMAGLUTIDA) | Saúde na Rotina
+kVC-9b1Z0sM	3 Passos Para NÃO Perder Cabelo Usando Ozempic e Similares Protocolo Médico #shorts #tricologista
+ChQc5nnmDtA	#57 Mounjaro: Meu resultado de 2 meses. Aplicando seringa insulina [Minha Experiência; antes depois]
+6Guyf7ehwiI	OZEMPIC | COMO PERDI 10KG + VALOR DA CANETA + COMO FUNCIONA + EFEITOS COLATERAIS | Luana Mariano
+s16M9D8GYbI	Ozempic, Rybelsus qual será ? Tá dando super certo . #emagrecimento #perderpeso #lp1
+sG7qgaPnQjI	Evolução, transformação e constância. #ozempic #musculacao #transformacao #antesedepois
+oVwr-LkoiIQ	ANVISA aprova novo uso da semaglutida no tratamento de gordura no fígado | TJ Aparecida
+c0s947gP8CU	Ozempic Natural? A mentira do TikTok e a receita que FUNCIONA
+I5bsh8eHfrA	5 Maiores Mentiras Sobre Mounjaro
+D7_1AEGDYJY	OZEMPIC NÃO É PARA EMAGRECER! - Eduardo Machado #ozempic #emagrecimento #obesidadeedoenca #diabetes
+DntMboCrRPI	Classificações de Obesidade #ozempic #balaointragastrico #emagrecimento #gastroplastiaendoscopica
+IEPWZD0oKVo	Como Aplicar Ozempic e outros Medicamentos Subcutâneos
+RGGgK7pOH1o	Ministério da Saúde não inclui remédios contra obesidade Wegovy e Saxenda no SUS | #SBTBrasil
+hAPM3uCLb8c	Efeitos colaterais do Mounjaro | Descubra o que você pode passar e como lidar
+SimOUKWKOC4	Essas e outras você encontra no link da bio 🔥 #mounjaro
+vEAtylVROOg	OZEMPIC É MILAGROSO ?
+f7zlY9v2XvY	ALERTA! Mounjaro e Ozempic podem causar CEGUEIRA PARCIAL?
+loDe5ckUdzA	Como é que é? | Ozempic emagrece, mas quais são os efeitos colaterais?
+4FtuSG4NUlc	Isso faz a diferença #mounjaro #caminhoparaumavidamelhor #wegovy #noticias
+u4AosJlBqvg	#emagrecer #ozempic #emagrecimento #dieta
+IwR-BgQFvU8	#OZEMPIC - Respondendo Perguntas de Vocês
+l7w2Ajfk0yo	OZEMPIC, A "CANETA MÁGICA"!
+fjwBn6m7788	Ruído alimentar (Food Noise) explicado: o impacto da semaglutida no cérebro e no apetite
+3WO-cPqdVNo	OZEMPIC SERVE PARA EMAGRECER? PAULO MUZY MANDA A REAL | bntc cariani ironberg podcast cortes
+t46mHvS4Gxs	LIPOLESS no Paraguai. Assista para não se dar MAL! #mounjaro #tirzepatida #lipoless #tg #tirzec
+ZMdlY1I3mPk	#semaglutida #mounjaro #perderpeso #ansiedade
+HiuyMCeDqvY	Se eu tomar o Ozempic por um longo tempo, ele perde o efeito?
+6jO9UzpxodA	o QUE NÃO te FALARAM sobre O OZEMPIC - LEANDRO TWIN
+Hx6CcF9AHL0	MOUNJARO: Quanto Peso Você DEVE Perder nos Primeiros 2 Meses? (Dados Científicos)
+ULzjk1UFR7I	Protocolo Ozempic
+XP_RXQpRR0E	A natureza faz mais falta do que você imagina #saúde #ozempic #médicos#emagrecimento #emagrecer
+0FmZUIEVhTg	Com esse mounjaro você não vai emagrecer #mounjaro #jesuscristo #good #biblia
+PylZgfBMiGk	Tirzepatida, saiba mais sobre o sal do Mounjaro
+50GOVTzCGy8	#31 Mounjaro: Quanto emagreci em um mês? [Antes e Depois; Minha Experiência]
+NnNEawp_JVk	Como está meu peso sem #Ozempic 1 mês depois + VLOG
+e4Y-P1M7Zos	Ultima Dose do Ozempic Como Esta Meu Peso
+vWGrqRIa-SM	Mounjaro e congelamento de óvulos
+Hl2XXHbJoR4	#50 Mounjaro: O maior erro de quem quer emagrecer [Minha Experiência]
+ULfrWs0hoAc	Ozempic: como evitar o efeito rebote?
+9fMy4bNffBw	Saxenda emagrece? Para que serve? Bula explicada
+SLVNVC_6ckQ	Ozempic por 450,00 em breve no Brasil #ozempic #sorrocaba #emagrecer #meudiaadia #manga
+euYLAiGsNz0	OZEMPIC #Shorts
+smnKLnMeTxM	Emagrecimento com o Wegovy-Tirando dúvidas com Dr Claudio
+KyeX7DRtMOw	Ozempic ou Saxenda Qual é o melhor para Emagrecer -
+PQ0vMqrAPm8	MITOS E VERDADES sobre o uso do OZEMPIC
+PVjCj_os_EY	COMO APLICAR OZEMPIC | ozempic emagrece?
+aNrg3NlZt4E	Brincadeiras à parte, medicação somente com orientação médica. #mounjaro #tirzepatida #emagrecimento
+pUuZNiBjQyM	Quem Deve Usar Ozempic - Descubra a Verdade!
+w5FI2fv2VNg	#PodGA | Episódio 2 - Pode utilizar Ozempic sem prescrição médica?
+
+Identifique somente tópicos novos que sejam necessários. A primeira coluna de cada linha é o video_id. Use APENAS esses video_id exatos em evidence_video_ids (sem repetir IDs). Não recrie tópicos já listados; quando tudo estiver coberto, retorne {"new_topics": []}.
+
+=== OUTPUT ===
+{
+  "new_topics": [
+    {
+      "label": "Comparação entre medicamentos para emagrecimento",
+      "description": "Análise comparativa entre diferentes medicamentos para emagrecimento, como Ozempic, Wegovy, Mounjaro e Saxenda.",
+      "evidence_video_ids": [
+        "Bl8eTjj3F0c",
+        "Mprx7VAwGqM",
+        "KyeX7DRtMOw"
+      ]
+    },
+    {
+      "label": "Efeitos colaterais e riscos dos medicamentos para emagrecimento",
+      "description": "Discussão sobre os efeitos colaterais e riscos associados ao uso de medicamentos como Ozempic, Mounjaro e Wegovy.",
+      "evidence_video_ids": [
+        "XATj1ClNfa4",
+        "f7zlY9v2XvY",
+        "hAPM3uCLb8c"
+      ]
+    },
+    {
+      "label": "Experiências pessoais e resultados com medicamentos para emagrecimento",
+      "description": "Relatos de experiências pessoais e resultados obtidos com o uso de medicamentos como Ozempic, Mounjaro e Wegovy.",
+      "evidence_video_ids": [
+        "BQpmOzWme04",
+        "ChQc5nnmDtA",
+        "50GOVTzCGy8"
+      ]
+    },
+    {
+      "label": "Uso correto e dosagem de medicamentos para emagrecimento",
+      "description": "Orientações sobre a dosagem correta e o modo de uso de medicamentos como Ozempic, Mounjaro e Wegovy.",
+      "evidence_video_ids": [
+        "GMXjayYMuL8",
+        "VC-I0j4NapI",
+        "IEPWZD0oKVo"
+      ]
+    },
+    {
+      "label": "Mitologia e desinformação sobre medicamentos para emagrecimento",
+      "description": "Desmascaramento de mitos e desinformações sobre o uso de medicamentos como Ozempic, Mounjaro e Wegovy.",
+      "evidence_video_ids": [
+        "c0s947gP8CU",
+        "I5bsh8eHfrA",
+        "w5FI2fv2VNg"
+      ]
+    },
+    {
+      "label": "Indicações e contraindicações para o uso de medicamentos para emagrecimento",
+      "description": "Discussão sobre as indicações e contraindicações para o uso de medicamentos como Ozempic, Mounjaro e Wegovy.",
+      "evidence_video_ids": [
+        "Fagrgo0Ra7Q",
+        "F0K_z1RYorc",
+        "pUuZNiBjQyM"
+      ]
+    },
+    {
+      "label": "Impacto dos medicamentos para emagrecimento na saúde mental e física",
+      "description": "Análise do impacto dos medicamentos para emagrecimento na saúde mental e física, incluindo depressão e perda muscular.",
+      "evidence_video_ids": [
+        "vIYQ-EFzHH8",
+        "gj2DM370WtY",
+        "yzZ7QW1ZLMk"
+      ]
+    },
+    {
+      "label": "Alternativas naturais e protocolos complementares ao uso de medicamentos para emagrecimento",
+      "description": "Exploração de alternativas naturais e protocolos complementares ao uso de medicamentos como Ozempic, Mounjaro e Wegovy.",
+      "evidence_video_ids": [
+        "G-u_TYiXLkw",
+        "FyxRPk2vvmg",
+        "Mxt6lu7kUHk"
+      ]
+    },
+    {
+      "label": "Desmame e suspensão do uso de medicamentos para emagrecimento",
+      "description": "Discussão sobre o processo de desmame e suspensão do uso de medicamentos como Ozempic, Mounjaro e Wegovy.",
+      "evidence_video_ids": [
+        "AZ92ZcYQkAY",
+        "ULfrWs0hoAc",
+        "NnNEawp_JVk"
+      ]
+    },
+    {
+      "label": "Uso de medicamentos para emagrecimento em contextos específicos",
+      "description": "Análise do uso de medicamentos para emagrecimento em contextos específicos, como gordura no fígado, menopausa e diabetes.",
+      "evidence_video_ids": [
+        "aCPzu2oZIg8",
+        "wIgjUO2g15I",
+        "oVwr-LkoiIQ"
+      ]
+    }
+  ]
+}
+
+=== NORMALIZED_OUTPUT ===
+{
+  "new_topics": [
+    {
+      "label": "Comparação entre medicamentos para emagrecimento",
+      "description": "Análise comparativa entre diferentes medicamentos para emagrecimento, como Ozempic, Wegovy, Mounjaro e Saxenda.",
+      "evidence_video_ids": [
+        "Bl8eTjj3F0c",
+        "Mprx7VAwGqM",
+        "KyeX7DRtMOw"
+      ]
+    },
+    {
+      "label": "Efeitos colaterais e riscos dos medicamentos para emagrecimento",
+      "description": "Discussão sobre os efeitos colaterais e riscos associados ao uso de medicamentos como Ozempic, Mounjaro e Wegovy.",
+      "evidence_video_ids": [
+        "XATj1ClNfa4",
+        "f7zlY9v2XvY",
+        "hAPM3uCLb8c"
+      ]
+    },
+    {
+      "label": "Experiências pessoais e resultados com medicamentos para emagrecimento",
+      "description": "Relatos de experiências pessoais e resultados obtidos com o uso de medicamentos como Ozempic, Mounjaro e Wegovy.",
+      "evidence_video_ids": [
+        "BQpmOzWme04",
+        "ChQc5nnmDtA",
+        "50GOVTzCGy8"
+      ]
+    },
+    {
+      "label": "Uso correto e dosagem de medicamentos para emagrecimento",
+      "description": "Orientações sobre a dosagem correta e o modo de uso de medicamentos como Ozempic, Mounjaro e Wegovy.",
+      "evidence_video_ids": [
+        "GMXjayYMuL8",
+        "VC-I0j4NapI",
+        "IEPWZD0oKVo"
+      ]
+    },
+    {
+      "label": "Mitologia e desinformação sobre medicamentos para emagrecimento",
+      "description": "Desmascaramento de mitos e desinformações sobre o uso de medicamentos como Ozempic, Mounjaro e Wegovy.",
+      "evidence_video_ids": [
+        "c0s947gP8CU",
+        "I5bsh8eHfrA",
+        "w5FI2fv2VNg"
+      ]
+    },
+    {
+      "label": "Indicações e contraindicações para o uso de medicamentos para emagrecimento",
+      "description": "Discussão sobre as indicações e contraindicações para o uso de medicamentos como Ozempic, Mounjaro e Wegovy.",
+      "evidence_video_ids": [
+        "Fagrgo0Ra7Q",
+        "F0K_z1RYorc",
+        "pUuZNiBjQyM"
+      ]
+    },
+    {
+      "label": "Impacto dos medicamentos para emagrecimento na saúde mental e física",
+      "description": "Análise do impacto dos medicamentos para emagrecimento na saúde mental e física, incluindo depressão e perda muscular.",
+      "evidence_video_ids": [
+        "vIYQ-EFzHH8",
+        "gj2DM370WtY",
+        "yzZ7QW1ZLMk"
+      ]
+    },
+    {
+      "label": "Alternativas naturais e protocolos complementares ao uso de medicamentos para emagrecimento",
+      "description": "Exploração de alternativas naturais e protocolos complementares ao uso de medicamentos como Ozempic, Mounjaro e Wegovy.",
+      "evidence_video_ids": [
+        "G-u_TYiXLkw",
+        "FyxRPk2vvmg",
+        "Mxt6lu7kUHk"
+      ]
+    },
+    {
+      "label": "Desmame e suspensão do uso de medicamentos para emagrecimento",
+      "description": "Discussão sobre o processo de desmame e suspensão do uso de medicamentos como Ozempic, Mounjaro e Wegovy.",
+      "evidence_video_ids": [
+        "AZ92ZcYQkAY",
+        "ULfrWs0hoAc",
+        "NnNEawp_JVk"
+      ]
+    },
+    {
+      "label": "Uso de medicamentos para emagrecimento em contextos específicos",
+      "description": "Análise do uso de medicamentos para emagrecimento em contextos específicos, como gordura no fígado, menopausa e diabetes.",
+      "evidence_video_ids": [
+        "aCPzu2oZIg8",
+        "wIgjUO2g15I",
+        "oVwr-LkoiIQ"
+      ]
+    }
+  ]
+}
+
+=== WARNINGS ===
+[]

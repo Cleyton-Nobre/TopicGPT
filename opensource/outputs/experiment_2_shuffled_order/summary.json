@@ -1,0 +1,16 @@
+{
+  "experiment": "experiment_2_shuffled_order",
+  "model": "topic-local",
+  "model_source": "mistralai/Ministral-3-14B-Reasoning-2512",
+  "total_titles": 1800,
+  "total_batches": 18,
+  "total_topics": 7,
+  "total_prompt_tokens": 77223,
+  "total_completion_tokens": 901,
+  "total_elapsed_seconds_e2e": 34.5678,
+  "total_failed_attempts": 0,
+  "total_normalization_warnings": 0,
+  "total_dropped_duplicate_topics": 0,
+  "checkpoint_enabled": false,
+  "charged_api_usd": 0
+}

@@ -1,0 +1,103 @@
+{
+  "model": "topic-local",
+  "model_source": "mistralai/Ministral-3-14B-Reasoning-2512",
+  "prompt_version": "topic-generation-v3-vllm-chat-v3-no-checkpoint",
+  "experiment": {
+    "experiment": "experiment_2_shuffled_order",
+    "order_description": "ordem embaralhada",
+    "shuffle_seed": 20261026,
+    "input_hash": "dbecad6f565edf095600f9d16fc762db461beff0fb440a78f5503419295d2498",
+    "total_titles": 1800
+  },
+  "input_file": "/app/data/geracao.jsonl",
+  "input_hash": "dbecad6f565edf095600f9d16fc762db461beff0fb440a78f5503419295d2498",
+  "config_hash": "f780cceac379d9cb93fb25de7e1581e33f84a90f4053ef0f4038e2be5490c222",
+  "total_titles": 1800,
+  "batch_size": 100,
+  "total_batches": 18,
+  "total_topics": 7,
+  "topics": [
+    {
+      "topic_id": "T001",
+      "label": "Efeitos colaterais e riscos",
+      "description": "Discussão sobre os efeitos colaterais, riscos e consequências negativas do uso de medicamentos para emagrecimento.",
+      "evidence_video_ids": [
+        "aK9KR5jvWr0",
+        "DKIv1nU380A",
+        "dW7Mb8LHKWo",
+        "w_orp4AuX84"
+      ],
+      "created_in_batch": 1
+    },
+    {
+      "topic_id": "T002",
+      "label": "Comparação entre medicamentos",
+      "description": "Análise comparativa entre diferentes medicamentos para emagrecimento, como Ozempic, Wegovy, Mounjaro e Retatrutida.",
+      "evidence_video_ids": [
+        "RCxUq4kZiXc",
+        "bfIntgYVVDs",
+        "P65oFe0EPgU"
+      ],
+      "created_in_batch": 1
+    },
+    {
+      "topic_id": "T003",
+      "label": "Uso em contextos específicos",
+      "description": "Discussão sobre o uso de medicamentos para emagrecimento em contextos específicos, como gestação, diabetes, menopausa ou problemas de saúde associados.",
+      "evidence_video_ids": [
+        "g1GnGw2oRQo",
+        "TgyKa4pPfLY",
+        "ntrbSKB4q8Y",
+        "Jb3Nq1DNbI0"
+      ],
+      "created_in_batch": 1
+    },
+    {
+      "topic_id": "T004",
+      "label": "Experiências pessoais e depoimentos",
+      "description": "Relatos de experiências pessoais, depoimentos e resultados obtidos com o uso de medicamentos para emagrecimento.",
+      "evidence_video_ids": [
+        "wp_1iS28RTw",
+        "05TWj_EQ0ao",
+        "4s614i39RVI",
+        "cr9ijZvRxA8"
+      ],
+      "created_in_batch": 1
+    },
+    {
+      "topic_id": "T005",
+      "label": "Mitologias e mentiras sobre medicamentos",
+      "description": "Desconstrução de mitos, mentiras e informações incorretas sobre medicamentos para emagrecimento.",
+      "evidence_video_ids": [
+        "I5bsh8eHfrA",
+        "cJd4h0dol6s",
+        "e537qSNumos"
+      ],
+      "created_in_batch": 1
+    },
+    {
+      "topic_id": "T006",
+      "label": "Impacto em hábitos e comportamentos",
+      "description": "Discussão sobre como o uso de medicamentos para emagrecimento afeta hábitos, comportamentos e vícios, como compulsão alimentar ou consumo de álcool.",
+      "evidence_video_ids": [
+        "TgyKa4pPfLY",
+        "TuZoJ6K79N8",
+        "WCErHlN1HI4",
+        "WZHosmAjYRU"
+      ],
+      "created_in_batch": 1
+    },
+    {
+      "topic_id": "T007",
+      "label": "Acesso e regulamentação",
+      "description": "Análise sobre o acesso a medicamentos para emagrecimento, regulamentação, preços e disponibilidade no SUS ou planos de saúde.",
+      "evidence_video_ids": [
+        "rpDztLA8eYo",
+        "R3XtUG-YLe4",
+        "Tu2v7WT_bhc",
+        "U6STG0QuklE"
+      ],
+      "created_in_batch": 1
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+services:
+  topic-job:
+    image: vllm/vllm-openai:v0.26.0
+    init: true
+    entrypoint: ["/bin/bash", "/app/entrypoint.sh"]
+    env_file: .env
+    environment:
+      PYTHONUNBUFFERED: "1"
+      HF_HOME: /root/.cache/huggingface
+      OPENAI_BASE_URL: http://127.0.0.1:8000/v1
+      INPUT_FILE: /app/data/geracao.jsonl
+      OUTPUT_DIR: /app/outputs
+      EXPERIMENT_CONFIG: /app/experiment_config.json
+    volumes:
+      - ./entrypoint.sh:/app/entrypoint.sh
+      - ./topic_generation.py:/app/topic_generation.py
+      - ./experiment_config.json:/app/experiment_config.json:ro
+      - ./data:/app/data
+      - ./outputs:/app/outputs
+      - ./models:/models
+      - ./hf-cache:/root/.cache/huggingface
+      - ./vllm-cache:/root/.cache/vllm
+    ipc: host
+    gpus: all
+    restart: "no"

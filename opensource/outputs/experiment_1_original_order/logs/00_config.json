@@ -1,0 +1,55 @@
+{
+  "model": "topic-local",
+  "model_source": "mistralai/Ministral-3-14B-Reasoning-2512",
+  "temperature": 0.0,
+  "max_tokens": 2048,
+  "batch_size": 100,
+  "max_attempts": 3,
+  "prompt_version": "topic-generation-v3-vllm-chat-v3-no-checkpoint",
+  "system_prompt": "Você é um pesquisador especializado em análise temática. Sua tarefa é identificar novos tópicos em títulos de vídeos do YouTube\nsobre medicamentos para emagrecimento. Um tópico representa um assunto temático recorrente, e não apenas uma palavra ou medicamento mencionado.\n\nVocê receberá:\n1. Os tópicos identificados nos lotes anteriores, um por linha, no formato - rótulo: descrição.\n2. Um novo lote de títulos, um por linha, no formato video_id<TAB>título (separados por tabulação).\n\nRegras:\n- Considere os tópicos existentes antes de propor um novo.\n- Crie tópicos somente quando houver um tema relevante que ainda não seja contemplado pelos tópicos existentes.\n- Não crie tópicos apenas por diferenças de palavras, medicamentos ou estilo dos títulos.\n- Evite tópicos redundantes ou excessivamente específicos.\n- Não altere, renomeie, combine ou exclua tópicos existentes.\n- Considere o assunto do título, não a veracidade de suas afirmações.\n- Não force a criação de tópicos: se nenhum tema novo for necessário, retorne uma lista vazia.\n- Tópicos apresentados na lista TÓPICOS IDENTIFICADOS ATÉ AGORA já existem. Não repita seus rótulos.\n- Uma resposta com new_topics: [] está correta quando os temas já foram cobertos.\n- evidence_video_ids deve conter SOMENTE identificadores exatos (primeira coluna antes do TAB), nunca títulos, nomes de tópicos ou nomes de medicamentos.\n- Não repita IDs de evidência dentro do mesmo tópico. Selecione apenas IDs do lote atual que realmente sustentem o tema.\n- Os nomes e descrições devem estar em português.\n\nPara cada tópico novo, forneça:\n- label: nome curto e conciso.\n- description: descrição em uma frase.\n- evidence_video_ids: exemplos de IDs de um ou mais títulos do lote que justificam a criação do tópico.\n\nRetorne somente um objeto JSON com a propriedade new_topics contendo os tópicos novos.",
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "new_topics": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "evidence_video_ids": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "label",
+            "description",
+            "evidence_video_ids"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    "required": [
+      "new_topics"
+    ],
+    "additionalProperties": false
+  },
+  "schema_evidence_id_constraint": "enum_per_batch",
+  "duplicate_handling": "drop_duplicate_topics_dedupe_evidence_ids_v1",
+  "checkpoint_enabled": false,
+  "experiment": {
+    "experiment": "experiment_1_original_order",
+    "order_description": "ordem original",
+    "shuffle_seed": null,
+    "input_hash": "dc28758249ef4de1168197456cf87ae293aaf2cd345a47f132f5b68fdab79508",
+    "total_titles": 1800
+  }
+}

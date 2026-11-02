@@ -1,0 +1,131 @@
+{
+  "model": "topic-local",
+  "model_source": "mistralai/Ministral-3-14B-Reasoning-2512",
+  "prompt_version": "topic-generation-v3-vllm-chat-v3-no-checkpoint",
+  "experiment": {
+    "experiment": "experiment_1_original_order",
+    "order_description": "ordem original",
+    "shuffle_seed": null,
+    "input_hash": "dc28758249ef4de1168197456cf87ae293aaf2cd345a47f132f5b68fdab79508",
+    "total_titles": 1800
+  },
+  "input_file": "/app/data/geracao.jsonl",
+  "input_hash": "dc28758249ef4de1168197456cf87ae293aaf2cd345a47f132f5b68fdab79508",
+  "config_hash": "65e86eb6e03f1e85ec5aca3b005ed03caea9ee3a03d723535b1ead57fdd4797e",
+  "total_titles": 1800,
+  "batch_size": 100,
+  "total_batches": 18,
+  "total_topics": 10,
+  "topics": [
+    {
+      "topic_id": "T001",
+      "label": "Comparação entre medicamentos para emagrecimento",
+      "description": "Análise comparativa entre diferentes medicamentos para emagrecimento, como Ozempic, Wegovy, Mounjaro e Saxenda.",
+      "evidence_video_ids": [
+        "Bl8eTjj3F0c",
+        "Mprx7VAwGqM",
+        "KyeX7DRtMOw"
+      ],
+      "created_in_batch": 1
+    },
+    {
+      "topic_id": "T002",
+      "label": "Efeitos colaterais e riscos dos medicamentos para emagrecimento",
+      "description": "Discussão sobre os efeitos colaterais e riscos associados ao uso de medicamentos como Ozempic, Mounjaro e Wegovy.",
+      "evidence_video_ids": [
+        "XATj1ClNfa4",
+        "f7zlY9v2XvY",
+        "hAPM3uCLb8c"
+      ],
+      "created_in_batch": 1
+    },
+    {
+      "topic_id": "T003",
+      "label": "Experiências pessoais e resultados com medicamentos para emagrecimento",
+      "description": "Relatos de experiências pessoais e resultados obtidos com o uso de medicamentos como Ozempic, Mounjaro e Wegovy.",
+      "evidence_video_ids": [
+        "BQpmOzWme04",
+        "ChQc5nnmDtA",
+        "50GOVTzCGy8"
+      ],
+      "created_in_batch": 1
+    },
+    {
+      "topic_id": "T004",
+      "label": "Uso correto e dosagem de medicamentos para emagrecimento",
+      "description": "Orientações sobre a dosagem correta e o modo de uso de medicamentos como Ozempic, Mounjaro e Wegovy.",
+      "evidence_video_ids": [
+        "GMXjayYMuL8",
+        "VC-I0j4NapI",
+        "IEPWZD0oKVo"
+      ],
+      "created_in_batch": 1
+    },
+    {
+      "topic_id": "T005",
+      "label": "Mitologia e desinformação sobre medicamentos para emagrecimento",
+      "description": "Desmascaramento de mitos e desinformações sobre o uso de medicamentos como Ozempic, Mounjaro e Wegovy.",
+      "evidence_video_ids": [
+        "c0s947gP8CU",
+        "I5bsh8eHfrA",
+        "w5FI2fv2VNg"
+      ],
+      "created_in_batch": 1
+    },
+    {
+      "topic_id": "T006",
+      "label": "Indicações e contraindicações para o uso de medicamentos para emagrecimento",
+      "description": "Discussão sobre as indicações e contraindicações para o uso de medicamentos como Ozempic, Mounjaro e Wegovy.",
+      "evidence_video_ids": [
+        "Fagrgo0Ra7Q",
+        "F0K_z1RYorc",
+        "pUuZNiBjQyM"
+      ],
+      "created_in_batch": 1
+    },
+    {
+      "topic_id": "T007",
+      "label": "Impacto dos medicamentos para emagrecimento na saúde mental e física",
+      "description": "Análise do impacto dos medicamentos para emagrecimento na saúde mental e física, incluindo depressão e perda muscular.",
+      "evidence_video_ids": [
+        "vIYQ-EFzHH8",
+        "gj2DM370WtY",
+        "yzZ7QW1ZLMk"
+      ],
+      "created_in_batch": 1
+    },
+    {
+      "topic_id": "T008",
+      "label": "Alternativas naturais e protocolos complementares ao uso de medicamentos para emagrecimento",
+      "description": "Exploração de alternativas naturais e protocolos complementares ao uso de medicamentos como Ozempic, Mounjaro e Wegovy.",
+      "evidence_video_ids": [
+        "G-u_TYiXLkw",
+        "FyxRPk2vvmg",
+        "Mxt6lu7kUHk"
+      ],
+      "created_in_batch": 1
+    },
+    {
+      "topic_id": "T009",
+      "label": "Desmame e suspensão do uso de medicamentos para emagrecimento",
+      "description": "Discussão sobre o processo de desmame e suspensão do uso de medicamentos como Ozempic, Mounjaro e Wegovy.",
+      "evidence_video_ids": [
+        "AZ92ZcYQkAY",
+        "ULfrWs0hoAc",
+        "NnNEawp_JVk"
+      ],
+      "created_in_batch": 1
+    },
+    {
+      "topic_id": "T010",
+      "label": "Uso de medicamentos para emagrecimento em contextos específicos",
+      "description": "Análise do uso de medicamentos para emagrecimento em contextos específicos, como gordura no fígado, menopausa e diabetes.",
+      "evidence_video_ids": [
+        "aCPzu2oZIg8",
+        "wIgjUO2g15I",
+        "oVwr-LkoiIQ"
+      ],
+      "created_in_batch": 1
+    }
+  ]
+}

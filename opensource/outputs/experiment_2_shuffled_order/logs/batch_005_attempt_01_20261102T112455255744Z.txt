@@ -1,0 +1,160 @@
+Horário UTC: 2026-11-02T11:24:55.255771+00:00
+Lote: 5
+Tentativa: 1
+Status: OK
+Tempo: 1.247s
+Uso: {"prompt_tokens": 4449, "completion_tokens": 8, "total_tokens": 4457}
+
+=== SYSTEM ===
+Você é um pesquisador especializado em análise temática. Sua tarefa é identificar novos tópicos em títulos de vídeos do YouTube
+sobre medicamentos para emagrecimento. Um tópico representa um assunto temático recorrente, e não apenas uma palavra ou medicamento mencionado.
+
+Você receberá:
+1. Os tópicos identificados nos lotes anteriores, um por linha, no formato - rótulo: descrição.
+2. Um novo lote de títulos, um por linha, no formato video_id<TAB>título (separados por tabulação).
+
+Regras:
+- Considere os tópicos existentes antes de propor um novo.
+- Crie tópicos somente quando houver um tema relevante que ainda não seja contemplado pelos tópicos existentes.
+- Não crie tópicos apenas por diferenças de palavras, medicamentos ou estilo dos títulos.
+- Evite tópicos redundantes ou excessivamente específicos.
+- Não altere, renomeie, combine ou exclua tópicos existentes.
+- Considere o assunto do título, não a veracidade de suas afirmações.
+- Não force a criação de tópicos: se nenhum tema novo for necessário, retorne uma lista vazia.
+- Tópicos apresentados na lista TÓPICOS IDENTIFICADOS ATÉ AGORA já existem. Não repita seus rótulos.
+- Uma resposta com new_topics: [] está correta quando os temas já foram cobertos.
+- evidence_video_ids deve conter SOMENTE identificadores exatos (primeira coluna antes do TAB), nunca títulos, nomes de tópicos ou nomes de medicamentos.
+- Não repita IDs de evidência dentro do mesmo tópico. Selecione apenas IDs do lote atual que realmente sustentem o tema.
+- Os nomes e descrições devem estar em português.
+
+Para cada tópico novo, forneça:
+- label: nome curto e conciso.
+- description: descrição em uma frase.
+- evidence_video_ids: exemplos de IDs de um ou mais títulos do lote que justificam a criação do tópico.
+
+Retorne somente um objeto JSON com a propriedade new_topics contendo os tópicos novos.
+
+=== USER ===
+TÓPICOS IDENTIFICADOS ATÉ AGORA (7):
+- T001 | Efeitos colaterais e riscos: Discussão sobre os efeitos colaterais, riscos e consequências negativas do uso de medicamentos para emagrecimento.
+- T002 | Comparação entre medicamentos: Análise comparativa entre diferentes medicamentos para emagrecimento, como Ozempic, Wegovy, Mounjaro e Retatrutida.
+- T003 | Uso em contextos específicos: Discussão sobre o uso de medicamentos para emagrecimento em contextos específicos, como gestação, diabetes, menopausa ou problemas de saúde associados.
+- T004 | Experiências pessoais e depoimentos: Relatos de experiências pessoais, depoimentos e resultados obtidos com o uso de medicamentos para emagrecimento.
+- T005 | Mitologias e mentiras sobre medicamentos: Desconstrução de mitos, mentiras e informações incorretas sobre medicamentos para emagrecimento.
+- T006 | Impacto em hábitos e comportamentos: Discussão sobre como o uso de medicamentos para emagrecimento afeta hábitos, comportamentos e vícios, como compulsão alimentar ou consumo de álcool.
+- T007 | Acesso e regulamentação: Análise sobre o acesso a medicamentos para emagrecimento, regulamentação, preços e disponibilidade no SUS ou planos de saúde.
+
+NOVO LOTE DE TÍTULOS (video_id<TAB>título):
+jE1Jte5uzWg	Pare de Comer Isso Se Você Usa Mounjaro ou Ozempic (Perigo)
+RMjclEf8VBY	#OZEMPIC NÃO JOGUE FORA ANTES DE SABER DISSO!
+ugwZFu3eWww	Mounjaro e Ozempic qual deles tem os piores efeitos colaterais
+QL-zkJNmvho	Você está pesando também? #meme #viralshorts #ozempic
+-Aa33FJnx-s	Ozempic: para que serve, como aplicar e efeitos colaterais
+ZjfaI115DbQ	OZEMPIC EMAGRECE MESMO? #ozempic #emagrecimento #obesidade #emagrecer #saude #medicamentos
+Ixj2VaJwvP0	WEGOVY NA MULHER ANDROGÊNICA-2025
+PLolNoJwFNs	Wegovy • Semaglutida. Primeira aplicação 107.4kg. #wegovy #ozempic #semaglutida #mounjaro
+ZEnc34Yy3qU	MOUNJARO: a nova promessa do emagrecimento, vale a pena?
+ILSmLpDmF9g	Tenho 70 anos, posso usar OZEMPIC?
+1jwCrIAzUhY	Não siga os números das roupas #saúde #ozempic #conselhomédico #médicos#emagrecimento #emagrecer
+gWojUyUX09Y	O que você vai conseguir comer usando *Ozempic*
+aCPzu2oZIg8	OZEMPIC PARA GORDURA NO FÍGADO NA MENOPAUSA
+DTua_k7JCa0	Semaglutida: "Caneta de emagrecimento" combate a Demência? l Dra. Débora Vilar
+NsnsK6uOMDI	VOCÊ PODE ESTAR USANDO MOUNJARO FALSO (E NEM SABE) | NEWS #002
+UYrpF3LqU1A	Essa CANETA MILAGROSA vai te fazer EMAGRECER muito !! #emagrecimento #beleza #renatocariani #ozempic
+Ojfoa6fQ4uE	QUAL É MELHOR? SEMAGLUTIDA OU LIRAGLUTIDA? I #shorts
+J-fRjFsq_xs	NOVO MEDICAMENTO PARA EMAGRECIMENTO E DIABETES TIPO 2: conheça a Tirzepatida (Mounjaro) #diabetes
+1ls7Zb0UmRE	OZEMPIC e Dor forte? Pare o remédio agora !
+G-u_TYiXLkw	MELHOR que o Ozempic e Mounjaro? 1 copo por dia tira a fome, queima gordura e baixa a glicose
+dEUOHqUVnCA	Trump ameaça tarifas à Dinamarca: preços do Ozempic podem disparar nos EUA!#sexta #hoje #noticias
+AJMqECkxTx0	#bariátrica #mounjaro #tirzepatida #emagrecer
+Inxvgi03r7g	ATENÇÃO... VEJA QUEM NÃO PODE USAR O MOUNJARO! #mounjaro #ozempic #emagrecimento #saude
+H7aFAucPmJc	Mounjaro (Tirzepatida) aprovado no Brasil. O que é? Como funciona?
+LuSHOuLIj_0	Perigos do Ozempic
+I79tNmtW5Gw	Te Vendem Emagrecimento Mas Entregam CALVÍCIE! A Verdade Sobre Ozempic e Similares
+_kAlnjEzxCo	Como saber se minha caneta de Ozempic acabou? #ozempic #wegovy #semaglutida #tirzepatida #emagrecer
+hfWgXfeqxrc	MOUNJARO em COMPRIMIDO!!! Será que funciona?
+DJM3y6my_H0	Quantos Kg Emagreci com Mounjaro? | Minha Experiência Real com o Tratamento 💉✨
+EJhhGTc0Mek	É verdade que o Psyllium é o Ozempic Natural? Como usar para deixar a dieta low carb mais fácil
+NUPlaJQ0Fu8	QUANTOS KG PERDI COM MOUNJARO 5ML #ozempic #mounjarojourney #perderpeso #semaglutida
+8B1ht5YhGS0	Os riscos da Ozempic em quem tem diabetes tipo 1 #biabética
+cxvJiFEktqw	OZEMPIC e WEGOVY: O que Ninguém Explica sobre essas CANETAS EMAGRECEDORAS!
+FjVzVLaljyA	Você Precisa Emagrecer? Então Veja Este Vídeo! Mounjaro vs Ozempic | Canal Casal Vital
+OIERGACYsZA	REVELADO: Como TRATAR EFEITOS COLATERAIS do MOUNJARO de forma FÁCIL! CONFIRA AQUI
+6TCg3CH2N_c	#shorts#TODO CUIDADO É POUCO #brasileirosemportugal#portugal #ozempic #
+BoBXoyBHb1k	OZEMPIC AGORA É CONTROLADO
+LFgA94nqPAQ	Essa fibra também conhecida como "ozempic natural" ajuda a emagrecer após os 50!
+fFtQriuV1cY	OZEMPIC (SEMAGLUTIDA) – EMAGRECIMENTO - O QUE É, PARA QUE SERVE E COMO USAR
+uVVon3-dNeY	Influencer denuncia ex por aplicar Ozempic enquanto dormia
+XhHDZqPFJ3M	a romantização do ozempic é um problrma
+kVUEMn9o-os	Qual é melhor: Saxenda ou Ozempic? Descubra!!
+cAuoBRoy1jE	REMEDIO PARA PERDER PESO | OZEMPIC, RYBELSUS, WEGOVY, SAXENDA
+_ixq_kkSGuM	Mounjaro e Água com Gás Perigo Descubra AGORA!
+v0xMeH2LsV4	O que é a Ozempic? e a Saxenda? qual a diferença entre elas? É possível emagrecer? #emagrecimento
+aXvfRd-bCvg	Ozempic corta o efeito do anticoncepcional?
+CnV8sQYWX7A	BAIANO É FLAGRADO COM MOUNJARO NO AEROPORTO! #mounjaro #emagrecimento #saude
+RiBUSDn02tw	'BATALHA' ENTRE OZEMPIC E MCDONALDS: REMÉDIO DE EMAGRECIMENTO PODE DERRUBAR AS AÇÕES DO FAST FOOD?
+LvsdSCwGv98	Gastei $2.000 em Mounjaro no Canadá 😱 | Estoque de 8 MESES pro Brasil!
+O5gFjx9Fskw	COMO TOMAR OZEMPIC SEM PERDER MÚSCULOS !
+9FF1lhjx_dc	WEGOVY NA MENOPAUSA PIORA TUDO?
+hSVGrFQfJZQ	OZEMPIC - Como usar e contar os “clicks”
+YBlpexTqHcw	CONTRAINDICAÇÕES AO USO DO OZEMPIC E SEUS SIMILARES
+ys8lFG1oxqc	PAULO MUZY REVELA OPÇÃO ALTERNATIVA AO OZEMPIC PARA EMAGRECER
+PIQvCLP6X_4	No frio temos mais perda de calorias então levanta e vai treinar!! #wegovy #mounjaro #corridaderua
+9pdYK6UH8Dc	O maior erro antes de aplicar.o Mounjaro
+zIvj_RSFvZU	Ozempic e redução do risco cardiovascular. Vem comigo🚀🚀🚀 #emagrecer #ozempic #saude #peso #treino
+nVUMxTFc-ms	A verdade sobre o OZEMPIC #noticias #saudefeminina #saude #emagrecimento
+q6X49Jlt2e0	"REVELADO! O Segredo do EMAGRECIMENTO: Óleo NATURAL que EMAGRECE Igual OZEMPIC
+9F4ivCGPVN4	Agora é mais que real, atendimento on-line aqui na comunidade. #wegovy #mounjaro
+nA9k3n_h4Gs	Por essa nem a Ozempic e Wegovy esperavam! Calma que te explico tudo!
+FfvZlrg1YMw	Maiara, Celebridades, Ozempic e o Mounjaro: Minha Experiência e Quanto Perdi
+yVZVrW7_rnM	Vlog: Fui ao Paraguai comprar #Tirzec. Acompanhe esse #vlog. #tirzepatida #glp1 #mounjaro
+tL8P1PEsuaQ	Combinação de semaglutida e bimagrumabe para reduzir a perda de massa muscular
+X36Hw8vuKMk	Retatrutida a evolução do emagrecimento. Esqueça tudo sobre mounjaro e Ozempic #dieta #academia
+Sfu1Dg8EjS0	Ozempic: A Verdade Que Ninguém Te Conta Sobre Esse 'Milagre' do Emagrecimento! ⚠️💉
+hiLVAHhN6sc	OZEMPIC remedio para emagrecer @julioteodoro.far
+YA1A6SdUvxc	Todos os medicamentos com Semaglutida para emagrecer
+Eo62fHCwM9M	Ozempic emagrece quantos quilos por semana?
+4gvHwLphReo	Mounjaro: O Remédio Que Faz Você Emagrecer Rápido? #mounjaro #emagrecimento #shorts
+6IKyhk0Daqc	Ozempic: O que é e Como Ele Age no Corpo
+zg4jI6FcON0	Wegovy vale a pena? Minha experiência sincera com a medicação
+6EE7-XGvsB4	OZEMPIC SUBSTITUI A BARIÁTRICA? | #ACHISMOS PODCAST
+kKHFd5bO36A	PARA QUE SERVEM AS CANETAS DE EMAGRECIMENTO? (Victoza & Saxenda) #shorts
+SYAwlVRHtxA	Mounjaro para emagrecer. A revolucionária medicação que vai aposentar a cirurgia bariátrica!
+YhQxSd8gAMY	Ozempic falsificada: alerta ‼️ vídeo completo disponível #diabeticos #glicemia #ozempic
+JbozmMSSDV4	Debate: Semaglutida: Papel na aterosclerose
+ZJR8b218V7o	Ozempic, Saxenda e Similares
+lTQzoWQ39Xw	PERDEU MASSA MUSCULAR DEPOIS DO MOUNJARO? FAÇA ISSO #shorts
+zASiqrhobDM	Semaglutida X Tirzepatida, qual a diferença? | Dra. Milena Miguita CRM-SP 141.465
+hcKTEey16G4	Durante a amamentação posso manter o uso do Ozempic?
+DpUiHer5ANs	Amigos assim não te fazem bem #saúde #ozempic #conselhomédico #médicos#emagrecimento #emagrecer
+ZWH8nlMJ-Lw	Ozempic: remédio de diabetes usado para emagrecer Wegovy (semaglutida)
+brd6-571Bn0	Ozempic, Rybelsus e Wegovy: Qual o Melhor para Emagrecimento Saudável?
+lgzz5vZJWQo	O Ozempic ajuda mesmo a emagrecer?? Endocrino explica!
+xsGSYreYVnE	Ozempic: um guia sobre o remédio para emagrecimento que é tão falado. | Remédios para Emagrecimento
+T87g3NxXBww	NOVO MEDICAMENTO PERDER PESO #perderpeso #emagrecer #mounjaro
+zSa4pLzLqlY	Quantos kilos perdí 1 mes? #mounjaro #mounjarojourney #mounjaroweightloss #tirzepatida #perderpeso
+ASyBRgHLPho	VOCÊ ESPERAVA O MOUNJARO DE 7,5 mg ,ENTÃO VAI CHEGAR!! #mounjaro #caminhoparaumavidamelhor #wegovy
+H1GXIVPTgiw	Proteções na Hora de Usar Mounjaro ou Ozempic
+CzJibPnCSxI	It sure was!! #glp1 #mounjaro #ozempic #tirzepatide #semiglutide #weightloss
+P1hks8l4Ljk	Mounjaro natural #shorts
+Iw_RFgl6ZLk	Ozempic e Mounjaro vão substituir a cirurgia bariátrica? #cirurgiabariatrica #obesidademorbida
+3EESLkVPoHE	OZEMPIC EMAGRECE | como aplicar ozempic | efeitos colaterais do OZEMPIC
+18gnFJ2ZNPU	Novos tratamentos para a obesidade em adolescentes.. #obesidade #ozempic #wegovy #semaglutida
+nCa03-sirj8	Ozempic, como funciona? Quais sãos os riscos? | Saúde em dia
+_l5ULG2AsR0	OZEMPIC e MOUNJARO NÃO EMAGRECEM (MILAGROSAMENTE)!
+X8XzmELo08I	Saxenda preço - valor mais barato que Ozempic, mas com ressalvas...
+JqkwlTWi5b8	Wegovy: por quanto tempo usar?
+22UI3d4zwzg	OZEMPIC - Bula Falada Simplificada
+
+Identifique somente tópicos novos que sejam necessários. A primeira coluna de cada linha é o video_id. Use APENAS esses video_id exatos em evidence_video_ids (sem repetir IDs). Não recrie tópicos já listados; quando tudo estiver coberto, retorne {"new_topics": []}.
+
+=== OUTPUT ===
+{"new_topics": []}
+
+=== NORMALIZED_OUTPUT ===
+{
+  "new_topics": []
+}
+
+=== WARNINGS ===
+[]

@@ -1,0 +1,9 @@
+{
+  "batch_size": 100,
+  "max_attempts": 3,
+  "shuffle_seed": 20261026,
+  "max_completion_tokens": 2048,
+  "reasoning_effort": "high",
+  "request_timeout": 600,
+  "sdk_max_retries": 2
+}
