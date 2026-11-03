@@ -40,6 +40,8 @@ case "$MODEL_ID" in
         : "${TOKENIZER_MODE:=mistral}"
         : "${CONFIG_FORMAT:=mistral}"
         : "${LOAD_FORMAT:=mistral}"
+        # Evita o problema de saída corrompida do FlashInfer em GPUs Blackwell.
+        : "${ATTENTION_BACKEND:=TRITON_ATTN}"
         ;;
 esac
 if [[ -z "${REASONING_PARSER:-}" ]]; then
@@ -74,8 +76,12 @@ server_args=(
 if [[ "${ENFORCE_EAGER:-0}" == "1" ]]; then
     server_args+=(--enforce-eager)
 fi
+if [[ -n "${ATTENTION_BACKEND:-}" ]]; then
+    server_args+=(--attention-backend "$ATTENTION_BACKEND")
+    export ATTENTION_BACKEND
+fi
 
-echo "[job] Iniciando vLLM com modelo ${MODEL_ID} (alias ${SERVED_MODEL_NAME})" >&2
+echo "[job] Iniciando vLLM com modelo ${MODEL_ID} (alias ${SERVED_MODEL_NAME}; atenção ${ATTENTION_BACKEND:-auto})" >&2
 vllm "${server_args[@]}" &
 VLLM_PID=$!
 

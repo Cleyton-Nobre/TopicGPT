@@ -23,7 +23,7 @@ from typing import Any
 
 from tqdm.auto import tqdm
 
-PROMPT_VERSION = "topic-generation-v4-shared-reasoning"
+PROMPT_VERSION = "topic-generation-v5-first-topic"
 DEFAULT_CONFIG = Path(__file__).with_name("experiment_config.json")
 SYSTEM_PROMPT = """
 Você é um pesquisador especializado em análise temática. Sua tarefa é identificar novos tópicos em títulos de vídeos do YouTube
@@ -40,9 +40,10 @@ Regras:
 - Evite tópicos redundantes ou excessivamente específicos.
 - Não altere, renomeie, combine ou exclua tópicos existentes.
 - Considere o assunto do título, não a veracidade de suas afirmações.
-- Não force a criação de tópicos: se nenhum tema novo for necessário, retorne uma lista vazia.
+- Quando a taxonomia estiver vazia, identifique pelo menos um tópico sustentado pelos títulos do lote.
+- Quando já houver tópicos, retorne uma lista vazia se nenhum tema novo for necessário.
 - Tópicos apresentados na lista TÓPICOS IDENTIFICADOS ATÉ AGORA já existem. Não repita seus rótulos.
-- Uma resposta com new_topics: [] está correta quando os temas já foram cobertos.
+- Uma resposta com new_topics: [] está correta somente quando já houver tópicos e os temas do lote já estiverem cobertos.
 - evidence_video_ids deve conter SOMENTE identificadores exatos (primeira coluna antes do TAB), nunca títulos, nomes de tópicos ou nomes de medicamentos.
 - Não repita IDs de evidência dentro do mesmo tópico. Selecione apenas IDs do lote atual que realmente sustentem o tema.
 - Os nomes e descrições devem estar em português.
@@ -131,31 +132,95 @@ def load_titles(path: Path) -> list[dict[str, str]]:
 def build_prompt(existing: list[dict], batch: list[dict]) -> str:
     topics_text = "\n".join(f"- {t.get('topic_id', '?')} | {t['label']}: {t['description']}" for t in existing) or "(nenhum tópico ainda)"
     titles_text = "\n".join(f"{r['video_id']}\t{r['title']}" for r in batch)
+    topic_rule = (
+        "Não recrie tópicos já listados; quando tudo estiver coberto, retorne {\"new_topics\": []}."
+        if existing else
+        "A taxonomia está vazia: retorne pelo menos um tópico sustentado pelos títulos deste lote."
+    )
     return (
         f"TÓPICOS IDENTIFICADOS ATÉ AGORA ({len(existing)}):\n{topics_text}\n\n"
         f"NOVO LOTE DE TÍTULOS (video_id<TAB>título):\n{titles_text}\n\n"
         "Identifique somente tópicos novos que sejam necessários. "
         "A primeira coluna de cada linha é o video_id. "
         "Use APENAS esses video_id exatos em evidence_video_ids (sem repetir IDs). "
-        "Não recrie tópicos já listados; quando tudo estiver coberto, retorne {\"new_topics\": []}."
+        f"{topic_rule}"
     )
 
 
-def schema_for_batch(batch: list[dict]) -> dict[str, Any]:
+def schema_for_batch(batch: list[dict], require_topic: bool = False) -> dict[str, Any]:
     """Restringe IDs a valores que aparecem no lote atual via JSON Schema enum."""
     schema = copy.deepcopy(OUTPUT_SCHEMA)
     allowed_ids = [record["video_id"] for record in batch]
     schema["properties"]["new_topics"]["items"]["properties"]["evidence_video_ids"]["items"]["enum"] = allowed_ids
+    if require_topic:
+        schema["properties"]["new_topics"]["minItems"] = 1
     return schema
+
+
+def parse_model_output(output: str) -> Any:
+    """Aceita JSON puro ou delimitado por crases, preservando a resposta original no log."""
+    content = output.strip()
+    if content.startswith("```"):
+        content = re.sub(r"^```(?:json)?\s*", "", content, flags=re.IGNORECASE)
+        content = re.sub(r"\s*```$", "", content).strip()
+    if not content:
+        raise ValueError("Resposta final vazia: o servidor não retornou o JSON dos tópicos")
+    return json.loads(content)
 
 
 def normalize_label(label: str) -> str:
     return re.sub(r"\s+", " ", label.strip().casefold())
 
 
+def load_initial_taxonomy(path: Path | None) -> list[dict]:
+    """Importa topics_final.json, preservando os tópicos e suas evidências históricas."""
+    if path is None:
+        return []
+    try:
+        data = read_json(path)
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"JSON inválido na taxonomia inicial {path}: {exc}") from exc
+    if not isinstance(data, dict) or not isinstance(data.get("topics"), list):
+        raise ValueError(f"Taxonomia inicial {path} deve ser um objeto com a lista topics de topics_final.json")
+    topics = data["topics"]
+    if "total_topics" in data and (type(data["total_topics"]) is not int or data["total_topics"] != len(topics)):
+        raise ValueError(f"Taxonomia inicial {path}: total_topics difere do tamanho de topics")
+    used_ids: set[str] = set()
+    used_labels: set[str] = set()
+    required = {"topic_id", "label", "description", "evidence_video_ids", "created_in_batch"}
+    for index, topic in enumerate(topics, 1):
+        prefix = f"Taxonomia inicial {path}, tópico {index}"
+        if not isinstance(topic, dict) or not required.issubset(topic):
+            raise ValueError(f"{prefix}: precisa conter os campos {sorted(required)}")
+        topic_id = topic["topic_id"]
+        if not isinstance(topic_id, str) or not re.fullmatch(r"T[0-9]+", topic_id) or int(topic_id[1:]) < 1:
+            raise ValueError(f"{prefix}: topic_id deve seguir o formato T001, T002, ...")
+        if topic_id in used_ids:
+            raise ValueError(f"{prefix}: topic_id duplicado: {topic_id}")
+        for key in ("label", "description"):
+            if not isinstance(topic[key], str) or not topic[key].strip():
+                raise ValueError(f"{prefix}: {key} deve ser texto não vazio")
+        label = normalize_label(topic["label"])
+        if label in used_labels:
+            raise ValueError(f"{prefix}: rótulo duplicado: {topic['label']}")
+        evidence = topic["evidence_video_ids"]
+        if (not isinstance(evidence, list) or not evidence
+                or not all(isinstance(item, str) and item.strip() and not re.search(r"\s", item) for item in evidence)):
+            raise ValueError(f"{prefix}: evidence_video_ids deve conter IDs não vazios")
+        if len(evidence) != len(set(evidence)):
+            raise ValueError(f"{prefix}: evidence_video_ids contém IDs repetidos")
+        if type(topic["created_in_batch"]) is not int or topic["created_in_batch"] < 1:
+            raise ValueError(f"{prefix}: created_in_batch deve ser um inteiro positivo")
+        used_ids.add(topic_id)
+        used_labels.add(label)
+    return topics
+
+
 def validate_result(result: Any, batch: list[dict], existing: list[dict]) -> None:
     if not isinstance(result, dict) or set(result) != {"new_topics"} or not isinstance(result["new_topics"], list):
         raise ValueError("A resposta deve ser um objeto com a lista new_topics")
+    if not existing and not result["new_topics"]:
+        raise ValueError("A taxonomia está vazia: gere pelo menos um tópico sustentado pelos títulos do lote")
     allowed_ids = {r["video_id"] for r in batch}
     used_labels = {normalize_label(t["label"]) for t in existing}
     for i, topic in enumerate(result["new_topics"], 1):
@@ -216,18 +281,18 @@ def write_attempt_log(
 
 
 def generation_parameters(cfg: argparse.Namespace) -> dict[str, Any]:
-    """Exatamente os mesmos parâmetros enviados às duas LLMs.
-
-    GPT-6.1 Sol exige raciocínio e não aceita temperature/top_p nesse modo.
-    Não enviamos esses parâmetros a nenhum dos provedores.
-    """
-    return {
+    """Parâmetros efetivamente enviados; temperatura explícita somente no vLLM."""
+    parameters = {
         "reasoning_effort": cfg.reasoning_effort,
         "max_completion_tokens": cfg.max_tokens,
     }
+    if cfg.provider == "vllm":
+        parameters["temperature"] = cfg.temperature
+    return parameters
 
 
-def completion_request(cfg: argparse.Namespace, prompt: str, batch: list[dict]) -> dict[str, Any]:
+def completion_request(cfg: argparse.Namespace, prompt: str, batch: list[dict],
+                       require_topic: bool = False) -> dict[str, Any]:
     return {
         "model": cfg.model,
         "messages": [
@@ -238,7 +303,8 @@ def completion_request(cfg: argparse.Namespace, prompt: str, batch: list[dict]) 
         "response_format": {
             "type": "json_schema",
             "json_schema": {
-                "name": "topic_generation", "strict": True, "schema": schema_for_batch(batch),
+                "name": "topic_generation", "strict": True,
+                "schema": schema_for_batch(batch, require_topic=require_topic),
             },
         },
     }
@@ -256,15 +322,18 @@ def protocol_config(cfg: argparse.Namespace) -> dict[str, Any]:
         "schema_evidence_id_constraint": "enum_per_batch",
         "duplicate_handling": "reject_and_retry",
         "retry_policy": "original_prompt_plus_last_validation_error",
+        "json_parsing": "whole_json_with_optional_markdown_fence",
+        "empty_taxonomy_policy": "require_at_least_one_topic",
         "batch_size": cfg.batch_size,
         "max_attempts": cfg.max_attempts,
         "shuffle_seed": cfg.shuffle_seed,
         "generation_parameters": generation_parameters(cfg),
-        "sampling_policy": "provider_defaults; temperature/top_p/seed not sent",
+        "sampling_policy": "explicit_temperature_for_vllm; provider_default_for_openai; top_p/seed not sent",
         "request_timeout": cfg.request_timeout,
         "sdk_max_retries": cfg.sdk_max_retries,
         "checkpoint_enabled": False,
         "output_policy": "overwrite_selected_experiments",
+        "initial_taxonomy_policy": "per_experiment; preserve_topics; process_all_titles",
     }
 
 
@@ -287,7 +356,7 @@ def call_with_retries(
         output = ""
         usage = None
         try:
-            response = client.chat.completions.create(**completion_request(cfg, prompt, batch))
+            response = client.chat.completions.create(**completion_request(cfg, prompt, batch, require_topic=not existing))
             if getattr(response, "usage", None) is not None:
                 usage = response_usage(response)
             if not response.choices:
@@ -306,7 +375,7 @@ def call_with_retries(
                 )
             if getattr(choice.message, "refusal", None):
                 raise ValueError("O modelo recusou a geração")
-            result = json.loads(output)
+            result = parse_model_output(output)
             validate_result(result, batch, existing)
             elapsed = time.monotonic() - started
             write_attempt_log(log_dir, batch_index, attempt, prompt, output, "OK", usage, elapsed)
@@ -320,6 +389,7 @@ def call_with_retries(
                 "elapsed_seconds": round(elapsed, 6), "log_file": str(log),
             })
             print(f"[lote {batch_index}] tentativa {attempt} inválida: {exc}", flush=True)
+            print(f"[lote {batch_index}] início da resposta: {output[:160]!r} | log: {log}", flush=True)
         except Exception as exc:
             elapsed = time.monotonic() - started
             write_attempt_log(log_dir, batch_index, attempt, prompt, output,
@@ -345,8 +415,17 @@ def export_report(rows: list[dict], path: Path) -> None:
 
 
 def run_experiment(client: Any, cfg: argparse.Namespace, records: list[dict], name: str,
-                   order: str, seed: int | None) -> dict:
-    """Taxonomia independente, sempre do zero, com a mesma lógica para ambas as LLMs."""
+                   order: str, seed: int | None, initial_topics: list[dict] | None = None,
+                   initial_taxonomy_file: Path | None = None) -> dict:
+    """Taxonomia independente, opcionalmente inicializada com tópicos importados."""
+    topics = copy.deepcopy(initial_topics) if initial_topics is not None else []
+    initial_count = len(topics)
+    next_topic_number = max((int(topic["topic_id"][1:]) for topic in topics), default=0) + 1
+    initial_info = {
+        "initial_taxonomy_file": str(initial_taxonomy_file) if initial_taxonomy_file is not None else None,
+        "initial_taxonomy_hash": sha256_json(topics),
+        "initial_topics": initial_count,
+    }
     directory = cfg.output / name
     log_dir = directory / "logs"
     log_dir.mkdir(parents=True, exist_ok=True)
@@ -356,10 +435,12 @@ def run_experiment(client: Any, cfg: argparse.Namespace, records: list[dict], na
     protocol_hash = sha256_json(protocol)
     comparison_hash = sha256_json({
         "input_hash": input_hash, "protocol_hash": protocol_hash, "experiment": name,
+        "initial_taxonomy_hash": initial_info["initial_taxonomy_hash"],
     })
     experiment_info = {
         "experiment": name, "order_description": order, "shuffle_seed": seed,
         "input_hash": input_hash, "total_titles": len(records),
+        **initial_info,
     }
     model_source = os.getenv("MODEL_ID", cfg.model) if cfg.provider == "vllm" else cfg.model
     config = {
@@ -371,7 +452,7 @@ def run_experiment(client: Any, cfg: argparse.Namespace, records: list[dict], na
         config["server_environment"] = {
             key: os.environ[key] for key in (
                 "MODEL_ID", "REASONING_PARSER", "GENERATION_CONFIG", "MAX_MODEL_LEN", "DTYPE",
-                "TENSOR_PARALLEL_SIZE", "TOKENIZER_MODE", "CONFIG_FORMAT", "LOAD_FORMAT",
+                "TENSOR_PARALLEL_SIZE", "TOKENIZER_MODE", "CONFIG_FORMAT", "LOAD_FORMAT", "ATTENTION_BACKEND",
             ) if key in os.environ
         }
     config_hash = sha256_json(config)
@@ -379,11 +460,11 @@ def run_experiment(client: Any, cfg: argparse.Namespace, records: list[dict], na
         **experiment_info, "video_ids_in_order": [r["video_id"] for r in records],
     })
     atomic_json(log_dir / "00_config.json", config)
+    atomic_json(directory / "initial_taxonomy.json", {**initial_info, "topics": topics})
 
-    topics: list[dict] = []
     report_rows: list[dict] = []
     batch_dir = directory / "batches"
-    print(f"\n=== {name}: {len(records)} títulos, {len(batches)} lotes, começando do zero ===", flush=True)
+    print(f"\n=== {name}: {len(records)} títulos, {len(batches)} lotes, {initial_count} tópicos iniciais ===", flush=True)
     with tqdm(total=len(batches), desc=name, unit="lote") as progress:
         for i, batch in enumerate(batches, 1):
             result, response, failures, measurement = call_with_retries(
@@ -391,10 +472,11 @@ def run_experiment(client: Any, cfg: argparse.Namespace, records: list[dict], na
             )
             for topic in result["new_topics"]:
                 topics.append({
-                    "topic_id": f"T{len(topics) + 1:03d}",
+                    "topic_id": f"T{next_topic_number:03d}",
                     "label": topic["label"].strip(), "description": topic["description"].strip(),
                     "evidence_video_ids": topic["evidence_video_ids"], "created_in_batch": i,
                 })
+                next_topic_number += 1
             # Arquivo de auditoria; nunca é carregado para retomar uma execução.
             atomic_json(batch_dir / f"batch_{i:03d}.json", {
                 "batch_index": i, "response_id": response.id, "model": response.model,
@@ -418,17 +500,21 @@ def run_experiment(client: Any, cfg: argparse.Namespace, records: list[dict], na
     final = {
         "provider": cfg.provider, "model": cfg.model, "model_source": model_source,
         "prompt_version": PROMPT_VERSION, "reasoning_effort": cfg.reasoning_effort,
+        "generation_parameters": generation_parameters(cfg),
         "experiment": experiment_info, "input_file": str(cfg.input),
         "input_hash": input_hash, "config_hash": config_hash,
         "protocol_hash": protocol_hash, "comparison_hash": comparison_hash,
         "total_titles": len(records), "batch_size": cfg.batch_size,
         "total_batches": len(batches), "total_topics": len(topics), "topics": topics,
+        **initial_info, "generated_topics": len(topics) - initial_count,
     }
     atomic_json(directory / "topics_final.json", final)
     summary = {
         "experiment": name, "provider": cfg.provider, "model": cfg.model, "model_source": model_source,
+        "generation_parameters": generation_parameters(cfg),
         "input_hash": input_hash, "protocol_hash": protocol_hash, "comparison_hash": comparison_hash,
         "total_titles": len(records), "total_batches": len(batches), "total_topics": len(topics),
+        **initial_info, "generated_topics": len(topics) - initial_count,
         "total_failed_attempts": sum(r["failed_attempts"] for r in report_rows),
         "checkpoint_enabled": False,
     }
@@ -473,8 +559,10 @@ def load_experiment_config(path: Path) -> dict[str, Any]:
         "batch_size", "max_attempts", "shuffle_seed", "max_completion_tokens",
         "reasoning_effort", "request_timeout", "sdk_max_retries",
     }
-    if not isinstance(config, dict) or set(config) != required:
-        raise ValueError(f"{path} deve conter exatamente os campos {sorted(required)}")
+    optional = {"vllm_temperature"}
+    if not isinstance(config, dict) or not required.issubset(config) or set(config) - required - optional:
+        raise ValueError(f"{path} deve conter os campos {sorted(required)} e pode incluir {sorted(optional)}")
+    config.setdefault("vllm_temperature", 0.0)
     for key in ("batch_size", "max_attempts", "max_completion_tokens", "sdk_max_retries", "shuffle_seed"):
         if type(config[key]) is not int:
             raise ValueError(f"{key} precisa ser um inteiro")
@@ -482,6 +570,9 @@ def load_experiment_config(path: Path) -> dict[str, Any]:
         raise ValueError("batch_size, max_attempts e max_completion_tokens devem ser positivos")
     if config["sdk_max_retries"] < 0:
         raise ValueError("sdk_max_retries não pode ser negativo")
+    temperature = config["vllm_temperature"]
+    if type(temperature) not in (int, float) or not 0 <= temperature <= 2:
+        raise ValueError("vllm_temperature deve ser um número finito entre 0 e 2")
     if config["reasoning_effort"] not in ("low", "medium", "high", "xhigh", "max"):
         raise ValueError("reasoning_effort deve ser low, medium, high, xhigh ou max")
     timeout = config["request_timeout"]
@@ -511,11 +602,28 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--shuffle-seed", type=int, default=defaults["shuffle_seed"])
     parser.add_argument("--max-tokens", "--max-completion-tokens", dest="max_tokens", type=int, default=defaults["max_completion_tokens"])
     parser.add_argument("--reasoning-effort", choices=["low", "medium", "high", "xhigh", "max"], default=defaults["reasoning_effort"])
+    parser.add_argument(
+        "--temperature", type=float, default=None if is_openai else defaults["vllm_temperature"],
+        help="temperatura do vLLM; padrão definido em vllm_temperature no JSON de configuração",
+    )
     parser.add_argument("--request-timeout", type=float, default=defaults["request_timeout"])
     parser.add_argument("--sdk-max-retries", type=int, default=defaults["sdk_max_retries"])
     parser.add_argument("--startup-timeout", type=float, default=float(os.getenv("STARTUP_TIMEOUT", "900")))
     parser.add_argument("--experiment", choices=["both", "original", "shuffled"], default=os.getenv("EXPERIMENT", "both"))
+    parser.add_argument(
+        "--initial-taxonomy-original", type=Path, default=os.getenv("INITIAL_TAXONOMY_ORIGINAL") or None,
+        help="topics_final.json com os tópicos iniciais do experimento em ordem original",
+    )
+    parser.add_argument(
+        "--initial-taxonomy-shuffled", type=Path, default=os.getenv("INITIAL_TAXONOMY_SHUFFLED") or None,
+        help="topics_final.json com os tópicos iniciais do experimento em ordem embaralhada",
+    )
     cfg = parser.parse_args(argv)
+    if cfg.temperature is not None:
+        if cfg.provider != "vllm":
+            parser.error("--temperature está disponível somente para o provedor vllm")
+        if not 0 <= cfg.temperature <= 2:
+            parser.error("temperature deve ser um número finito entre 0 e 2")
     if min(cfg.batch_size, cfg.max_attempts, cfg.max_tokens) < 1 or cfg.sdk_max_retries < 0:
         parser.error("batch-size, max-attempts e max-tokens devem ser positivos; sdk-max-retries deve ser não negativo")
     if not 0 < cfg.request_timeout < float("inf") or not 0 < cfg.startup_timeout < float("inf"):
@@ -579,6 +687,12 @@ def run(cfg: argparse.Namespace, client: Any = None) -> dict[str, Any]:
     """Entrada comum do notebook e da CLI; sobrescreve as saídas a cada execução."""
     validate_backend_config(cfg)
     records = load_titles(cfg.input)
+    # Carrega todas as taxonomias selecionadas antes de limpar saídas ou chamar a API.
+    # A origem pode ser um topics_final.json que será sobrescrito nesta execução.
+    initial_taxonomies = {
+        order: load_initial_taxonomy(getattr(cfg, f"initial_taxonomy_{order}", None))
+        for order in ("original", "shuffled") if cfg.experiment in ("both", order)
+    }
     if client is None:
         client = create_client(cfg)
     clear_previous_results(cfg)
@@ -588,19 +702,23 @@ def run(cfg: argparse.Namespace, client: Any = None) -> dict[str, Any]:
     protocol = protocol_config(cfg)
     protocol_hash = sha256_json(protocol)
     print(f"[gerador] {cfg.provider} | {cfg.model} | reasoning={cfg.reasoning_effort}", flush=True)
+    if cfg.provider == "vllm":
+        print(f"[gerador] temperature={cfg.temperature}", flush=True)
     print(f"[gerador] Protocolo: {protocol_hash}\n[gerador] Resultados: {run_dir}", flush=True)
     atomic_json(run_dir / "protocol.json", protocol)
     summaries = []
     if cfg.experiment in ("both", "original"):
         summaries.append(run_experiment(client, cfg, records,
-                                       "experiment_1_original_order", "ordem original", None))
+                                       "experiment_1_original_order", "ordem original", None,
+                                       initial_taxonomies["original"], cfg.initial_taxonomy_original))
     if cfg.experiment in ("both", "shuffled"):
         shuffled = list(records)
         random.Random(cfg.shuffle_seed).shuffle(shuffled)
         if len(records) > 1 and shuffled == records:
             raise RuntimeError("O embaralhamento retornou a ordem original; altere shuffle_seed nos dois provedores")
         summaries.append(run_experiment(client, cfg, shuffled,
-                                       "experiment_2_shuffled_order", "ordem embaralhada", cfg.shuffle_seed))
+                                       "experiment_2_shuffled_order", "ordem embaralhada", cfg.shuffle_seed,
+                                       initial_taxonomies["shuffled"], cfg.initial_taxonomy_shuffled))
     report = {
         "run_directory": str(run_dir), "provider": cfg.provider, "model": cfg.model,
         "input_hash": sha256_json(records), "protocol_hash": protocol_hash,

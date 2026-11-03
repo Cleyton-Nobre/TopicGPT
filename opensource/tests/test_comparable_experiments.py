@@ -17,7 +17,6 @@ import topic_generation as experiment
 
 
 ROOT = Path(__file__).resolve().parents[1]
-NOTEBOOK = ROOT / "topic_generation_two_order_experiments_v4.ipynb"
 
 
 def response(result, finish_reason="stop", usage=True):
@@ -94,17 +93,26 @@ class ComparableExperimentsTest(unittest.TestCase):
     def cfg(self, provider="vllm"):
         return experiment.parse_args(self.args(provider))
 
-    def test_notebook_and_cli_execute_identical_requests_and_orders(self):
-        notebook = json.loads(NOTEBOOK.read_text())
-        cells = ["".join(c["source"]) for c in notebook["cells"] if c["cell_type"] == "code"]
-        namespace = {}
-        for cell in cells[:-1]:
-            exec(compile(cell, str(NOTEBOOK), "exec"), namespace)
-        namespace.update(INPUT_FILE=self.input_path, OUTPUT_DIR=self.directory / "openai", CONFIG_FILE=self.config_path)
+    def write_taxonomy(self, name, topics):
+        path = self.directory / name
+        path.write_text(json.dumps({"total_topics": len(topics), "topics": topics}))
+        return path
+
+    def seed_topic(self, topic_id="T007", label="Tema inicial"):
+        return {
+            "topic_id": topic_id, "label": label, "description": "Descrição do tópico importado.",
+            "evidence_video_ids": ["video-de-outra-execucao"], "created_in_batch": 17,
+        }
+
+    def generated_topic(self, label="Tema novo"):
+        return {"new_topics": [{
+            "label": label, "description": "Um tema sustentado pelos títulos do lote.",
+            "evidence_video_ids": ["v0"],
+        }]}
+
+    def test_providers_share_processing_with_provider_specific_temperature(self):
         openai_client = ControlledClient()
-        with patch.object(experiment, "create_client", return_value=openai_client):
-            exec(compile(cells[-1], str(NOTEBOOK), "exec"), namespace)
-        openai_report = namespace["report"]
+        openai_report = experiment.run(self.cfg("openai"), client=openai_client)
 
         local_client = ControlledClient(supported_efforts={"none", "high"})
         with patch.object(experiment, "create_client", return_value=local_client):
@@ -117,17 +125,21 @@ class ComparableExperimentsTest(unittest.TestCase):
         for left, right in zip(openai_client.requests, local_client.requests):
             self.assertEqual(left.pop("model"), "gpt-6.1-sol")
             self.assertEqual(right.pop("model"), "topic-local")
+            self.assertEqual(right.pop("temperature"), 0.0)
             self.assertEqual(left, right)
             self.assertEqual(left["reasoning_effort"], "high")
             self.assertNotIn("temperature", left)
             self.assertNotIn("top_p", left)
 
-        self.assertEqual(openai_report["protocol_hash"], local_report["protocol_hash"])
+        self.assertNotEqual(openai_report["protocol_hash"], local_report["protocol_hash"])
         expected_orders = [self.records, list(self.records)]
         random.Random(self.defaults["shuffle_seed"]).shuffle(expected_orders[1])
         self.assertNotEqual(expected_orders[0], expected_orders[1])
         for index, (left, right) in enumerate(zip(openai_report["experiments"], local_report["experiments"])):
-            self.assertEqual(left["comparison_hash"], right["comparison_hash"])
+            self.assertNotEqual(left["comparison_hash"], right["comparison_hash"])
+            self.assertEqual(left["input_hash"], right["input_hash"])
+            self.assertNotIn("temperature", left["generation_parameters"])
+            self.assertEqual(right["generation_parameters"]["temperature"], 0.0)
             self.assertEqual(left["total_failed_attempts"], 3)
             self.assertEqual(left["total_tokens"], 180)
             self.assertEqual(left["failed_total_tokens"], 90)
@@ -140,11 +152,170 @@ class ComparableExperimentsTest(unittest.TestCase):
             local_final = Path(local_report["run_directory"]) / right["experiment"] / "topics_final.json"
             self.assertEqual(json.loads(openai_final.read_text())["topics"], json.loads(local_final.read_text())["topics"])
 
+    def test_seeded_providers_preserve_independent_taxonomies_and_continue_ids(self):
+        seeds = [
+            [self.seed_topic("T002", "Original A"), self.seed_topic("T009", "Original B")],
+            [self.seed_topic("T004", "Embaralhado")],
+        ]
+        paths = [self.write_taxonomy(f"seed-{index}.json", topics) for index, topics in enumerate(seeds)]
+        cfg = experiment.parse_args(self.args("openai") + [
+            "--initial-taxonomy-original", str(paths[0]), "--initial-taxonomy-shuffled", str(paths[1]),
+        ])
+        openai_client = ControlledClient()
+        openai_report = experiment.run(cfg, client=openai_client)
+
+        local_client = ControlledClient()
+        with patch.object(experiment, "create_client", return_value=local_client):
+            experiment.main(self.args("vllm") + [
+                "--initial-taxonomy-original", str(paths[0]), "--initial-taxonomy-shuffled", str(paths[1]),
+            ])
+        local_report = json.loads((self.directory / "vllm" / "summary_all.json").read_text())
+        self.assertEqual(len(openai_client.requests), 12)
+        self.assertEqual(len(local_client.requests), 12)
+        for left, right in zip(openai_client.requests, local_client.requests):
+            self.assertNotIn("temperature", left)
+            self.assertEqual(right["temperature"], 0.0)
+            self.assertEqual({k: v for k, v in left.items() if k != "model"},
+                             {k: v for k, v in right.items() if k not in ("model", "temperature")})
+        for index, (name, next_id) in enumerate([
+            ("experiment_1_original_order", "T010"), ("experiment_2_shuffled_order", "T005"),
+        ]):
+            summary = local_report["experiments"][index]
+            self.assertNotEqual(summary["comparison_hash"], openai_report["experiments"][index]["comparison_hash"])
+            self.assertEqual(summary["initial_taxonomy_hash"], openai_report["experiments"][index]["initial_taxonomy_hash"])
+            self.assertEqual(summary["initial_topics"], len(seeds[index]))
+            self.assertEqual(summary["generated_topics"], 3)
+            for provider in ("openai", "vllm"):
+                folder = self.directory / provider / name
+                final = json.loads((folder / "topics_final.json").read_text())
+                self.assertEqual(final["topics"][:len(seeds[index])], seeds[index])
+                self.assertEqual(final["topics"][len(seeds[index])]["topic_id"], next_id)
+                self.assertEqual(final["total_topics"], len(seeds[index]) + 3)
+                snapshot = json.loads((folder / "initial_taxonomy.json").read_text())
+                self.assertEqual(snapshot["topics"], seeds[index])
+            prompt = openai_client.requests[index * 6]["messages"][1]["content"]
+            for topic in seeds[index]:
+                self.assertIn(f"{topic['topic_id']} | {topic['label']}: {topic['description']}", prompt)
+            for topic in seeds[1 - index]:
+                self.assertNotIn(topic["label"], prompt)
+
+    def test_initial_taxonomy_validation_precedes_api_and_cleanup_for_all_selected_orders(self):
+        cfg = self.cfg()
+        cfg.initial_taxonomy_original = self.write_taxonomy("valid.json", [self.seed_topic()])
+        cfg.initial_taxonomy_shuffled = self.directory / "invalid.json"
+        folder = cfg.output / "experiment_1_original_order"
+        folder.mkdir(parents=True)
+        marker = folder / "old.txt"
+        marker.write_text("preservar")
+        seed = self.seed_topic()
+        invalids = [
+            [], {"new_topics": []}, {"topics": {}}, {"topics": [None]},
+            {"topics": [{"label": "Sem campos de saída"}]},
+            {"topics": [seed], "total_topics": 2},
+            {"topics": [seed, {**seed, "label": "Outro rótulo"}]},
+            {"topics": [seed, {**seed, "topic_id": "T008", "label": " TEMA INICIAL "}]},
+        ]
+        for key, value in [
+            ("topic_id", "inválido"), ("topic_id", "T000"), ("label", " "), ("description", None),
+            ("evidence_video_ids", []), ("evidence_video_ids", ["id", "id"]),
+            ("evidence_video_ids", [5]), ("created_in_batch", True), ("created_in_batch", 0),
+        ]:
+            invalids.append({"topics": [{**seed, key: value}]})
+        with patch.object(experiment, "create_client") as create_client:
+            for invalid in invalids:
+                with self.subTest(invalid=invalid):
+                    cfg.initial_taxonomy_shuffled.write_text(json.dumps(invalid))
+                    with self.assertRaisesRegex(ValueError, "Taxonomia inicial"):
+                        experiment.run(cfg)
+                    self.assertEqual(marker.read_text(), "preservar")
+            cfg.initial_taxonomy_shuffled.write_text("{JSON inválido")
+            with self.assertRaisesRegex(ValueError, "JSON inválido na taxonomia inicial"):
+                experiment.run(cfg)
+            cfg.initial_taxonomy_shuffled = self.directory / "missing.json"
+            with self.assertRaises(FileNotFoundError):
+                experiment.run(cfg)
+            self.assertTrue(marker.exists())
+            create_client.assert_not_called()
+
+    def test_imported_labels_are_rejected_when_proposed_again(self):
+        cfg = self.cfg("openai")
+        cfg.experiment = "original"
+        cfg.initial_taxonomy_original = self.write_taxonomy("seed.json", [self.seed_topic()])
+        duplicate = {"new_topics": [{
+            "label": " TEMA INICIAL ", "description": "Duplicado.", "evidence_video_ids": ["v0"],
+        }]}
+        client = ControlledClient([response(duplicate)] + [response({"new_topics": []})] * 3)
+        report = experiment.run(cfg, client=client)
+        self.assertEqual(report["experiments"][0]["total_topics"], 1)
+        self.assertEqual(report["experiments"][0]["generated_topics"], 0)
+        self.assertEqual(report["experiments"][0]["total_failed_attempts"], 1)
+        self.assertIn("Tópico duplicado", client.requests[1]["messages"][1]["content"])
+
+    def test_only_one_order_can_receive_an_initial_taxonomy(self):
+        cfg = self.cfg("openai")
+        cfg.initial_taxonomy_shuffled = self.write_taxonomy("seed.json", [self.seed_topic()])
+        client = ControlledClient([response(self.generated_topic())] + [response({"new_topics": []})] * 5)
+        report = experiment.run(cfg, client=client)
+        self.assertEqual([summary["initial_topics"] for summary in report["experiments"]], [0, 1])
+        self.assertIn("(nenhum tópico ainda)", client.requests[0]["messages"][1]["content"])
+        self.assertIn("Tema inicial", client.requests[3]["messages"][1]["content"])
+
+    def test_taxonomies_inside_outputs_are_loaded_before_either_order_is_cleaned(self):
+        cfg = self.cfg("openai")
+        path = cfg.output / "experiment_1_original_order" / "topics_final.json"
+        path.parent.mkdir(parents=True)
+        seed = self.seed_topic()
+        path.write_text(json.dumps({"topics": [seed]}))
+        cfg.initial_taxonomy_original = path
+        cfg.initial_taxonomy_shuffled = path
+        client = ControlledClient([response({"new_topics": []})] * 6)
+        report = experiment.run(cfg, client=client)
+        for summary in report["experiments"]:
+            self.assertEqual(summary["initial_topics"], 1)
+            self.assertEqual(summary["generated_topics"], 0)
+            folder = cfg.output / summary["experiment"]
+            self.assertEqual(json.loads((folder / "topics_final.json").read_text())["topics"], [seed])
+            self.assertEqual(json.loads((folder / "initial_taxonomy.json").read_text())["topics"], [seed])
+        # A saída pode ser importada novamente na execução seguinte.
+        self.assertEqual(experiment.load_initial_taxonomy(path), [seed])
+
+    def test_comparison_hash_tracks_taxonomy_contents_instead_of_path_or_source_model(self):
+        cfg = self.cfg("openai")
+        cfg.experiment = "original"
+        paths = [self.write_taxonomy(f"seed-{index}.json", [self.seed_topic()]) for index in range(2)]
+        paths[1].write_text(json.dumps({"model": "outra-llm", "topics": [self.seed_topic()]}))
+        paths.append(self.write_taxonomy("changed.json", [self.seed_topic(label="Tema diferente")]))
+        hashes = []
+        for path in paths:
+            cfg.initial_taxonomy_original = path
+            report = experiment.run(cfg, client=ControlledClient([response({"new_topics": []})] * 3))
+            hashes.append(report["experiments"][0]["comparison_hash"])
+        self.assertEqual(hashes[0], hashes[1])
+        self.assertNotEqual(hashes[0], hashes[2])
+
+    def test_environment_taxonomies_allow_cli_overrides_and_ignore_unselected_orders(self):
+        seed = self.seed_topic()
+        path = self.write_taxonomy("seed.json", [seed])
+        empty = self.write_taxonomy("empty.json", [])
+        with patch.dict(os.environ, {
+            "INITIAL_TAXONOMY_ORIGINAL": str(path), "INITIAL_TAXONOMY_SHUFFLED": "missing.json",
+        }):
+            cfg = self.cfg("openai")
+            overridden = experiment.parse_args(self.args("openai") + ["--initial-taxonomy-original", str(empty)])
+        self.assertEqual(cfg.initial_taxonomy_original, path)
+        self.assertEqual(overridden.initial_taxonomy_original, empty)
+        for current, expected_count in [(cfg, 1), (overridden, 0)]:
+            current.experiment = "original"
+            client = ControlledClient([response(self.generated_topic())] + [response({"new_topics": []})] * 2)
+            report = experiment.run(current, client=client)
+            self.assertEqual(len(report["experiments"]), 1)
+            self.assertEqual(report["experiments"][0]["initial_topics"], expected_count)
+
     def test_hash_detects_changed_parameters_and_input(self):
         cfg = self.cfg()
         before = experiment.sha256_json(experiment.protocol_config(cfg))
         for key, value in [("reasoning_effort", "medium"), ("max_tokens", 4096), ("shuffle_seed", 9),
-                           ("batch_size", 3), ("max_attempts", 5), ("sdk_max_retries", 0)]:
+                           ("batch_size", 3), ("max_attempts", 5), ("sdk_max_retries", 0), ("temperature", 0.7)]:
             changed = copy.copy(cfg)
             setattr(changed, key, value)
             self.assertNotEqual(before, experiment.sha256_json(experiment.protocol_config(changed)))
@@ -178,16 +349,75 @@ class ComparableExperimentsTest(unittest.TestCase):
                     self.assertEqual(failures[0]["usage"]["total_tokens"], 30)
 
     def test_truncation_and_missing_usage_trigger_retry_even_for_valid_json(self):
-        for invalid in [response({"new_topics": []}, finish_reason="length"),
-                        response({"new_topics": []}, usage=False)]:
-            client = ControlledClient([invalid, response({"new_topics": []})])
+        result_expected = self.generated_topic()
+        for invalid in [response(result_expected, finish_reason="length"),
+                        response(result_expected, usage=False)]:
+            client = ControlledClient([invalid, response(result_expected)])
             result, _, failures, _ = experiment.call_with_retries(
                 client, self.cfg(), [], self.records[:2], 1, self.directory / "logs",
             )
-            self.assertEqual(result, {"new_topics": []})
+            self.assertEqual(result, result_expected)
             self.assertEqual(len(failures), 1)
             self.assertEqual(client.requests[0]["max_completion_tokens"], client.requests[1]["max_completion_tokens"])
-            self.assertIn('"new_topics": []', Path(failures[0]["log_file"]).read_text())
+            self.assertIn(json.dumps(result_expected), Path(failures[0]["log_file"]).read_text())
+
+    def test_markdown_json_is_parsed_and_raw_output_is_preserved(self):
+        expected = self.generated_topic()
+        body = json.dumps(expected)
+        variants = [body, f"```{body}", f"```{body}```", f"```json\n{body}\n```", f"```JSON\n{body}"]
+        for provider in ("openai", "vllm"):
+            for index, raw in enumerate(variants):
+                with self.subTest(provider=provider, raw=raw):
+                    item = response(expected)
+                    item.choices[0].message.content = raw
+                    log_dir = self.directory / provider / f"fence-{index}"
+                    result, _, failures, _ = experiment.call_with_retries(
+                        ControlledClient([item]), self.cfg(provider), [], self.records[:2], 1, log_dir,
+                    )
+                    self.assertEqual(result, expected)
+                    self.assertEqual(failures, [])
+                    self.assertIn(f"=== OUTPUT ===\n{raw}\n", next(log_dir.glob("*.txt")).read_text())
+
+    def test_empty_first_response_with_markdown_requires_a_topic_and_retries(self):
+        expected = self.generated_topic()
+        for provider in ("openai", "vllm"):
+            with self.subTest(provider=provider):
+                empty = response({"new_topics": []})
+                empty.choices[0].message.content = '```{"new_topics": []}'
+                client = ControlledClient([empty, response(expected)])
+                result, _, failures, _ = experiment.call_with_retries(
+                    client, self.cfg(provider), [], self.records[:2], 1, self.directory / provider,
+                )
+                self.assertEqual(result, expected)
+                self.assertEqual(len(failures), 1)
+                self.assertIn("gere pelo menos um tópico", failures[0]["error"])
+                self.assertIn("pelo menos um tópico", client.requests[0]["messages"][1]["content"])
+                schema = client.requests[0]["response_format"]["json_schema"]["schema"]
+                self.assertEqual(schema["properties"]["new_topics"]["minItems"], 1)
+        # Depois de importar ou gerar um tópico, não é necessário criar outro.
+        existing = [self.seed_topic()]
+        experiment.validate_result({"new_topics": []}, self.records[:2], existing)
+        cfg = self.cfg()
+        client = ControlledClient([response({"new_topics": []})])
+        experiment.call_with_retries(client, cfg, existing, self.records[:2], 1, self.directory / "seeded")
+        schema = client.requests[0]["response_format"]["json_schema"]["schema"]
+        self.assertNotIn("minItems", schema["properties"]["new_topics"])
+
+    def test_markdown_does_not_hide_non_json_text_or_invalid_evidence(self):
+        for raw in ('Texto antes {"new_topics": []}', '```python\n{"new_topics": []}\n```',
+                    '```{"new_topics": []}``` texto depois', '```{"new_topics": [', "```"):
+            with self.subTest(raw=raw), self.assertRaises(ValueError):
+                experiment.parse_model_output(raw)
+        invalid = self.generated_topic()
+        invalid["new_topics"][0]["evidence_video_ids"] = ["fora-do-lote"]
+        item = response(invalid)
+        item.choices[0].message.content = f"```json\n{json.dumps(invalid)}\n```"
+        client = ControlledClient([item, response(self.generated_topic())])
+        _, _, failures, _ = experiment.call_with_retries(
+            client, self.cfg(), [], self.records[:2], 1, self.directory / "invalid-evidence",
+        )
+        self.assertEqual(len(failures), 1)
+        self.assertIn("de outro lote", failures[0]["error"])
 
     def test_api_error_is_logged_and_propagated(self):
         client = ControlledClient([ConnectionError("API indisponível")])
@@ -210,7 +440,11 @@ class ComparableExperimentsTest(unittest.TestCase):
         first_topic = {"new_topics": [{
             "label": "Tema antigo", "description": "Um tema da primeira execução.", "evidence_video_ids": ["v0"],
         }]}
-        client = ControlledClient([response(first_topic)] + [response({"new_topics": []})] * 5)
+        second_topic = self.generated_topic(label="Tema da nova execução")
+        client = ControlledClient(
+            [response(first_topic)] + [response({"new_topics": []})] * 2
+            + [response(second_topic)] + [response({"new_topics": []})] * 2,
+        )
         first = experiment.run(cfg, client=client)
         folder = cfg.output / "experiment_1_original_order"
         final_path = folder / "topics_final.json"
@@ -225,7 +459,10 @@ class ComparableExperimentsTest(unittest.TestCase):
         self.assertFalse(list(cfg.output.glob("run_*")))
         self.assertFalse(stale_log.exists())
         self.assertFalse(stale_batch.exists())
-        self.assertEqual(json.loads(final_path.read_text())["total_topics"], 0)
+        final = json.loads(final_path.read_text())
+        self.assertEqual(final["initial_topics"], 0)
+        self.assertEqual(final["total_topics"], 1)
+        self.assertEqual(final["topics"][0]["label"], "Tema da nova execução")
         self.assertTrue((cfg.output / "summary_all.json").is_file())
         self.assertIn("(nenhum tópico ainda)", client.requests[3]["messages"][1]["content"])
 
@@ -303,12 +540,38 @@ class ComparableExperimentsTest(unittest.TestCase):
     def test_invalid_shared_config_is_rejected(self):
         for field, value in [("batch_size", 0), ("max_completion_tokens", True),
                              ("reasoning_effort", "none"), ("sdk_max_retries", -1),
-                             ("request_timeout", float("nan"))]:
+                             ("request_timeout", float("nan")), ("vllm_temperature", -0.1),
+                             ("vllm_temperature", 2.1), ("vllm_temperature", True),
+                             ("vllm_temperature", "0.0"), ("vllm_temperature", float("nan")),
+                             ("vllm_temperature", float("inf"))]:
             with self.subTest(field=field, value=value):
                 config = {**self.defaults, field: value}
                 self.config_path.write_text(json.dumps(config))
                 with self.assertRaises(ValueError):
                     experiment.load_experiment_config(self.config_path)
+
+    def test_vllm_temperature_can_be_configured_and_overridden(self):
+        self.assertEqual(self.cfg().temperature, 0.0)
+        self.config_path.write_text(json.dumps({**self.defaults, "vllm_temperature": 0.25}))
+        cfg = self.cfg()
+        self.assertEqual(experiment.generation_parameters(cfg)["temperature"], 0.25)
+        cfg = experiment.parse_args(self.args("vllm") + ["--temperature", "0.7"])
+        request = experiment.completion_request(cfg, "prompt", self.records[:2])
+        self.assertEqual(request["temperature"], 0.7)
+        openai_cfg = self.cfg("openai")
+        self.assertIsNone(openai_cfg.temperature)
+        self.assertNotIn("temperature", experiment.generation_parameters(openai_cfg))
+        # Configurações antigas continuam válidas e usam o padrão local 0.0.
+        legacy = {key: value for key, value in self.defaults.items() if key != "vllm_temperature"}
+        self.config_path.write_text(json.dumps(legacy))
+        self.assertEqual(self.cfg().temperature, 0.0)
+
+    def test_invalid_cli_temperatures_are_rejected(self):
+        for value in ("-0.1", "2.1", "nan", "inf"):
+            with self.subTest(value=value), self.assertRaises(SystemExit):
+                experiment.parse_args(self.args("vllm") + ["--temperature", value])
+        with self.assertRaises(SystemExit):
+            experiment.parse_args(self.args("openai") + ["--temperature", "0"])
 
     def test_entrypoint_configures_local_reasoning_without_running_a_real_server(self):
         bin_dir = self.directory / "bin"
@@ -347,6 +610,7 @@ exit 1
         self.assertEqual(args[args.index("--reasoning-parser") + 1], "mistral")
         self.assertEqual(args[args.index("--generation-config") + 1], "vllm")
         self.assertEqual(args[args.index("--tokenizer-mode") + 1], "mistral")
+        self.assertEqual(args[args.index("--attention-backend") + 1], "TRITON_ATTN")
         self.assertEqual((self.directory / "server-env.txt").read_text().splitlines(), ["mistral", "vllm"])
         self.assertEqual((self.directory / "generator-args.txt").read_text().splitlines()[-2:], ["--provider", "vllm"])
 

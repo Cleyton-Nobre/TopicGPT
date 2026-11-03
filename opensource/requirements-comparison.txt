@@ -1,0 +1,3 @@
+# Dependências do notebook comparacao_taxonomias.ipynb.
+numpy>=1.26
+sentence-transformers>=3.0

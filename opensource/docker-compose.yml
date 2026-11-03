@@ -11,10 +11,12 @@ services:
       INPUT_FILE: /app/data/geracao.jsonl
       OUTPUT_DIR: /app/outputs
       EXPERIMENT_CONFIG: /app/experiment_config.json
+      INITIAL_TAXONOMY_ORIGINAL: ${INITIAL_TAXONOMY_ORIGINAL:-}
+      INITIAL_TAXONOMY_SHUFFLED: ${INITIAL_TAXONOMY_SHUFFLED:-}
     volumes:
       - ./entrypoint.sh:/app/entrypoint.sh
       - ./topic_generation.py:/app/topic_generation.py
-      - ./experiment_config.json:/app/experiment_config.json:ro
+      - ./experiment_config.json:/app/experiment_config.json
       - ./data:/app/data
       - ./outputs:/app/outputs
       - ./models:/models

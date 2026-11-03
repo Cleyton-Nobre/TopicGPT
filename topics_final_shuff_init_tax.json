@@ -1,0 +1,420 @@
+{
+  "provider": "vllm",
+  "model": "topic-local",
+  "model_source": "mistralai/Ministral-3-14B-Reasoning-2512",
+  "prompt_version": "topic-generation-v5-first-topic",
+  "reasoning_effort": "high",
+  "generation_parameters": {
+    "reasoning_effort": "high",
+    "max_completion_tokens": 2048,
+    "temperature": 0.7
+  },
+  "experiment": {
+    "experiment": "experiment_2_shuffled_order",
+    "order_description": "ordem embaralhada",
+    "shuffle_seed": 20261026,
+    "input_hash": "dbecad6f565edf095600f9d16fc762db461beff0fb440a78f5503419295d2498",
+    "total_titles": 1800,
+    "initial_taxonomy_file": "/app/data/topics_final_shuff.json",
+    "initial_taxonomy_hash": "86775e745b5a719d67530b15de448e59de963ff82e6e6d471ad2ba969592ef6f",
+    "initial_topics": 14
+  },
+  "input_file": "/app/data/geracao.jsonl",
+  "input_hash": "dbecad6f565edf095600f9d16fc762db461beff0fb440a78f5503419295d2498",
+  "config_hash": "8f68e3b218ece293a3d58da55398f97d498fe72ff62c23f0b4a57f0410b18f30",
+  "protocol_hash": "08b55eb82d673080179a7861719c88b3de2077aed3e5840ec16abeb72d2270d0",
+  "comparison_hash": "1c8a48d92a006ec6897ed49fb22a7c08b71429c94401c803e8a33c963cb4cb69",
+  "total_titles": 1800,
+  "batch_size": 100,
+  "total_batches": 18,
+  "total_topics": 36,
+  "topics": [
+    {
+      "topic_id": "T001",
+      "label": "Efeitos colaterais e riscos",
+      "description": "Análise de efeitos adversos e riscos associados ao uso de medicamentos para emagrecimento.",
+      "evidence_video_ids": [
+        "aK9KR5jvWr0",
+        "DKIv1nU380A",
+        "dW7Mb8LHKWo"
+      ],
+      "created_in_batch": 1
+    },
+    {
+      "topic_id": "T002",
+      "label": "Comparação entre medicamentos",
+      "description": "Discussão sobre as diferenças, eficácia e indicativos de uso entre medicamentos como Ozempic, Mounjaro, Wegovy e outros.",
+      "evidence_video_ids": [
+        "RCxUq4kZiXc",
+        "bfIntgYVVDs",
+        "P65oFe0EPgU"
+      ],
+      "created_in_batch": 1
+    },
+    {
+      "topic_id": "T003",
+      "label": "Experiência pessoal e resultados",
+      "description": "Relatos de experiências individuals e resultados obtidos com o uso de medicamentos para emagrecimento.",
+      "evidence_video_ids": [
+        "iG0FrKkiVAA",
+        "wp_1iS28RTw",
+        "05TWj_EQ0ao"
+      ],
+      "created_in_batch": 1
+    },
+    {
+      "topic_id": "T004",
+      "label": "Uso em condições específicas",
+      "description": "Aplicação de medicamentos para emagrecimento em contextos específicos, como diabetes, gordura no fígado, hashimoto ou menopausa.",
+      "evidence_video_ids": [
+        "wIgjUO2g15I",
+        "ntrbSKB4q8Y",
+        "X1o2qG6J1-o"
+      ],
+      "created_in_batch": 1
+    },
+    {
+      "topic_id": "T005",
+      "label": "Acesso e regulamentação",
+      "description": "Aspectos relacionados ao acesso, custo, regulamentação e disponibilidade de medicamentos para emagrecimento.",
+      "evidence_video_ids": [
+        "rpDztLA8eYo",
+        "VCDYv3-mg_0",
+        "gHngqnyXVGU"
+      ],
+      "created_in_batch": 1
+    },
+    {
+      "topic_id": "T006",
+      "label": "Mitologias e desinformação",
+      "description": "Desconstrução de mitos, mentiras e desinformações sobre o uso de medicamentos emagrecedores.",
+      "evidence_video_ids": [
+        "ytPOcmMq4kg",
+        "I5bsh8eHfrA",
+        "cJd4h0dol6s"
+      ],
+      "created_in_batch": 1
+    },
+    {
+      "topic_id": "T007",
+      "label": "Impacto em hábitos e comportamentos",
+      "description": "Efeito de medicamentos emagrecedores sobre hábitos alimentares, sono, vícios ou compulsões.",
+      "evidence_video_ids": [
+        "TgyKa4pPfLY",
+        "TuZoJ6K79N8",
+        "WZHosmAjYRU"
+      ],
+      "created_in_batch": 1
+    },
+    {
+      "topic_id": "T008",
+      "label": "Aspectos médicos e científicos",
+      "description": "Explicações técnicas, mecanismos de ação, estudos clínicos e evidências científicas sobre medicamentos emagrecedores.",
+      "evidence_video_ids": [
+        "9lWhceg2tqw",
+        "9Djc4KDshao",
+        "6yYZ3jlC0AY"
+      ],
+      "created_in_batch": 1
+    },
+    {
+      "topic_id": "T009",
+      "label": "Uso em esportes ou contextos profissionais",
+      "description": "Discussão sobre o uso de medicamentos para emagrecimento em contextos esportivos ou profissionais, como no futebol ou academia.",
+      "evidence_video_ids": [
+        "FmvnMum2OOA",
+        "VMd2K_ZXLSo",
+        "hhlYsaO3hII",
+        "B3ZWiwACnN4"
+      ],
+      "created_in_batch": 2
+    },
+    {
+      "topic_id": "T010",
+      "label": "Efeitos colaterais específicos",
+      "description": "Análise de efeitos colaterais específicos e menos discutidos, como impactos no sono, libido, cansaço extremo ou complicações visuais.",
+      "evidence_video_ids": [
+        "fjwBn6m7788",
+        "ixr52smfA6w",
+        "XMs9TqLaCHM",
+        "f7zlY9v2XvY"
+      ],
+      "created_in_batch": 11
+    },
+    {
+      "topic_id": "T011",
+      "label": "Aspectos culturais e sociais do uso",
+      "description": "Discussão sobre o impacto social, cultural ou estético do uso de medicamentos emagrecedores, como pressures estéticas ou uso indevido.",
+      "evidence_video_ids": [
+        "q7s-ISW-fmo",
+        "JZ9NRjK8--k",
+        "GfgxqEjT0D0",
+        "8Ii4saSi59g"
+      ],
+      "created_in_batch": 11
+    },
+    {
+      "topic_id": "T012",
+      "label": "Alternativas e complementos naturais",
+      "description": "Exploração de alternativas naturais ou complementos ao uso de medicamentos emagrecedores, como alimentos, suplementos ou práticas não farmacológicas.",
+      "evidence_video_ids": [
+        "06syLo3vrfk",
+        "XtT7RG727kM",
+        "WGJbfRaLOHc",
+        "dh6nd74SQWA"
+      ],
+      "created_in_batch": 11
+    },
+    {
+      "topic_id": "T013",
+      "label": "Uso em contextos não clínicos",
+      "description": "Análise do uso de medicamentos emagrecedores em contextos não clínicos, como uso sem prescrição, compra ilegal ou abuso.",
+      "evidence_video_ids": [
+        "uBZiJqtecH4",
+        "4Qq6yTsBUgc",
+        "Jn4JkuLl4pc",
+        "8Ii4saSi59g"
+      ],
+      "created_in_batch": 11
+    },
+    {
+      "topic_id": "T014",
+      "label": "Evolução e novidades em fármacos",
+      "description": "Discussão sobre novidades, atualizações ou futuros medicamentos para emagrecimento, como novos princípios ativos ou liberações.",
+      "evidence_video_ids": [
+        "It-ZalzVCEU",
+        "2DM9V8hL3Nk",
+        "Z2EqHsunOnY",
+        "vFfp07NbAC0"
+      ],
+      "created_in_batch": 11
+    },
+    {
+      "topic_id": "T015",
+      "label": "Efeitos estéticos e alterações faciais",
+      "description": "Análise de alterações estéticas, como o 'Rosto de Ozempic', associadas ao uso de medicamentos para emagrecimento.",
+      "evidence_video_ids": [
+        "Z1sGBassq8c"
+      ],
+      "created_in_batch": 2
+    },
+    {
+      "topic_id": "T016",
+      "label": "Uso de medicamentos em contextos profissionais ou esportivos",
+      "description": "Discussão sobre o uso de medicamentos para emagrecimento em contextos profissionais ou esportivos, como no futebol.",
+      "evidence_video_ids": [
+        "FmvnMum2OOA"
+      ],
+      "created_in_batch": 2
+    },
+    {
+      "topic_id": "T017",
+      "label": "Comparação de eficácia entre diferentes doses ou formulações",
+      "description": "Análise comparativa entre diferentes doses ou formulações de medicamentos emagrecedores, como canetas ou cápsulas.",
+      "evidence_video_ids": [
+        "5m5TskBgaGE"
+      ],
+      "created_in_batch": 2
+    },
+    {
+      "topic_id": "T018",
+      "label": "Interações medicamentosas e contraindicações",
+      "description": "Discussão sobre interações entre medicamentos emagrecedores e outros fármacos, ou situações em que esses medicamentos são contraindicados.",
+      "evidence_video_ids": [
+        "DN6JkwjS7VU",
+        "gPaeZ0HBY3o"
+      ],
+      "created_in_batch": 2
+    },
+    {
+      "topic_id": "T019",
+      "label": "Uso em contextos de saúde mental",
+      "description": "Discussão sobre o uso de medicamentos para emagrecimento no tratamento de transtornos mentais, como transtorno bipolar ou uso de álcool.",
+      "evidence_video_ids": [
+        "Qvsx2OL9XhQ",
+        "RXxchwXQ6Wg",
+        "e-oqfFtc8cY"
+      ],
+      "created_in_batch": 6
+    },
+    {
+      "topic_id": "T020",
+      "label": "Comparação de versões orais e injetáveis",
+      "description": "Análise das diferenças entre as formulações orais (como Rybelsus) e injetáveis (como Ozempic e Wegovy) de medicamentos para emagrecimento.",
+      "evidence_video_ids": [
+        "Y-M5ub7BVsw",
+        "rVCGeS4xMR4",
+        "-nS1a3gh9Vs"
+      ],
+      "created_in_batch": 6
+    },
+    {
+      "topic_id": "T021",
+      "label": "Uso em contextos de menopausa",
+      "description": "Discussão sobre a eficácia e aplicabilidade de medicamentos para emagrecimento no tratamento de sintomas relacionados à menopausa.",
+      "evidence_video_ids": [
+        "OK1_hpOnDmU",
+        "yKM18qf0r2A"
+      ],
+      "created_in_batch": 6
+    },
+    {
+      "topic_id": "T022",
+      "label": "Estratégias para lidar com o platô de emagrecimento",
+      "description": "Técnicas e dicas para superar o platô na perda de peso durante o uso de medicamentos emagrecedores, como ajustes de dose ou combinados com outros métodos.",
+      "evidence_video_ids": [
+        "jxCFn-VCmC8",
+        "TQih9WrF5fY"
+      ],
+      "created_in_batch": 6
+    },
+    {
+      "topic_id": "T023",
+      "label": "Uso em contextos de estética e famously",
+      "description": "Discussão sobre o uso de medicamentos para emagrecimento por famosos e suas implicações estéticas ou sociais.",
+      "evidence_video_ids": [
+        "hpHVZ9DBHG8",
+        "odTxAMGcKiY",
+        "NM-46eA6K4c"
+      ],
+      "created_in_batch": 7
+    },
+    {
+      "topic_id": "T024",
+      "label": "Experiências com doses e protocolos específicos",
+      "description": "Análise de experiências individuais com doses específicas ou protocolos de uso de medicamentos para emagrecimento.",
+      "evidence_video_ids": [
+        "Goqc7JZdAxI",
+        "lz7oRgSWexc",
+        "Hpe8PN0uPQg"
+      ],
+      "created_in_batch": 7
+    },
+    {
+      "topic_id": "T025",
+      "label": "Comparação de eficácia em contextos específicos de saúde",
+      "description": "Discussão sobre a eficácia de medicamentos para emagrecimento em contextos específicos de saúde, como lipedema ou esteatose hepática.",
+      "evidence_video_ids": [
+        "iYmwHOiIApU",
+        "-1mtiufGkjA"
+      ],
+      "created_in_batch": 7
+    },
+    {
+      "topic_id": "T026",
+      "label": "Impacto no paladar e hábitos alimentares",
+      "description": "Análise do impacto de medicamentos emagrecedores no paladar e hábitos alimentares, incluindo restrições alimentares.",
+      "evidence_video_ids": [
+        "GBmQyn7xhxE",
+        "l4HtIIWQCts"
+      ],
+      "created_in_batch": 7
+    },
+    {
+      "topic_id": "T027",
+      "label": "Uso de medicamentos em contextos legais ou de tráfico",
+      "description": "Análise de casos envolvendo tráfico, comercialização ilegal ou apreensão de medicamentos emagrecedores, como Mounjaro.",
+      "evidence_video_ids": [
+        "y9dSVGEFE04",
+        "NcShc-GLY3I"
+      ],
+      "created_in_batch": 10
+    },
+    {
+      "topic_id": "T028",
+      "label": "Impacto cognitivo e neurológico",
+      "description": "Análise dos efeitos de medicamentos emagrecedores, como Mounjaro, no cérebro e no apetite, incluindo impactos neurológicos e comportamentais.",
+      "evidence_video_ids": [
+        "fjwBn6m7788",
+        "ZGh5hcabJNc"
+      ],
+      "created_in_batch": 11
+    },
+    {
+      "topic_id": "T029",
+      "label": "Uso e aplicabilidade em contextos de viagens",
+      "description": "Discussão sobre como transportar e armazenar medicamentos para emagrecimento durante viagens, considerando aspectos práticos e logísticos.",
+      "evidence_video_ids": [
+        "hv7l6aWy71A",
+        "eVuRcT8C_aU"
+      ],
+      "created_in_batch": 14
+    },
+    {
+      "topic_id": "T030",
+      "label": "Comparação de eficácia entre medicamentos e doses oral/injetável",
+      "description": "Análise comparativa entre a eficácia de medicamentos emagrecedores em suas formulações orais (como Rybelsus) e injetáveis (como Ozempic e Wegovy), destacando diferenças práticas e resultados.",
+      "evidence_video_ids": [
+        "I4LgZM_uKJo",
+        "R1EBQP2mOC8"
+      ],
+      "created_in_batch": 14
+    },
+    {
+      "topic_id": "T031",
+      "label": "Experiências com protocolos de fracionamento e utilização de doses",
+      "description": "Relatos sobre técnicas de fracionamento de doses (como dividir canetas de 5 mg) ou protocolos específicos de uso de medicamentos emagrecedores, incluindo ajustes personalizados.",
+      "evidence_video_ids": [
+        "m8RVyKJS8Rg",
+        "C79rVzm7QDU"
+      ],
+      "created_in_batch": 14
+    },
+    {
+      "topic_id": "T032",
+      "label": "Impacto em condições de saúde mental e comportamental",
+      "description": "Discussão sobre os efeitos de medicamentos emagrecedores em condições como ansiedade, compulsão alimentar ou transtornos comportamentais relacionados ao peso.",
+      "evidence_video_ids": [
+        "cCc60dh9xdw",
+        "q1BiJs4IVfo"
+      ],
+      "created_in_batch": 14
+    },
+    {
+      "topic_id": "T033",
+      "label": "Aspectos legais e de regulamentação em diferentes países",
+      "description": "Análise de questões legais, regulamentação e disponibilidade de medicamentos emagrecedores em diferentes países, como o Paraguai ou Brasil, destacando diferenças de acesso e risks associados.",
+      "evidence_video_ids": [
+        "QwTOyjLfH-g",
+        "IT6c4D_hIBA"
+      ],
+      "created_in_batch": 14
+    },
+    {
+      "topic_id": "T034",
+      "label": "Estratégias para lidar com efeitos colaterais graves ou inesperados",
+      "description": "Técnicas e recomendações para gerenciar efeitos colaterais graves ou menos discutidos (como cegueira, disfunção erétil ou ganho de peso paradoxal) associados ao uso de medicamentos emagrecedores.",
+      "evidence_video_ids": [
+        "M_7XaFfHqsk",
+        "SL5ZjrxMnNY",
+        "gffPCWgFTLc"
+      ],
+      "created_in_batch": 14
+    },
+    {
+      "topic_id": "T035",
+      "label": "Impacto econômico e mercado de medicamentos emagrecedores",
+      "description": "Análise do impacto econômico e dinâmicas de mercado relacionadas ao uso de medicamentos para emagrecimento, incluindo effects em economies locais e demandas globais.",
+      "evidence_video_ids": [
+        "yGbC1tpmw-E",
+        "YUjEt7iY1Os",
+        "x0rBQ8WpRkI"
+      ],
+      "created_in_batch": 17
+    },
+    {
+      "topic_id": "T036",
+      "label": "Uso de medicamentos emagrecedores em contextos humorísticos ou culturais",
+      "description": "Discussão sobre a representação de medicamentos emagrecedores em contextos humorísticos, culturais ou de entretenimento, incluindo memes e sátiras.",
+      "evidence_video_ids": [
+        "Y4YdBjaFCPw",
+        "vVCNnTO1tZE"
+      ],
+      "created_in_batch": 17
+    }
+  ],
+  "initial_taxonomy_file": "/app/data/topics_final_shuff.json",
+  "initial_taxonomy_hash": "86775e745b5a719d67530b15de448e59de963ff82e6e6d471ad2ba969592ef6f",
+  "initial_topics": 14,
+  "generated_topics": 22
+}

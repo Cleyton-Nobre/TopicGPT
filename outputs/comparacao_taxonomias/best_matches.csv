@@ -1,0 +1,35 @@
+﻿direction,id_a,label_a,id_b,label_b,cosine_similarity,above_threshold
+A -> B,T001,Uso e dosagem de medicamentos para emagrecimento,T002,Comparação entre medicamentos,0.8587156538642651,True
+A -> B,T002,Efeitos colaterais e riscos dos medicamentos para emagrecimento,T001,Efeitos colaterais e riscos,0.8762233906356381,True
+A -> B,T003,Comparação entre medicamentos para emagrecimento,T002,Comparação entre medicamentos,0.8724036043308723,True
+A -> B,T004,Experiências e resultados com medicamentos para emagrecimento,T003,Experiência pessoal e resultados,0.8194199777131786,True
+A -> B,T005,Mitologia e desinformação sobre medicamentos para emagrecimento,T006,Mitologias e desinformação,0.857537814443103,True
+A -> B,T006,Uso off-label e indicações específicas,T002,Comparação entre medicamentos,0.7380887155446678,True
+A -> B,T007,Estratégias de uso e conservação das canetas,T014,Evolução e novidades em fármacos,0.4634410457428968,False
+A -> B,T008,Efeitos colaterais específicos e sintomas associados,T010,Efeitos colaterais específicos,0.7539418011216386,True
+A -> B,T009,Interações com alimentação e estilo de vida,T007,Impacto em hábitos e comportamentos,0.6712034330625745,True
+A -> B,T010,Impacto na saúde mental e emocional,T007,Impacto em hábitos e comportamentos,0.6500835128889989,True
+A -> B,T011,Comparação com alternativas naturais ou não medicamentosas,T012,Alternativas e complementos naturais,0.8386654921674642,True
+A -> B,T012,Aprovação de medicamentos para indicações não tradicionais,T002,Comparação entre medicamentos,0.7353070695572468,True
+A -> B,T013,Impactos socioeconômicos e mercado dos medicamentos para emagrecimento,T005,Acesso e regulamentação,0.7138386777444263,True
+A -> B,T014,Efeitos estéticos associados ao uso de medicamentos para emagrecimento,T001,Efeitos colaterais e riscos,0.6943015588781849,True
+A -> B,T015,Alternativas naturais e suplementos para emagrecimento,T012,Alternativas e complementos naturais,0.7486605945658282,True
+A -> B,T016,"Uso em contextos específicos: gestação, diabetes e outras condições",T004,Uso em condições específicas,0.7230132299023799,True
+A -> B,T017,Alternativas manipuladas e não regulamentadas,T002,Comparação entre medicamentos,0.6870021769752821,True
+A -> B,T018,Impacto na vida sexual e libido,T002,Comparação entre medicamentos,0.5593765385642677,True
+A -> B,T019,Estratégias para evitar o reganho de peso,T001,Efeitos colaterais e riscos,0.63919199101909,True
+A -> B,T020,Uso em contextos de menopausa e obesidade relacionada,T004,Uso em condições específicas,0.7775953761014667,True
+B -> A,T002,Efeitos colaterais e riscos dos medicamentos para emagrecimento,T001,Efeitos colaterais e riscos,0.8762233906356381,True
+B -> A,T003,Comparação entre medicamentos para emagrecimento,T002,Comparação entre medicamentos,0.8724036043308723,True
+B -> A,T004,Experiências e resultados com medicamentos para emagrecimento,T003,Experiência pessoal e resultados,0.8194199777131786,True
+B -> A,T020,Uso em contextos de menopausa e obesidade relacionada,T004,Uso em condições específicas,0.7775953761014667,True
+B -> A,T013,Impactos socioeconômicos e mercado dos medicamentos para emagrecimento,T005,Acesso e regulamentação,0.7138386777444263,True
+B -> A,T005,Mitologia e desinformação sobre medicamentos para emagrecimento,T006,Mitologias e desinformação,0.857537814443103,True
+B -> A,T008,Efeitos colaterais específicos e sintomas associados,T007,Impacto em hábitos e comportamentos,0.6838044247637921,True
+B -> A,T011,Comparação com alternativas naturais ou não medicamentosas,T008,Aspectos médicos e científicos,0.7091904720429296,True
+B -> A,T004,Experiências e resultados com medicamentos para emagrecimento,T009,Uso em esportes ou contextos profissionais,0.5510364659492498,True
+B -> A,T008,Efeitos colaterais específicos e sintomas associados,T010,Efeitos colaterais específicos,0.7539418011216386,True
+B -> A,T014,Efeitos estéticos associados ao uso de medicamentos para emagrecimento,T011,Aspectos culturais e sociais do uso,0.666044290976147,True
+B -> A,T011,Comparação com alternativas naturais ou não medicamentosas,T012,Alternativas e complementos naturais,0.8386654921674642,True
+B -> A,T011,Comparação com alternativas naturais ou não medicamentosas,T013,Uso em contextos não clínicos,0.7021481644786067,True
+B -> A,T005,Mitologia e desinformação sobre medicamentos para emagrecimento,T014,Evolução e novidades em fármacos,0.6624107804176764,True

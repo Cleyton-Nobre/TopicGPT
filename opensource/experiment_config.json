@@ -3,6 +3,7 @@
   "max_attempts": 3,
   "shuffle_seed": 20261026,
   "max_completion_tokens": 2048,
+  "vllm_temperature": 0.0,
   "reasoning_effort": "high",
   "request_timeout": 600,
   "sdk_max_retries": 2

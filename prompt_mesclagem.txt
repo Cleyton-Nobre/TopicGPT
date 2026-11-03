@@ -1,0 +1,255 @@
+Você é um pesquisador especialista em análise temática.
+
+Você receberá uma lista de tópicos e pares candidatos à mesclagem,
+identificados previamente por similaridade semântica.
+
+
+Sua tarefa é analisar todos os tópicos conjuntamente e produzir
+uma consolidação global, seguindo estas regras:
+
+1. Considere todos os pares em conjunto, pois um mesmo tópico
+   pode aparecer em diferentes pares. Não tome decisões isoladas.
+
+2. Mescle tópicos que apresentem proximidade temática relevante,
+   mesmo que abordem aspectos diferentes de um mesmo assunto.
+   Não exija equivalência de significado ou que os tópicos sejam
+   praticamente sinônimos. Considere se eles podem ser
+   representados por uma categoria temática mais abrangente,
+   coerente e informativa.
+
+3. Não presuma que a similaridade é transitiva: tópicos conectados
+   por pares semelhantes não precisam pertencer ao mesmo grupo.
+   Avalie cada possível grupo conjuntamente, verificando se todos
+   os seus integrantes podem ser representados por um conceito
+   abrangente e tematicamente coerente.
+
+4. Cada tópico original deve pertencer a exatamente um grupo,
+   que pode conter um ou mais tópicos. Não produza sobreposições.
+
+5. Para grupos com mais de um tópico, crie um rótulo conciso
+   e uma descrição abrangente que represente os aspectos
+   compartilhados e complementares dos tópicos agrupados,
+   sem introduzir assuntos que não estejam presentes nos originais.
+
+6. Evite manter tópicos separados quando houver uma possibilidade
+   razoável de agrupá-los em uma categoria temática coerente.
+   Preserve individualmente apenas os tópicos que apresentem
+   um foco suficientemente distinto dos demais.
+
+7. Preserve os IDs originais e apresente uma justificativa breve
+   para cada grupo formado ou tópico mantido separado.
+
+8. Retorne exclusivamente um objeto JSON válido, seguindo
+   rigorosamente o schema fornecido. Não inclua comentários,
+   explicações ou blocos Markdown fora do JSON.
+
+DOMÍNIO E CONTEXTO DE SAÚDE:
+Os tópicos abaixo foram extraídos de títulos de vídeos do YouTube em português sobre medicamentos para emagrecimento (ex.: Ozempic, Mounjaro, etc.). Leve em consideração as especificidades clínicas, farmacológicas, comportamentais e sociais deste nicho ao decidir se dois tópicos possuem equivalência temática central ou apenas compartilham o assunto geral de saúde.
+
+[T001] Administração e dosagem
+    Descrição: Orientações sobre aplicação, horários, frequência, ajuste de doses e contagem de cliques das canetas.
+[T002] Eficácia e resultados no emagrecimento
+    Descrição: Discussões sobre quanto e em quanto tempo os medicamentos emagrecem, expectativas de resultado e manutenção de sua eficácia.
+[T003] Comparação entre tratamentos
+    Descrição: Comparações entre medicamentos e outras opções de tratamento quanto a benefícios, resultados e tolerabilidade.
+[T004] Efeitos adversos e prevenção
+    Descrição: Riscos e efeitos indesejados do tratamento, incluindo alterações físicas e psicológicas e formas de preveni-los ou manejá-los.
+[T005] Relatos pessoais de tratamento
+    Descrição: Experiências individuais com o uso dos medicamentos, evolução do peso e transformações ao longo do tratamento.
+[T006] Indicações e acompanhamento médico
+    Descrição: Discussões sobre quem pode ou deve usar os medicamentos, suas indicações e a necessidade de prescrição e supervisão profissional.
+[T007] Benefícios e usos além do emagrecimento
+    Descrição: Aplicações e benefícios dos medicamentos em outras condições de saúde, como doenças hepáticas e cardiovasculares.
+[T008] Saúde ginecológica e reprodutiva
+    Descrição: Relações entre o uso dos medicamentos, a saúde ginecológica e procedimentos reprodutivos.
+[T009] Interrupção e manutenção do peso
+    Descrição: Questões sobre desmame, suspensão do medicamento e prevenção do reganho de peso após o tratamento.
+[T010] Preços e acesso aos medicamentos
+    Descrição: Custos, disponibilidade comercial e acesso aos medicamentos pela rede pública ou por compras no exterior.
+[T011] Alternativas naturais aos medicamentos
+    Descrição: Alegações e questionamentos sobre receitas e produtos naturais apresentados como substitutos dos medicamentos para emagrecer.
+[T012] Regulamentação e comércio irregular
+    Descrição: Discussões sobre aprovação sanitária, fiscalização, fraudes e contrabando na comercialização de medicamentos para emagrecimento.
+[T013] Funcionamento dos medicamentos
+    Descrição: Explicações sobre o que são os medicamentos para emagrecimento e seus mecanismos de ação no organismo.
+[T014] Alimentação durante o tratamento
+    Descrição: Orientações sobre escolhas alimentares, organização das refeições e estratégias nutricionais durante o uso de medicamentos para emagrecer.
+[T015] Armazenamento e transporte dos medicamentos
+    Descrição: Cuidados para conservar, armazenar e transportar os medicamentos, inclusive durante viagens.
+[T016] Atividade física e mudança de hábitos
+    Descrição: Discussões sobre exercícios físicos e mudanças comportamentais como componentes do emagrecimento associado ao uso de medicamentos.
+[T017] Impactos econômicos dos medicamentos
+    Descrição: Discussões sobre os efeitos da demanda por medicamentos para emagrecimento na economia e no crescimento econômico dos países.
+[T018] Impactos sociais e culturais do uso
+    Descrição: Discussões sobre a popularização dos medicamentos para emagrecer, sua associação a celebridades e os debates sobre padrões corporais e aceitação do corpo.
+[T019] Pesquisa e desenvolvimento de medicamentos
+    Descrição: Discussões sobre a origem científica, os testes e o desenvolvimento de novos medicamentos e formulações para emagrecimento.
+[T020] Associações e interações com outras substâncias
+    Descrição: Discussões sobre a combinação de medicamentos para emagrecer com outros fármacos ou substâncias, incluindo possíveis interações e estratégias para potencializar o tratamento.
+[T021] Patentes e concorrência farmacêutica
+    Descrição: Discussões sobre o fim ou a quebra de patentes de medicamentos para emagrecimento e seus efeitos na concorrência entre fabricantes.
+
+
+Abaixo estão os PARES CANDIDATOS com alta similaridade semântica para sua análise conjunta:
+- [T013] e [T019] (Similaridade: 0.7748)
+- [T011] e [T019] (Similaridade: 0.7561)
+- [T002] e [T013] (Similaridade: 0.7552)
+- [T010] e [T017] (Similaridade: 0.7477)
+- [T009] e [T014] (Similaridade: 0.7315)
+- [T005] e [T009] (Similaridade: 0.7308)
+- [T002] e [T019] (Similaridade: 0.7249)
+- [T005] e [T014] (Similaridade: 0.7098)
+- [T003] e [T004] (Similaridade: 0.7016)
+- [T011] e [T014] (Similaridade: 0.7015)
+- [T003] e [T005] (Similaridade: 0.6936)
+- [T010] e [T015] (Similaridade: 0.6894)
+- [T013] e [T020] (Similaridade: 0.6851)
+- [T019] e [T020] (Similaridade: 0.6799)
+- [T003] e [T006] (Similaridade: 0.6757)
+- [T002] e [T003] (Similaridade: 0.6725)
+- [T007] e [T011] (Similaridade: 0.6702)
+- [T003] e [T007] (Similaridade: 0.6608)
+- [T002] e [T017] (Similaridade: 0.6539)
+- [T005] e [T018] (Similaridade: 0.6515)
+- [T011] e [T013] (Similaridade: 0.6464)
+- [T017] e [T019] (Similaridade: 0.6436)
+- [T003] e [T020] (Similaridade: 0.6416)
+- [T006] e [T019] (Similaridade: 0.6315)
+- [T011] e [T020] (Similaridade: 0.6309)
+- [T006] e [T020] (Similaridade: 0.6288)
+- [T010] e [T012] (Similaridade: 0.6275)
+- [T002] e [T007] (Similaridade: 0.6265)
+- [T009] e [T016] (Similaridade: 0.6256)
+- [T007] e [T013] (Similaridade: 0.6247)
+- [T012] e [T021] (Similaridade: 0.6242)
+- [T005] e [T016] (Similaridade: 0.6237)
+- [T005] e [T011] (Similaridade: 0.6232)
+- [T002] e [T020] (Similaridade: 0.6231)
+- [T003] e [T011] (Similaridade: 0.6226)
+- [T016] e [T018] (Similaridade: 0.6214)
+- [T012] e [T017] (Similaridade: 0.6159)
+- [T005] e [T007] (Similaridade: 0.6156)
+- [T003] e [T019] (Similaridade: 0.6152)
+- [T009] e [T011] (Similaridade: 0.6135)
+- [T007] e [T009] (Similaridade: 0.6069)
+- [T002] e [T009] (Similaridade: 0.6039)
+- [T007] e [T019] (Similaridade: 0.6038)
+- [T007] e [T014] (Similaridade: 0.6002)
+- [T005] e [T019] (Similaridade: 0.6002)
+- [T007] e [T017] (Similaridade: 0.5985)
+- [T004] e [T005] (Similaridade: 0.5961)
+- [T015] e [T017] (Similaridade: 0.5946)
+- [T014] e [T016] (Similaridade: 0.5942)
+- [T013] e [T017] (Similaridade: 0.5928)
+- [T005] e [T006] (Similaridade: 0.5923)
+- [T011] e [T017] (Similaridade: 0.5907)
+- [T014] e [T018] (Similaridade: 0.5879)
+- [T002] e [T006] (Similaridade: 0.5876)
+- [T009] e [T013] (Similaridade: 0.5876)
+- [T002] e [T005] (Similaridade: 0.5874)
+- [T010] e [T019] (Similaridade: 0.5831)
+- [T013] e [T016] (Similaridade: 0.5828)
+- [T011] e [T018] (Similaridade: 0.5825)
+- [T002] e [T011] (Similaridade: 0.5777)
+- [T005] e [T013] (Similaridade: 0.5685)
+- [T019] e [T021] (Similaridade: 0.5677)
+- [T006] e [T010] (Similaridade: 0.5675)
+- [T015] e [T020] (Similaridade: 0.5661)
+- [T003] e [T013] (Similaridade: 0.5640)
+- [T017] e [T020] (Similaridade: 0.5633)
+- [T016] e [T020] (Similaridade: 0.5590)
+- [T004] e [T006] (Similaridade: 0.5574)
+- [T010] e [T020] (Similaridade: 0.5570)
+- [T002] e [T016] (Similaridade: 0.5554)
+- [T004] e [T007] (Similaridade: 0.5506)
+- [T009] e [T018] (Similaridade: 0.5505)
+- [T003] e [T014] (Similaridade: 0.5504)
+- [T017] e [T018] (Similaridade: 0.5504)
+- [T018] e [T020] (Similaridade: 0.5492)
+- [T013] e [T015] (Similaridade: 0.5480)
+- [T005] e [T020] (Similaridade: 0.5479)
+- [T013] e [T014] (Similaridade: 0.5455)
+- [T004] e [T016] (Similaridade: 0.5445)
+- [T015] e [T019] (Similaridade: 0.5444)
+- [T002] e [T014] (Similaridade: 0.5441)
+- [T010] e [T011] (Similaridade: 0.5427)
+- [T018] e [T019] (Similaridade: 0.5411)
+- [T002] e [T010] (Similaridade: 0.5411)
+- [T007] e [T018] (Similaridade: 0.5409)
+- [T006] e [T011] (Similaridade: 0.5402)
+- [T003] e [T009] (Similaridade: 0.5362)
+- [T006] e [T015] (Similaridade: 0.5355)
+- [T003] e [T010] (Similaridade: 0.5330)
+- [T017] e [T021] (Similaridade: 0.5326)
+- [T006] e [T018] (Similaridade: 0.5308)
+- [T006] e [T016] (Similaridade: 0.5308)
+- [T014] e [T019] (Similaridade: 0.5294)
+- [T003] e [T017] (Similaridade: 0.5281)
+- [T002] e [T021] (Similaridade: 0.5274)
+- [T010] e [T018] (Similaridade: 0.5264)
+- [T012] e [T015] (Similaridade: 0.5263)
+- [T007] e [T016] (Similaridade: 0.5260)
+- [T014] e [T020] (Similaridade: 0.5258)
+- [T009] e [T019] (Similaridade: 0.5223)
+- [T011] e [T016] (Similaridade: 0.5211)
+- [T006] e [T014] (Similaridade: 0.5161)
+- [T007] e [T020] (Similaridade: 0.5107)
+- [T002] e [T015] (Similaridade: 0.5099)
+- [T008] e [T019] (Similaridade: 0.5084)
+- [T002] e [T018] (Similaridade: 0.5070)
+- [T011] e [T015] (Similaridade: 0.5052)
+
+
+Por favor, forneça a consolidação global, garantindo que cada um dos IDs acima seja alocado em exatamente um grupo.
+
+{
+    "type": "object",
+    "properties": {
+        "groups": {
+            "type": "array",
+            "description": "Lista de grupos resultantes da consolidação global.",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "topic_ids": {
+                        "type": "array",
+                        "description": "IDs dos tópicos originais pertencentes ao grupo.",
+                        "items": {
+                            "anyOf": [
+                                {
+                                    "type": "integer"
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "label": {
+                        "type": "string",
+                        "description": "Rótulo conciso que representa o grupo."
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Descrição abrangente do significado temático do grupo."
+                    },
+                    "justification": {
+                        "type": "string",
+                        "description": "Justificativa breve para a mesclagem ou manutenção separada."
+                    }
+                },
+                "required": [
+                    "topic_ids",
+                    "label",
+                    "description",
+                    "justification"
+                ],
+                "additionalProperties": false
+            }
+        }
+    },
+    "required": [
+        "groups"
+    ],
+    "additionalProperties": false
+}

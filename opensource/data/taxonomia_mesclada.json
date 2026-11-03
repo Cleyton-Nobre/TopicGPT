@@ -1,0 +1,81 @@
+{
+    "groups": [
+        {
+            "topic_ids": [
+                "T001",
+                "T015"
+            ],
+            "label": "Administração e conservação dos medicamentos",
+            "description": "Orientações práticas sobre aplicação, horários, frequência, ajuste de doses e contagem de cliques, além dos cuidados de armazenamento, conservação e transporte das canetas, inclusive em viagens.",
+            "justification": "Reúne aspectos complementares do manuseio cotidiano dos medicamentos, desde sua conservação até a administração."
+        },
+        {
+            "topic_ids": [
+                "T002",
+                "T003",
+                "T005",
+                "T011"
+            ],
+            "label": "Resultados e avaliação de alternativas para emagrecer",
+            "description": "Discussões sobre magnitude, velocidade e continuidade dos resultados, experiências individuais e evolução do peso, comparações entre tratamentos quanto a benefícios e tolerabilidade e alegações sobre produtos ou receitas naturais apresentados como substitutos dos medicamentos.",
+            "justification": "Os tópicos convergem na avaliação dos resultados e das opções para emagrecer, reunindo expectativas, experiências pessoais, comparações terapêuticas e questionamentos sobre alternativas naturais."
+        },
+        {
+            "topic_ids": [
+                "T004",
+                "T006",
+                "T020"
+            ],
+            "label": "Segurança e acompanhamento do tratamento",
+            "description": "Discussões sobre quem pode ou deve utilizar os medicamentos, prescrição e supervisão profissional, riscos e efeitos adversos físicos ou psicológicos, sua prevenção e manejo e combinações com outros fármacos ou substâncias, incluindo interações e estratégias de potencialização.",
+            "justification": "A indicação supervisionada, o manejo de efeitos adversos e a avaliação de associações são dimensões complementares da condução clínica segura do tratamento."
+        },
+        {
+            "topic_ids": [
+                "T007",
+                "T008"
+            ],
+            "label": "Aplicações e repercussões além do emagrecimento",
+            "description": "Benefícios, aplicações e relações dos medicamentos com outras condições e áreas da saúde, incluindo doenças hepáticas e cardiovasculares, saúde ginecológica e procedimentos reprodutivos.",
+            "justification": "Ambos ampliam o foco para contextos clínicos além da perda de peso, sem pressupor que todas as repercussões ginecológicas ou reprodutivas sejam benefícios."
+        },
+        {
+            "topic_ids": [
+                "T009",
+                "T014",
+                "T016"
+            ],
+            "label": "Hábitos e manutenção do peso",
+            "description": "Estratégias alimentares, organização das refeições, exercícios e mudanças comportamentais associados ao tratamento, incluindo desmame, suspensão dos medicamentos e prevenção do reganho de peso.",
+            "justification": "Reúne os componentes nutricionais e comportamentais do controle do peso com os desafios de sustentação dos resultados após a interrupção medicamentosa."
+        },
+        {
+            "topic_ids": [
+                "T010",
+                "T012",
+                "T017",
+                "T021"
+            ],
+            "label": "Mercado, regulação e acesso aos medicamentos",
+            "description": "Custos, disponibilidade e acesso pela rede pública ou por compras no exterior; aprovação sanitária, fiscalização, fraudes e contrabando; patentes e concorrência entre fabricantes; e impactos da demanda na economia e no crescimento dos países.",
+            "justification": "Os tópicos descrevem dimensões articuladas do mercado farmacêutico, abrangendo acesso, regras de comercialização, estrutura concorrencial e repercussões econômicas."
+        },
+        {
+            "topic_ids": [
+                "T013",
+                "T019"
+            ],
+            "label": "Bases científicas e desenvolvimento dos medicamentos",
+            "description": "Explicações sobre o que são os medicamentos e como atuam no organismo, articuladas à sua origem científica, aos testes e ao desenvolvimento de novos medicamentos e formulações para emagrecimento.",
+            "justification": "Mecanismos de ação e pesquisa farmacêutica compõem uma categoria coerente sobre os fundamentos científicos e o desenvolvimento desses tratamentos."
+        },
+        {
+            "topic_ids": [
+                "T018"
+            ],
+            "label": "Impactos sociais e culturais do uso",
+            "description": "Discussões sobre a popularização dos medicamentos para emagrecer, sua associação a celebridades e os debates sobre padrões corporais e aceitação do corpo.",
+            "justification": "Mantém foco próprio nas representações coletivas e nos valores culturais ligados ao corpo, distinto dos resultados individuais, das orientações comportamentais e da organização econômica do mercado."
+        }
+    ]
+}

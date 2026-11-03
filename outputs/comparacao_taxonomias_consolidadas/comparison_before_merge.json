@@ -1,0 +1,323 @@
+{
+  "metrics": {
+    "topics_a": 20,
+    "topics_b": 14,
+    "similarity_a_to_b": 0.7339005827411735,
+    "similarity_b_to_a": 0.7488757666347279,
+    "global_similarity": 0.7413881746879507,
+    "coverage_a_to_b": 0.95,
+    "coverage_b_to_a": 1.0,
+    "coverage_f1": 0.9743589743589743,
+    "topics_a_below_threshold": 1,
+    "topics_b_below_threshold": 0
+  },
+  "threshold": 0.5,
+  "best_matches": [
+    {
+      "direction": "A -> B",
+      "id_a": "T001",
+      "label_a": "Uso e dosagem de medicamentos para emagrecimento",
+      "id_b": "T002",
+      "label_b": "Comparação entre medicamentos",
+      "cosine_similarity": 0.8587156538642651,
+      "above_threshold": true
+    },
+    {
+      "direction": "A -> B",
+      "id_a": "T002",
+      "label_a": "Efeitos colaterais e riscos dos medicamentos para emagrecimento",
+      "id_b": "T001",
+      "label_b": "Efeitos colaterais e riscos",
+      "cosine_similarity": 0.8762233906356381,
+      "above_threshold": true
+    },
+    {
+      "direction": "A -> B",
+      "id_a": "T003",
+      "label_a": "Comparação entre medicamentos para emagrecimento",
+      "id_b": "T002",
+      "label_b": "Comparação entre medicamentos",
+      "cosine_similarity": 0.8724036043308723,
+      "above_threshold": true
+    },
+    {
+      "direction": "A -> B",
+      "id_a": "T004",
+      "label_a": "Experiências e resultados com medicamentos para emagrecimento",
+      "id_b": "T003",
+      "label_b": "Experiência pessoal e resultados",
+      "cosine_similarity": 0.8194199777131786,
+      "above_threshold": true
+    },
+    {
+      "direction": "A -> B",
+      "id_a": "T005",
+      "label_a": "Mitologia e desinformação sobre medicamentos para emagrecimento",
+      "id_b": "T006",
+      "label_b": "Mitologias e desinformação",
+      "cosine_similarity": 0.857537814443103,
+      "above_threshold": true
+    },
+    {
+      "direction": "A -> B",
+      "id_a": "T006",
+      "label_a": "Uso off-label e indicações específicas",
+      "id_b": "T002",
+      "label_b": "Comparação entre medicamentos",
+      "cosine_similarity": 0.7380887155446678,
+      "above_threshold": true
+    },
+    {
+      "direction": "A -> B",
+      "id_a": "T007",
+      "label_a": "Estratégias de uso e conservação das canetas",
+      "id_b": "T014",
+      "label_b": "Evolução e novidades em fármacos",
+      "cosine_similarity": 0.4634410457428968,
+      "above_threshold": false
+    },
+    {
+      "direction": "A -> B",
+      "id_a": "T008",
+      "label_a": "Efeitos colaterais específicos e sintomas associados",
+      "id_b": "T010",
+      "label_b": "Efeitos colaterais específicos",
+      "cosine_similarity": 0.7539418011216386,
+      "above_threshold": true
+    },
+    {
+      "direction": "A -> B",
+      "id_a": "T009",
+      "label_a": "Interações com alimentação e estilo de vida",
+      "id_b": "T007",
+      "label_b": "Impacto em hábitos e comportamentos",
+      "cosine_similarity": 0.6712034330625745,
+      "above_threshold": true
+    },
+    {
+      "direction": "A -> B",
+      "id_a": "T010",
+      "label_a": "Impacto na saúde mental e emocional",
+      "id_b": "T007",
+      "label_b": "Impacto em hábitos e comportamentos",
+      "cosine_similarity": 0.6500835128889989,
+      "above_threshold": true
+    },
+    {
+      "direction": "A -> B",
+      "id_a": "T011",
+      "label_a": "Comparação com alternativas naturais ou não medicamentosas",
+      "id_b": "T012",
+      "label_b": "Alternativas e complementos naturais",
+      "cosine_similarity": 0.8386654921674642,
+      "above_threshold": true
+    },
+    {
+      "direction": "A -> B",
+      "id_a": "T012",
+      "label_a": "Aprovação de medicamentos para indicações não tradicionais",
+      "id_b": "T002",
+      "label_b": "Comparação entre medicamentos",
+      "cosine_similarity": 0.7353070695572468,
+      "above_threshold": true
+    },
+    {
+      "direction": "A -> B",
+      "id_a": "T013",
+      "label_a": "Impactos socioeconômicos e mercado dos medicamentos para emagrecimento",
+      "id_b": "T005",
+      "label_b": "Acesso e regulamentação",
+      "cosine_similarity": 0.7138386777444263,
+      "above_threshold": true
+    },
+    {
+      "direction": "A -> B",
+      "id_a": "T014",
+      "label_a": "Efeitos estéticos associados ao uso de medicamentos para emagrecimento",
+      "id_b": "T001",
+      "label_b": "Efeitos colaterais e riscos",
+      "cosine_similarity": 0.6943015588781849,
+      "above_threshold": true
+    },
+    {
+      "direction": "A -> B",
+      "id_a": "T015",
+      "label_a": "Alternativas naturais e suplementos para emagrecimento",
+      "id_b": "T012",
+      "label_b": "Alternativas e complementos naturais",
+      "cosine_similarity": 0.7486605945658282,
+      "above_threshold": true
+    },
+    {
+      "direction": "A -> B",
+      "id_a": "T016",
+      "label_a": "Uso em contextos específicos: gestação, diabetes e outras condições",
+      "id_b": "T004",
+      "label_b": "Uso em condições específicas",
+      "cosine_similarity": 0.7230132299023799,
+      "above_threshold": true
+    },
+    {
+      "direction": "A -> B",
+      "id_a": "T017",
+      "label_a": "Alternativas manipuladas e não regulamentadas",
+      "id_b": "T002",
+      "label_b": "Comparação entre medicamentos",
+      "cosine_similarity": 0.6870021769752821,
+      "above_threshold": true
+    },
+    {
+      "direction": "A -> B",
+      "id_a": "T018",
+      "label_a": "Impacto na vida sexual e libido",
+      "id_b": "T002",
+      "label_b": "Comparação entre medicamentos",
+      "cosine_similarity": 0.5593765385642677,
+      "above_threshold": true
+    },
+    {
+      "direction": "A -> B",
+      "id_a": "T019",
+      "label_a": "Estratégias para evitar o reganho de peso",
+      "id_b": "T001",
+      "label_b": "Efeitos colaterais e riscos",
+      "cosine_similarity": 0.63919199101909,
+      "above_threshold": true
+    },
+    {
+      "direction": "A -> B",
+      "id_a": "T020",
+      "label_a": "Uso em contextos de menopausa e obesidade relacionada",
+      "id_b": "T004",
+      "label_b": "Uso em condições específicas",
+      "cosine_similarity": 0.7775953761014667,
+      "above_threshold": true
+    },
+    {
+      "direction": "B -> A",
+      "id_a": "T002",
+      "label_a": "Efeitos colaterais e riscos dos medicamentos para emagrecimento",
+      "id_b": "T001",
+      "label_b": "Efeitos colaterais e riscos",
+      "cosine_similarity": 0.8762233906356381,
+      "above_threshold": true
+    },
+    {
+      "direction": "B -> A",
+      "id_a": "T003",
+      "label_a": "Comparação entre medicamentos para emagrecimento",
+      "id_b": "T002",
+      "label_b": "Comparação entre medicamentos",
+      "cosine_similarity": 0.8724036043308723,
+      "above_threshold": true
+    },
+    {
+      "direction": "B -> A",
+      "id_a": "T004",
+      "label_a": "Experiências e resultados com medicamentos para emagrecimento",
+      "id_b": "T003",
+      "label_b": "Experiência pessoal e resultados",
+      "cosine_similarity": 0.8194199777131786,
+      "above_threshold": true
+    },
+    {
+      "direction": "B -> A",
+      "id_a": "T020",
+      "label_a": "Uso em contextos de menopausa e obesidade relacionada",
+      "id_b": "T004",
+      "label_b": "Uso em condições específicas",
+      "cosine_similarity": 0.7775953761014667,
+      "above_threshold": true
+    },
+    {
+      "direction": "B -> A",
+      "id_a": "T013",
+      "label_a": "Impactos socioeconômicos e mercado dos medicamentos para emagrecimento",
+      "id_b": "T005",
+      "label_b": "Acesso e regulamentação",
+      "cosine_similarity": 0.7138386777444263,
+      "above_threshold": true
+    },
+    {
+      "direction": "B -> A",
+      "id_a": "T005",
+      "label_a": "Mitologia e desinformação sobre medicamentos para emagrecimento",
+      "id_b": "T006",
+      "label_b": "Mitologias e desinformação",
+      "cosine_similarity": 0.857537814443103,
+      "above_threshold": true
+    },
+    {
+      "direction": "B -> A",
+      "id_a": "T008",
+      "label_a": "Efeitos colaterais específicos e sintomas associados",
+      "id_b": "T007",
+      "label_b": "Impacto em hábitos e comportamentos",
+      "cosine_similarity": 0.6838044247637921,
+      "above_threshold": true
+    },
+    {
+      "direction": "B -> A",
+      "id_a": "T011",
+      "label_a": "Comparação com alternativas naturais ou não medicamentosas",
+      "id_b": "T008",
+      "label_b": "Aspectos médicos e científicos",
+      "cosine_similarity": 0.7091904720429296,
+      "above_threshold": true
+    },
+    {
+      "direction": "B -> A",
+      "id_a": "T004",
+      "label_a": "Experiências e resultados com medicamentos para emagrecimento",
+      "id_b": "T009",
+      "label_b": "Uso em esportes ou contextos profissionais",
+      "cosine_similarity": 0.5510364659492498,
+      "above_threshold": true
+    },
+    {
+      "direction": "B -> A",
+      "id_a": "T008",
+      "label_a": "Efeitos colaterais específicos e sintomas associados",
+      "id_b": "T010",
+      "label_b": "Efeitos colaterais específicos",
+      "cosine_similarity": 0.7539418011216386,
+      "above_threshold": true
+    },
+    {
+      "direction": "B -> A",
+      "id_a": "T014",
+      "label_a": "Efeitos estéticos associados ao uso de medicamentos para emagrecimento",
+      "id_b": "T011",
+      "label_b": "Aspectos culturais e sociais do uso",
+      "cosine_similarity": 0.666044290976147,
+      "above_threshold": true
+    },
+    {
+      "direction": "B -> A",
+      "id_a": "T011",
+      "label_a": "Comparação com alternativas naturais ou não medicamentosas",
+      "id_b": "T012",
+      "label_b": "Alternativas e complementos naturais",
+      "cosine_similarity": 0.8386654921674642,
+      "above_threshold": true
+    },
+    {
+      "direction": "B -> A",
+      "id_a": "T011",
+      "label_a": "Comparação com alternativas naturais ou não medicamentosas",
+      "id_b": "T013",
+      "label_b": "Uso em contextos não clínicos",
+      "cosine_similarity": 0.7021481644786067,
+      "above_threshold": true
+    },
+    {
+      "direction": "B -> A",
+      "id_a": "T005",
+      "label_a": "Mitologia e desinformação sobre medicamentos para emagrecimento",
+      "id_b": "T014",
+      "label_b": "Evolução e novidades em fármacos",
+      "cosine_similarity": 0.6624107804176764,
+      "above_threshold": true
+    }
+  ]
+}
