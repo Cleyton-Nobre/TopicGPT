@@ -1,26 +1,38 @@
 {
+  "provider": "vllm",
   "model": "topic-local",
   "model_source": "mistralai/Ministral-3-14B-Reasoning-2512",
-  "prompt_version": "topic-generation-v3-vllm-chat-v3-no-checkpoint",
+  "prompt_version": "topic-generation-v5-first-topic",
+  "reasoning_effort": "high",
+  "generation_parameters": {
+    "reasoning_effort": "high",
+    "max_completion_tokens": 2048,
+    "temperature": 0.0
+  },
   "experiment": {
     "experiment": "experiment_1_original_order",
     "order_description": "ordem original",
     "shuffle_seed": null,
     "input_hash": "dc28758249ef4de1168197456cf87ae293aaf2cd345a47f132f5b68fdab79508",
-    "total_titles": 1800
+    "total_titles": 1800,
+    "initial_taxonomy_file": null,
+    "initial_taxonomy_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "initial_topics": 0
   },
   "input_file": "/app/data/geracao.jsonl",
   "input_hash": "dc28758249ef4de1168197456cf87ae293aaf2cd345a47f132f5b68fdab79508",
-  "config_hash": "65e86eb6e03f1e85ec5aca3b005ed03caea9ee3a03d723535b1ead57fdd4797e",
+  "config_hash": "9aba858b7f4cb068e5e1a5e60469bd04194d01a5c50bec5f7f823f92d213eaff",
+  "protocol_hash": "dcc8c80d224dd6700bbd81fc576156f508bbe4fdcbe767d9846d48f775ed2d2f",
+  "comparison_hash": "42d2b1d01489c569e399068727c7ebac4313bc2f4c9878ab98af4514078c9f86",
   "total_titles": 1800,
   "batch_size": 100,
   "total_batches": 18,
-  "total_topics": 10,
+  "total_topics": 31,
   "topics": [
     {
       "topic_id": "T001",
-      "label": "Comparação entre medicamentos para emagrecimento",
-      "description": "Análise comparativa entre diferentes medicamentos para emagrecimento, como Ozempic, Wegovy, Mounjaro e Saxenda.",
+      "label": "Comparação de medicamentos para emagrecimento",
+      "description": "Análise e comparação entre diferentes medicamentos para emagrecimento, como Ozempic, Wegovy, Mounjaro e Saxenda.",
       "evidence_video_ids": [
         "Bl8eTjj3F0c",
         "Mprx7VAwGqM",
@@ -30,102 +42,352 @@
     },
     {
       "topic_id": "T002",
-      "label": "Efeitos colaterais e riscos dos medicamentos para emagrecimento",
-      "description": "Discussão sobre os efeitos colaterais e riscos associados ao uso de medicamentos como Ozempic, Mounjaro e Wegovy.",
+      "label": "Experiências pessoais com medicamentos para emagrecimento",
+      "description": "Relatos de experiências individuais com medicamentos como Ozempic, Wegovy e Mounjaro, incluindo resultados, efeitos colaterais e impressões subjetivas.",
       "evidence_video_ids": [
-        "XATj1ClNfa4",
-        "f7zlY9v2XvY",
-        "hAPM3uCLb8c"
+        "LKFfWkJDLSg",
+        "7dzCb6hZN8g",
+        "wzD50WjZqnM",
+        "I1-8fWnCj14",
+        "j37uM-T4GvQ",
+        "JzmaeqwUfwg",
+        "8aV1b4LT2Co"
       ],
-      "created_in_batch": 1
+      "created_in_batch": 2
     },
     {
       "topic_id": "T003",
-      "label": "Experiências pessoais e resultados com medicamentos para emagrecimento",
-      "description": "Relatos de experiências pessoais e resultados obtidos com o uso de medicamentos como Ozempic, Mounjaro e Wegovy.",
+      "label": "Efeitos colaterais e cuidados com medicamentos para emagrecimento",
+      "description": "Discussão sobre efeitos colaterais, contraindicações e cuidados necessários ao usar medicamentos como Ozempic, Wegovy e Mounjaro.",
       "evidence_video_ids": [
-        "BQpmOzWme04",
-        "ChQc5nnmDtA",
-        "50GOVTzCGy8"
+        "HoD37Xfrqqc",
+        "pSer0bITIEQ",
+        "YLfCpWr9Ukk",
+        "9YtUNovw78s",
+        "7gltRn1EHWs",
+        "V4kkVMyisrI",
+        "g5667wF6vZM"
       ],
-      "created_in_batch": 1
+      "created_in_batch": 2
     },
     {
       "topic_id": "T004",
-      "label": "Uso correto e dosagem de medicamentos para emagrecimento",
-      "description": "Orientações sobre a dosagem correta e o modo de uso de medicamentos como Ozempic, Mounjaro e Wegovy.",
+      "label": "Acesso e custo de medicamentos para emagrecimento",
+      "description": "Análise sobre o custo, disponibilidade e desafios de acesso a medicamentos como Ozempic, Wegovy e Mounjaro, incluindo genéricos e políticas públicas.",
       "evidence_video_ids": [
-        "GMXjayYMuL8",
-        "VC-I0j4NapI",
-        "IEPWZD0oKVo"
+        "0ns3sH369WU",
+        "vBp2Vu48Xwc",
+        "M7ebtLA_Ahg",
+        "zt80mpX8JEo",
+        "iJBIKSauiXA",
+        "CAa8S24Mqfo",
+        "CDYsvBykPFc"
       ],
-      "created_in_batch": 1
+      "created_in_batch": 2
     },
     {
       "topic_id": "T005",
-      "label": "Mitologia e desinformação sobre medicamentos para emagrecimento",
-      "description": "Desmascaramento de mitos e desinformações sobre o uso de medicamentos como Ozempic, Mounjaro e Wegovy.",
+      "label": "Alternativas e comparativos entre medicamentos para emagrecimento",
+      "description": "Comparação entre diferentes medicamentos para emagrecimento, incluindo alternativas naturais, e discussão sobre qual opção pode ser mais adequada.",
       "evidence_video_ids": [
-        "c0s947gP8CU",
-        "I5bsh8eHfrA",
-        "w5FI2fv2VNg"
+        "PDXZt-ekmjo",
+        "RFJ5TZx6bLM",
+        "p7K0w8k09SA",
+        "TIpFSyz-o8Q",
+        "X36Hw8vuKMk",
+        "ptw4YVG9ddU"
       ],
-      "created_in_batch": 1
+      "created_in_batch": 2
     },
     {
       "topic_id": "T006",
-      "label": "Indicações e contraindicações para o uso de medicamentos para emagrecimento",
-      "description": "Discussão sobre as indicações e contraindicações para o uso de medicamentos como Ozempic, Mounjaro e Wegovy.",
+      "label": "Uso correto e dosagem de medicamentos para emagrecimento",
+      "description": "Orientação sobre a dosagem correta, forma de uso e ajustes de dose em medicamentos como Ozempic, Wegovy e Mounjaro.",
       "evidence_video_ids": [
-        "Fagrgo0Ra7Q",
-        "F0K_z1RYorc",
-        "pUuZNiBjQyM"
+        "I1-8fWnCj14",
+        "RqYvTAGwJ60",
+        "T15njmCa-rk",
+        "8aV1b4LT2Co",
+        "FX49tNS-rO0"
       ],
-      "created_in_batch": 1
+      "created_in_batch": 2
     },
     {
       "topic_id": "T007",
-      "label": "Impacto dos medicamentos para emagrecimento na saúde mental e física",
-      "description": "Análise do impacto dos medicamentos para emagrecimento na saúde mental e física, incluindo depressão e perda muscular.",
+      "label": "Impacto estético e saúde capilar com medicamentos para emagrecimento",
+      "description": "Discussão sobre os efeitos estéticos, como flacidez facial, e impactos na saúde capilar decorrentes do uso de medicamentos para emagrecimento.",
       "evidence_video_ids": [
-        "vIYQ-EFzHH8",
-        "gj2DM370WtY",
-        "yzZ7QW1ZLMk"
+        "HWgBJxitAU8",
+        "HoD37Xfrqqc",
+        "V4kkVMyisrI"
       ],
-      "created_in_batch": 1
+      "created_in_batch": 2
     },
     {
       "topic_id": "T008",
-      "label": "Alternativas naturais e protocolos complementares ao uso de medicamentos para emagrecimento",
-      "description": "Exploração de alternativas naturais e protocolos complementares ao uso de medicamentos como Ozempic, Mounjaro e Wegovy.",
+      "label": "Medicamentos para emagrecimento e diabetes",
+      "description": "Relacionamento entre medicamentos para emagrecimento e diabetes, incluindo uso em pacientes diabéticos e effects glicêmicos.",
       "evidence_video_ids": [
-        "G-u_TYiXLkw",
-        "FyxRPk2vvmg",
-        "Mxt6lu7kUHk"
+        "LKFfWkJDLSg",
+        "7C7aMFmpomU",
+        "tyjK0Lxm264",
+        "HD-4GyLHAgM",
+        "7Ot_YM-T-Qc"
       ],
-      "created_in_batch": 1
+      "created_in_batch": 2
     },
     {
       "topic_id": "T009",
-      "label": "Desmame e suspensão do uso de medicamentos para emagrecimento",
-      "description": "Discussão sobre o processo de desmame e suspensão do uso de medicamentos como Ozempic, Mounjaro e Wegovy.",
+      "label": "Controvérsias e polêmicas envolvendo medicamentos para emagrecimento",
+      "description": "Discussão sobre polêmicas, fraudes, contrabando e controvérsias envolvendo medicamentos como Ozempic, Wegovy e Mounjaro.",
       "evidence_video_ids": [
-        "AZ92ZcYQkAY",
-        "ULfrWs0hoAc",
-        "NnNEawp_JVk"
+        "CDYsvBykPFc",
+        "y9dSVGEFE04",
+        "vzKKaSlPUTs",
+        "R-y7BlC0oxk"
       ],
-      "created_in_batch": 1
+      "created_in_batch": 2
     },
     {
       "topic_id": "T010",
-      "label": "Uso de medicamentos para emagrecimento em contextos específicos",
-      "description": "Análise do uso de medicamentos para emagrecimento em contextos específicos, como gordura no fígado, menopausa e diabetes.",
+      "label": "Medicamentos para emagrecimento e cirurgia bariátrica",
+      "description": "Análise sobre a compatibilidade e uso de medicamentos para emagrecimento em pacientes que realizaram cirurgia bariátrica.",
       "evidence_video_ids": [
-        "aCPzu2oZIg8",
-        "wIgjUO2g15I",
-        "oVwr-LkoiIQ"
+        "CVXBlwguXIQ",
+        "5wjiT8rMAMw"
       ],
-      "created_in_batch": 1
+      "created_in_batch": 2
+    },
+    {
+      "topic_id": "T011",
+      "label": "Alternativas naturais e suplementos para emagrecimento",
+      "description": "Discussão sobre alternativas naturais, suplementos e remédios caseiros para emagrecimento, como a berberina, e comparação com medicamentos sintéticos.",
+      "evidence_video_ids": [
+        "W_Uv9TIp9p4",
+        "cr9ijZvRxA8",
+        "DOT0q6-fEsg"
+      ],
+      "created_in_batch": 3
+    },
+    {
+      "topic_id": "T012",
+      "label": "Efeitos colaterais menos discutidos de medicamentos para emagrecimento",
+      "description": "Análise de efeitos colaterais menos conhecidos ou mencionados, como impactos na visão, ereção, humor e desregulação emocional.",
+      "evidence_video_ids": [
+        "BQhTXFYsOLE",
+        "WZHosmAjYRU",
+        "gMyGGDefexg"
+      ],
+      "created_in_batch": 3
+    },
+    {
+      "topic_id": "T013",
+      "label": "Uso de medicamentos para emagrecimento em grupos específicos",
+      "description": "Discussão sobre o uso de medicamentos para emagrecimento em grupos específicos, como adolescentes, pessoas em menopausa, diabéticos e durante a amamentação.",
+      "evidence_video_ids": [
+        "VJ-Xm5VAyWI",
+        "OK1_hpOnDmU",
+        "hcKTEey16G4"
+      ],
+      "created_in_batch": 3
+    },
+    {
+      "topic_id": "T014",
+      "label": "Combinação de medicamentos para emagrecimento e outros tratamentos",
+      "description": "Análise sobre a combinação de medicamentos para emagrecimento com outros tratamentos, como cirurgia bariátrica, tratamentos para apneia do sono e redução de massa muscular.",
+      "evidence_video_ids": [
+        "-LbLL_7RHlc",
+        "ehAfdLEn6-8",
+        "lFa9lqyGjNg"
+      ],
+      "created_in_batch": 3
+    },
+    {
+      "topic_id": "T015",
+      "label": "Uso de medicamentos para emagrecimento em contextos específicos",
+      "description": "Discussão sobre o uso de medicamentos para emagrecimento em contextos específicos, como esporte, cirurgia plástica, menopausa e situações polêmicas.",
+      "evidence_video_ids": [
+        "YNGcoal6fFg",
+        "1eZ92u67-UA",
+        "AlgL6wqToX0",
+        "5Z5fJjWfSic"
+      ],
+      "created_in_batch": 4
+    },
+    {
+      "topic_id": "T016",
+      "label": "Comparação entre versões orais e injetáveis de medicamentos para emagrecimento",
+      "description": "Análise e comparação entre as versões orais (como Rybelsus) e injetáveis (como Ozempic) de medicamentos para emagrecimento.",
+      "evidence_video_ids": [
+        "Y-M5ub7BVsw",
+        "-nS1a3gh9Vs"
+      ],
+      "created_in_batch": 4
+    },
+    {
+      "topic_id": "T017",
+      "label": "Impacto de medicamentos para emagrecimento em outros aspectos da saúde",
+      "description": "Discussão sobre os efeitos de medicamentos para emagrecimento em outros aspectos da saúde, como visão, força, apetite e humor.",
+      "evidence_video_ids": [
+        "ANqcdRe-mWk",
+        "0J-j_5CmOc4",
+        "jXdNzj7SfLg"
+      ],
+      "created_in_batch": 4
+    },
+    {
+      "topic_id": "T018",
+      "label": "Impacto de medicamentos para emagrecimento em grupos específicos",
+      "description": "Discussão sobre o uso de medicamentos para emagrecimento em grupos específicos, como pessoas em climatério, com síndrome do ovário policístico, hashimoto ou lipedema.",
+      "evidence_video_ids": [
+        "yKM18qf0r2A",
+        "q1BiJs4IVfo",
+        "ntrbSKB4q8Y",
+        "l69Ysn2RwBs"
+      ],
+      "created_in_batch": 5
+    },
+    {
+      "topic_id": "T019",
+      "label": "Uso de medicamentos para emagrecimento em contextos de desporto ou performance física",
+      "description": "Discussão sobre o uso de medicamentos para emagrecimento em contextos de esporte, academia ou performance física, incluindo combinação com outros suplementos ou substâncias.",
+      "evidence_video_ids": [
+        "b3Xl7OIQYrg",
+        "KVi02aL7ytE"
+      ],
+      "created_in_batch": 8
+    },
+    {
+      "topic_id": "T020",
+      "label": "Efeitos neurológicos e psicológicos de medicamentos para emagrecimento",
+      "description": "Análise dos efeitos neurológicos e psicológicos, como sonhos vívidos, desregulação emocional ou impactos cognitivos, causados por medicamentos como Mounjaro e Ozempic.",
+      "evidence_video_ids": [
+        "1Ja73mhLeS8",
+        "NGfdC5J1CM4"
+      ],
+      "created_in_batch": 8
+    },
+    {
+      "topic_id": "T021",
+      "label": "Desmame e manejo de interrupção de medicamentos para emagrecimento",
+      "description": "Orientação sobre como realizar o desmame seguro de medicamentos para emagrecimento, evitando efeitos rebote ou complicações.",
+      "evidence_video_ids": [
+        "LHuSAvzkLUA",
+        "na5uF9Ixgxg"
+      ],
+      "created_in_batch": 8
+    },
+    {
+      "topic_id": "T022",
+      "label": "Controvérsias legais e regulatórias envolvendo medicamentos para emagrecimento",
+      "description": "Discussão sobre questões legais, regulatórias e éticas, como contrabando, prescrição indiscriminada ou uso sem supervisão médica.",
+      "evidence_video_ids": [
+        "J9nimT9zB04",
+        "2VnADCmzk5A"
+      ],
+      "created_in_batch": 8
+    },
+    {
+      "topic_id": "T023",
+      "label": "Impacto de medicamentos para emagrecimento em outros distúrbios de saúde",
+      "description": "Discussão sobre os efeitos de medicamentos para emagrecimento em distúrbios de saúde específicos, como apneia do sono, insônia, compulsão alimentar e problemas renais.",
+      "evidence_video_ids": [
+        "vFjrxyr8JBU",
+        "CVbmnGVrpiY",
+        "WCErHlN1HI4",
+        "Dl_GyuI14a4"
+      ],
+      "created_in_batch": 9
+    },
+    {
+      "topic_id": "T024",
+      "label": "Impacto de medicamentos para emagrecimento em distúrbios metabólicos",
+      "description": "Discussão sobre os efeitos de medicamentos para emagrecimento, como Ozempic e Mounjaro, em distúrbios metabólicos específicos, como esteatose hepática e diabetes.",
+      "evidence_video_ids": [
+        "RJ207UbVetE",
+        "-1mtiufGkjA",
+        "yjl194f50YU",
+        "pVp7DVMTUiQ"
+      ],
+      "created_in_batch": 16
+    },
+    {
+      "topic_id": "T025",
+      "label": "Controvérsias e fraudes envolvendo medicamentos para emagrecimento",
+      "description": "Análise de casos de falsificação, contrabando e fraudes envolvendo medicamentos para emagrecimento, como Ozempic e Mounjaro.",
+      "evidence_video_ids": [
+        "ewIQBWHutSw",
+        "xmobJndZ7mg",
+        "4Qq6yTsBUgc"
+      ],
+      "created_in_batch": 16
+    },
+    {
+      "topic_id": "T026",
+      "label": "Comparação entre medicamentos para emagrecimento e alternativas naturais",
+      "description": "Discussão sobre a comparação entre medicamentos sintéticos para emagrecimento e alternativas naturais, como psyllium e alimentos que controlam a glicemia.",
+      "evidence_video_ids": [
+        "sRksXg77DQc",
+        "Ot7mKJP0egQ"
+      ],
+      "created_in_batch": 16
+    },
+    {
+      "topic_id": "T027",
+      "label": "Uso de medicamentos para emagrecimento em contextos de saúde mental",
+      "description": "Análise do uso de medicamentos para emagrecimento, como Ozempic e Mounjaro, em contextos de saúde mental, incluindo effects psicológicos e psiquiátricos.",
+      "evidence_video_ids": [
+        "ShgkfiwiS8k"
+      ],
+      "created_in_batch": 16
+    },
+    {
+      "topic_id": "T028",
+      "label": "Impacto de medicamentos para emagrecimento em hábitos alimentares",
+      "description": "Discussão sobre como medicamentos para emagrecimento, como Ozempic e Mounjaro, afetam hábitos alimentares, como horários de refeição e preferências alimentares.",
+      "evidence_video_ids": [
+        "95GzcjAPIQo",
+        "XhZ_J6n9OTk",
+        "Xar-vnfiCjQ"
+      ],
+      "created_in_batch": 17
+    },
+    {
+      "topic_id": "T029",
+      "label": "Efeitos estéticos específicos de medicamentos para emagrecimento",
+      "description": "Análise de efeitos estéticos específicos, como flacidez facial, queda de cabelo ou alterações na aparência, causados por medicamentos como Ozempic e Mounjaro.",
+      "evidence_video_ids": [
+        "hpHVZ9DBHG8",
+        "1z3AN4QfmRQ",
+        "1Y3RmdjytrE"
+      ],
+      "created_in_batch": 17
+    },
+    {
+      "topic_id": "T030",
+      "label": "Comparação de custo e acessibilidade de medicamentos para emagrecimento",
+      "description": "Discussão sobre a comparação de custos, acessibilidade e disponibilidade de medicamentos para emagrecimento, incluindo opções mais baratas ou alternativas importadas.",
+      "evidence_video_ids": [
+        "KBuKtcZmsB0",
+        "uBZiJqtecH4",
+        "NQqQzUlpf_M"
+      ],
+      "created_in_batch": 17
+    },
+    {
+      "topic_id": "T031",
+      "label": "Efeitos rebote e manejo após interrupção de medicamentos para emagrecimento",
+      "description": "Análise sobre o efeito rebote após a interrupção de medicamentos para emagrecimento e estratégias para minimizar esse impacto.",
+      "evidence_video_ids": [
+        "XYUA66ronWQ",
+        "Focd8wh3lRM",
+        "oES1_1N2F6M"
+      ],
+      "created_in_batch": 17
     }
-  ]
+  ],
+  "initial_taxonomy_file": null,
+  "initial_taxonomy_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "initial_topics": 0,
+  "generated_topics": 31
 }

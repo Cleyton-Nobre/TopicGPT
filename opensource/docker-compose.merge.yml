@@ -1,0 +1,14 @@
+# Use junto com docker-compose.yml para executar somente a mesclagem.
+services:
+  topic-job:
+    environment:
+      TOPIC_TASK: merging
+      # A consolidação global inclui todos os tópicos e pares no mesmo prompt.
+      MAX_MODEL_LEN: ${MERGE_MAX_MODEL_LEN:-32768}
+      VLLM_BASE_URL: http://127.0.0.1:8000/v1
+      MERGE_INPUT: ${MERGE_INPUT:-/app/data/topics_final_order.json}
+      MERGE_OUTPUT: ${MERGE_OUTPUT:-/app/outputs/mesclagem/taxonomia_mesclada.json}
+    volumes:
+      - ./topic_merging.py:/app/topic_merging.py
+      - ./requirements.txt:/app/requirements.txt
+      - ./requirements-merging.txt:/app/requirements-merging.txt

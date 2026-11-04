@@ -1,5 +1,9 @@
 # TopicGPT
 
+Para executar a consolidação global de `merging.ipynb` usando o modelo aberto
+servido pelo vLLM, use [`opensource/topic_merging.py`](opensource/topic_merging.py).
+Os comandos da CLI e do Docker estão em [`opensource/README.md`](opensource/README.md).
+
 A CLI em [`opensource`](opensource/README.md) aceita uma taxonomia
 inicial para cada experimento, em ordem original e embaralhada, usando os arquivos
 `topics_final.json` gerados pelo programa. Na CLI, use

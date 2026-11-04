@@ -56,6 +56,21 @@ GENERATION_CONFIG=vllm
 export MODEL_ID REASONING_PARSER TOKENIZER_MODE CONFIG_FORMAT LOAD_FORMAT GENERATION_CONFIG
 export MAX_MODEL_LEN DTYPE TENSOR_PARALLEL_SIZE
 
+case "${TOPIC_TASK:-generation}" in
+    generation)
+        job_command=(python3 -u /app/topic_generation.py --provider vllm)
+        ;;
+    merging)
+        echo "[job] Instalando dependências de mesclagem" >&2
+        python3 -m pip install --disable-pip-version-check -r /app/requirements-merging.txt
+        job_command=(python3 -u /app/topic_merging.py)
+        ;;
+    *)
+        echo "[job] TOPIC_TASK deve ser generation ou merging." >&2
+        exit 1
+        ;;
+esac
+
 # O vLLM inicia em background, mas a API só fica acessível depois de carregar os pesos.
 server_args=(
     serve "$MODEL_ID"
@@ -85,9 +100,9 @@ echo "[job] Iniciando vLLM com modelo ${MODEL_ID} (alias ${SERVED_MODEL_NAME}; a
 vllm "${server_args[@]}" &
 VLLM_PID=$!
 
-# O script aguarda /v1/models identificar o modelo antes de gerar os tópicos.
-echo "[job] Iniciando geração dentro do mesmo contêiner" >&2
-python3 -u /app/topic_generation.py --provider vllm &
+# Os scripts aguardam /v1/models identificar o modelo antes de chamar a API.
+echo "[job] Iniciando tarefa ${TOPIC_TASK:-generation} dentro do mesmo contêiner" >&2
+"${job_command[@]}" &
 GENERATOR_PID=$!
 
 # Se o servidor falhar durante o processamento, finalize o job com erro,
@@ -103,7 +118,7 @@ done
 status=0
 wait "$GENERATOR_PID" || status=$?
 if [[ "$status" -eq 0 ]]; then
-    echo "[job] Geração finalizada. Parando vLLM e liberando GPU." >&2
+    echo "[job] Tarefa finalizada. Parando vLLM e liberando GPU." >&2
 else
     echo "[job] Gerador terminou com código $status. Confira os logs e outputs." >&2
 fi

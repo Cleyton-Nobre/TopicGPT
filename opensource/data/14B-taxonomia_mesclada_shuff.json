@@ -1,0 +1,75 @@
+{
+  "groups": [
+    {
+      "topic_ids": [
+        "T001",
+        "T006",
+        "T012"
+      ],
+      "label": "Efeitos colaterais e riscos",
+      "description": "Análise abrangente dos efeitos colaterais, riscos e consequências negativas associados ao uso de medicamentos para emagrecimento, incluindo sintomas comuns, menos discutidos e impactos na saúde física e mental.",
+      "justification": "Os tópicos T001, T006 e T012 compartilham um foco central em efeitos colaterais, riscos e consequências negativas, abrangendo desde sintomas gerais até casos específicos e menos discutidos. A unificação é coerente, pois todos tratam de aspectos de segurança e impactos adversos."
+    },
+    {
+      "topic_ids": [
+        "T002",
+        "T014"
+      ],
+      "label": "Comparação entre medicamentos",
+      "description": "Análise comparativa entre diferentes medicamentos para emagrecimento, incluindo versões com o mesmo princípio ativo (ex.: Ozempic vs. Wegovy) e suas características, eficácia e diferenças.",
+      "justification": "T002 e T014 focam em comparações entre medicamentos, sendo T014 um caso específico de T002. A unificação preserva a abrangência sem perder detalhes, mantendo a coerência temática."
+    },
+    {
+      "topic_ids": [
+        "T010",
+        "T015"
+      ],
+      "label": "Uso e manejo de medicamentos",
+      "description": "Discussão sobre dosagem, desmame, ajuste de doses, protocolos específicos e estratégias para maximizar resultados ou minimizar efeitos colaterais em medicamentos para emagrecimento.",
+      "justification": "T010 e T015 abordam aspectos práticos e técnicos do uso de medicamentos, como dosagem e protocolos, sendo complementares e coerentes em uma categoria unificada."
+    },
+    {
+      "topic_ids": [
+        "T003",
+        "T007"
+      ],
+      "label": "Alternativas e contextos de uso",
+      "description": "Análise do uso de medicamentos para emagrecimento em contextos específicos (ex.: gestação, diabetes) e comparação com alternativas naturais ou não farmacológicas (ex.: jejum intermitente, exercícios).",
+      "justification": "T003 e T007 compartilham um foco em contextos de uso e alternativas, sendo complementares. A unificação evita redundância e mantém a coerência temática."
+    },
+    {
+      "topic_ids": [
+        "T004",
+        "T005"
+      ],
+      "label": "Percepções e experiências",
+      "description": "Desconstrução de mitos, expectativas irreais e relato de experiências pessoais ou depoimentos sobre o uso de medicamentos para emagrecimento.",
+      "justification": "T004 e T005 abordam perceções e experiências, sendo complementares. A unificação é coerente, pois ambos tratam de aspectos subjetivos e culturais."
+    },
+    {
+      "topic_ids": [
+        "T008",
+        "T013"
+      ],
+      "label": "Medicamentos manipulados e contextos legais",
+      "description": "Discussão sobre o uso de versões manipuladas, falsificadas ou não aprovadas de medicamentos para emagrecimento, incluindo aspectos legais e riscos associados.",
+      "justification": "T008 e T013 tratam de medicamentos não regulamentados e contextos legais, sendo complementares e coerentes em uma categoria unificada."
+    },
+    {
+      "topic_ids": [
+        "T009"
+      ],
+      "label": "Impacto social e cultural",
+      "description": "Reflexão sobre o impacto social, cultural ou comportamental do uso de medicamentos para emagrecimento, como obsessão, estigma ou influências culturais.",
+      "justification": "T009 é mantido separado, pois seu foco em impactos sociais e culturais é distinto dos demais, embora compartilhe semelhanças temáticas com outros tópicos."
+    },
+    {
+      "topic_ids": [
+        "T011"
+      ],
+      "label": "Impacto cognitivo e neurológico",
+      "description": "Discussão sobre os efeitos dos medicamentos para emagrecimento no cérebro, apetite e funções cognitivas.",
+      "justification": "T011 é mantido separado, pois seu foco específico em impactos neurológicos e cognitivos não se sobrepõe completamente a outros tópicos, embora compartilhe semelhanças com T001 e T006."
+    }
+  ]
+}

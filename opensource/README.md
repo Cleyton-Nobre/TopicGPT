@@ -1,5 +1,79 @@
 # Comparação de LLMs na geração de tópicos
 
+Para a consolidação global equivalente a `merging.ipynb` com o modelo aberto,
+use o novo script **`topic_merging.py`**. Ele carrega um JSON com `topics`, calcula
+embeddings de `label: description` com `paraphrase-multilingual-MiniLM-L12-v2`,
+seleciona pares com similaridade cosseno **maior ou igual a `0.5`** e os ordena
+por similaridade. Em seguida, envia todos os tópicos e pares em uma única análise
+global ao vLLM, mantendo os prompts e o contexto de saúde do notebook.
+Os pares são sugestões; a decisão de formar os grupos é da LLM.
+
+Para executar com o mesmo modelo e hardware do `.env`, entre em `opensource` e use:
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.merge.yml up \
+  --abort-on-container-exit --exit-code-from topic-job
+```
+
+Essa execução carrega o modelo de `MODEL_ID`, instala as dependências de mesclagem
+e processa, por padrão, `data/topics_final_order.json`. A primeira execução também
+baixa o modelo de embeddings; o cache fica em `hf-cache`. Para consolidar a ordem
+embaralhada ou uma saída da geração, informe os caminhos vistos pelo contêiner:
+
+```bash
+MERGE_INPUT=/app/outputs/experiment_2_shuffled_order/topics_final.json \
+MERGE_OUTPUT=/app/outputs/mesclagem_shuffled/taxonomia_mesclada.json \
+docker compose -f docker-compose.yml -f docker-compose.merge.yml up \
+  --abort-on-container-exit --exit-code-from topic-job
+```
+
+O Compose de mesclagem usa **32.768 tokens de contexto**, pois a análise global
+inclui todos os tópicos e pares no mesmo pedido. Esse valor prevalece sobre
+`MAX_MODEL_LEN` do `.env` nessa execução. Para personalizá-lo, defina
+`MERGE_MAX_MODEL_LEN` no `.env` ou antes do comando do Docker.
+O contexto precisa comportar a soma dos tokens de entrada e dos tokens reservados
+para a resposta. Por exemplo, um prompt com `12.661` tokens e uma reserva de
+`4.096` exige pelo menos `16.757` tokens; reduzir somente a reserva não resolve
+quando o próprio prompt já ultrapassa o contexto do servidor.
+
+Também é possível usar um servidor vLLM já iniciado, com suporte a
+[JSON Schema](https://docs.vllm.ai/en/v0.26.0/features/structured_outputs/).
+Instale as dependências e execute a CLI:
+
+```bash
+python3 -m pip install -r requirements-merging.txt
+python3 topic_merging.py \
+  --input data/topics_final_order.json \
+  --output outputs/mesclagem/taxonomia_mesclada.json \
+  --base-url http://localhost:8000/v1 \
+  --model topic-local
+```
+
+`--model` é o alias servido pelo vLLM (`SERVED_MODEL_NAME`, padrão `topic-local`),
+e a chave local vem de `VLLM_API_KEY` (padrão `local-token`). A URL pode vir de
+`VLLM_BASE_URL`. O SDK `openai` funciona como cliente do servidor local; não é
+necessária uma chave da OpenAI.
+
+A saída mantém o formato do notebook: `groups`, com `topic_ids`, `label`,
+`description` e `justification`. A validação exige todos os IDs originais
+exatamente uma vez, sem IDs inventados, duplicações ou grupos vazios, preservando
+o tipo de cada ID. Respostas inválidas são rejeitadas e recebem até três
+tentativas, com o erro de validação incluído no novo pedido. O script salva
+`prompt_mesclagem.txt` e `<nome da saída>_attempts.json` na pasta da saída, com as
+respostas e os erros para auditoria. A taxonomia de saída só é substituída após
+uma consolidação válida; os arquivos de prompt e tentativas são sobrescritos.
+
+Use `--similarity-threshold`, `--embedding-model`, `--embedding-device`,
+`--temperature`, `--max-tokens`, `--max-attempts` e `--reasoning-effort` para ajustar
+a CLI. O padrão usa embeddings na CPU, temperatura `0.0`, raciocínio `high` e
+limite de `4096` tokens de geração, incluindo raciocínio. Para modelos sem suporte
+ao parâmetro de raciocínio, use `--reasoning-effort omit`.
+Essas opções são próprias da mesclagem e não usam `experiment_config.json`.
+Se a soma de entrada e reserva exceder o contexto do servidor, aumente
+`MERGE_MAX_MODEL_LEN` no Docker e recrie o contêiner. Se a geração terminar por
+truncamento (`finish_reason=length`), aumente `--max-tokens` na CLI e confira se
+o contexto do servidor comporta a nova reserva de geração.
+
 A CLI executa o processamento em `topic_generation.py` para ambos os provedores.
 O provedor OpenAI seleciona `gpt-6.1-sol`; o Docker seleciona o modelo local em `MODEL_ID`.
 As chamadas usam Chat Completions e diferem no identificador do modelo,
