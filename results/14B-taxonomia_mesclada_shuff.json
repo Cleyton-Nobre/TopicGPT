@@ -3,73 +3,76 @@
     {
       "topic_ids": [
         "T001",
-        "T006",
-        "T012"
+        "T009",
+        "T016",
+        "T007"
       ],
-      "label": "Efeitos colaterais e riscos",
-      "description": "Análise abrangente dos efeitos colaterais, riscos e consequências negativas associados ao uso de medicamentos para emagrecimento, incluindo sintomas comuns, menos discutidos e impactos na saúde física e mental.",
-      "justification": "Os tópicos T001, T006 e T012 compartilham um foco central em efeitos colaterais, riscos e consequências negativas, abrangendo desde sintomas gerais até casos específicos e menos discutidos. A unificação é coerente, pois todos tratam de aspectos de segurança e impactos adversos."
+      "label": "Efeitos colaterais e impactos físicos",
+      "description": "Análise abrangente dos efeitos colaterais, riscos e impactos físicos e estéticos do uso de medicamentos para emagrecimento, incluindo complicações graves, alterações no corpo e consequências menos discutidas.",
+      "justification": "Os tópicos T001, T009 e T016 abordam diferentes aspectos dos efeitos colaterais, desde os mais comuns até os menos discutidos, enquanto T007 foca nos impactos físicos e estéticos. Todos compartilham a temática central de consequências negativas ou indesejadas do uso de medicamentos."
     },
     {
       "topic_ids": [
         "T002",
-        "T014"
+        "T018",
+        "T012"
       ],
-      "label": "Comparação entre medicamentos",
-      "description": "Análise comparativa entre diferentes medicamentos para emagrecimento, incluindo versões com o mesmo princípio ativo (ex.: Ozempic vs. Wegovy) e suas características, eficácia e diferenças.",
-      "justification": "T002 e T014 focam em comparações entre medicamentos, sendo T014 um caso específico de T002. A unificação preserva a abrangência sem perder detalhes, mantendo a coerência temática."
-    },
-    {
-      "topic_ids": [
-        "T010",
-        "T015"
-      ],
-      "label": "Uso e manejo de medicamentos",
-      "description": "Discussão sobre dosagem, desmame, ajuste de doses, protocolos específicos e estratégias para maximizar resultados ou minimizar efeitos colaterais em medicamentos para emagrecimento.",
-      "justification": "T010 e T015 abordam aspectos práticos e técnicos do uso de medicamentos, como dosagem e protocolos, sendo complementares e coerentes em uma categoria unificada."
+      "label": "Comparação entre medicamentos e alternativas",
+      "description": "Análise comparativa entre diferentes medicamentos para emagrecimento, suas formulações e marcas, bem como comparações com alternativas naturais, como ozempic natural e psyllium.",
+      "justification": "T002 e T018 focam em comparações entre medicamentos e suas formulações, enquanto T012 aborda a comparação com alternativas naturais. Esses tópicos compartilham a temática de avaliação de opções de tratamento, seja farmacológicas ou naturais."
     },
     {
       "topic_ids": [
         "T003",
-        "T007"
+        "T008"
       ],
-      "label": "Alternativas e contextos de uso",
-      "description": "Análise do uso de medicamentos para emagrecimento em contextos específicos (ex.: gestação, diabetes) e comparação com alternativas naturais ou não farmacológicas (ex.: jejum intermitente, exercícios).",
-      "justification": "T003 e T007 compartilham um foco em contextos de uso e alternativas, sendo complementares. A unificação evita redundância e mantém a coerência temática."
+      "label": "Uso em contextos clínicos e específicos",
+      "description": "Discussão sobre o uso de medicamentos para emagrecimento em contextos clínicos específicos, como diabetes, nefropatia diabética, lipedema, gestação e outras condições de saúde.",
+      "justification": "T003 e T008 abordam o uso de medicamentos em contextos clínicos e específicos, com foco em condições de saúde que exigem avaliação cuidadosa do tratamento. A similaridade é alta e a temática é coerente."
     },
     {
       "topic_ids": [
-        "T004",
+        "T013",
+        "T014",
+        "T015"
+      ],
+      "label": "Uso em contextos de saúde mental e impactos neurológicos",
+      "description": "Análise do uso de medicamentos para emagrecimento em contextos de saúde mental, como compulsão alimentar, obsessão e repulsa pela comida, além de seus impactos neurológicos e cognitivos.",
+      "justification": "T013 e T014 abordam o uso em contextos de saúde mental, enquanto T015 foca nos impactos neurológicos. Esses tópicos compartilham a temática de effects no sistema nervoso e comportamental, justificando a consolidação."
+    },
+    {
+      "topic_ids": [
+        "T004"
+      ],
+      "label": "Mitologias e desconstrução de mitos",
+      "description": "Desconstrução de mitos, mentiras e expectativas irreais sobre o uso de medicamentos para emagrecimento.",
+      "justification": "T004 é único em seu foco na desconstrução de mitos, sem sobreposição significativa com outros tópicos, justificando sua manutenção separada."
+    },
+    {
+      "topic_ids": [
         "T005"
       ],
-      "label": "Percepções e experiências",
-      "description": "Desconstrução de mitos, expectativas irreais e relato de experiências pessoais ou depoimentos sobre o uso de medicamentos para emagrecimento.",
-      "justification": "T004 e T005 abordam perceções e experiências, sendo complementares. A unificação é coerente, pois ambos tratam de aspectos subjetivos e culturais."
+      "label": "Experiências pessoais e depoimentos",
+      "description": "Relatos de experiências pessoais, depoimentos e resultados reais de pessoas que usaram medicamentos para emagrecimento.",
+      "justification": "T005 é único em seu foco em experiências pessoais e depoimentos, sem sobreposição significativa com outros tópicos, justificando sua manutenção separada."
     },
     {
       "topic_ids": [
-        "T008",
-        "T013"
+        "T006",
+        "T011",
+        "T017"
       ],
-      "label": "Medicamentos manipulados e contextos legais",
-      "description": "Discussão sobre o uso de versões manipuladas, falsificadas ou não aprovadas de medicamentos para emagrecimento, incluindo aspectos legais e riscos associados.",
-      "justification": "T008 e T013 tratam de medicamentos não regulamentados e contextos legais, sendo complementares e coerentes em uma categoria unificada."
+      "label": "Regulamentação, impactos socioeconômicos e culturais",
+      "description": "Discussão sobre regulamentações, notícias, impactos socioeconômicos e culturais do uso de medicamentos para emagrecimento, incluindo contextos de dependência química e obsolescência de produtos.",
+      "justification": "T006, T011 e T017 abordam temas relacionados a regulamentação, impactos socioeconômicos e culturais, além de contextos de dependência química. Esses tópicos compartilham a temática de aspectos sociais e regulatórios do uso de medicamentos."
     },
     {
       "topic_ids": [
-        "T009"
+        "T010"
       ],
-      "label": "Impacto social e cultural",
-      "description": "Reflexão sobre o impacto social, cultural ou comportamental do uso de medicamentos para emagrecimento, como obsessão, estigma ou influências culturais.",
-      "justification": "T009 é mantido separado, pois seu foco em impactos sociais e culturais é distinto dos demais, embora compartilhe semelhanças temáticas com outros tópicos."
-    },
-    {
-      "topic_ids": [
-        "T011"
-      ],
-      "label": "Impacto cognitivo e neurológico",
-      "description": "Discussão sobre os efeitos dos medicamentos para emagrecimento no cérebro, apetite e funções cognitivas.",
-      "justification": "T011 é mantido separado, pois seu foco específico em impactos neurológicos e cognitivos não se sobrepõe completamente a outros tópicos, embora compartilhe semelhanças com T001 e T006."
+      "label": "Uso de probióticos em conjunto",
+      "description": "Análise do uso de probióticos em conjunto com medicamentos para emagrecimento, como Mounjaro.",
+      "justification": "T010 é único em seu foco no uso de probióticos em conjunto com medicamentos, sem sobreposição significativa com outros tópicos, justificando sua manutenção separada."
     }
   ]
 }

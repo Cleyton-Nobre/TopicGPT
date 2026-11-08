@@ -21,13 +21,13 @@
   },
   "input_file": "/app/data/geracao.jsonl",
   "input_hash": "dbecad6f565edf095600f9d16fc762db461beff0fb440a78f5503419295d2498",
-  "config_hash": "b1a9f4545684f7bdf2c271c64a9794a231cb7f6aa73cf5713e5dc507c1499af3",
+  "config_hash": "56d3ee8413c33439fa798e2cc8a15c741db9e036236911fd04d77100ee57d898",
   "protocol_hash": "dcc8c80d224dd6700bbd81fc576156f508bbe4fdcbe767d9846d48f775ed2d2f",
   "comparison_hash": "a232094a706069a194a93fbced205073019fde6d6a757b1d963ac0bd1060c627",
   "total_titles": 1800,
   "batch_size": 100,
   "total_batches": 18,
-  "total_topics": 15,
+  "total_topics": 18,
   "topics": [
     {
       "topic_id": "T001",
@@ -56,12 +56,12 @@
     {
       "topic_id": "T003",
       "label": "Uso em contextos específicos",
-      "description": "Discussão sobre o uso de medicamentos para emagrecimento em contextos específicos, como gestação, diabetes, menopausa, entre outros.",
+      "description": "Discussão sobre o uso de medicamentos para emagrecimento em contextos específicos, como gestação, diabetes, gordura no fígado, entre outros.",
       "evidence_video_ids": [
         "g1GnGw2oRQo",
-        "TgyKa4pPfLY",
-        "ntrbSKB4q8Y",
-        "lFa9lqyGjNg"
+        "wIgjUO2g15I",
+        "RJ207UbVetE",
+        "SFTW1EjHfi4"
       ],
       "created_in_batch": 1
     },
@@ -91,64 +91,99 @@
     },
     {
       "topic_id": "T006",
-      "label": "Efeitos colaterais específicos",
-      "description": "Discussão sobre efeitos colaterais específicos e menos comuns associados ao uso de medicamentos para emagrecimento, como impactos na saúde mental, queda de cabelo, problemas digestivos e outros sintomas não abordados em tópicos gerais de riscos.",
+      "label": "Regulamentação e notícias sobre medicamentos",
+      "description": "Discussão sobre regulamentações, notícias e impactos socioeconômicos relacionados ao uso de medicamentos para emagrecimento.",
       "evidence_video_ids": [
-        "GXqeazsBh_k",
-        "k--1sXBvHgc",
+        "TIuoi0Qkx8U",
+        "dTvlZh6SE2w",
+        "DTp9mimXsTs"
+      ],
+      "created_in_batch": 3
+    },
+    {
+      "topic_id": "T007",
+      "label": "Impactos físicos e estéticos",
+      "description": "Análise dos efeitos físicos e estéticos, como queda de cabelo, alterações no corpo e outros impactos visíveis do uso de medicamentos para emagrecimento.",
+      "evidence_video_ids": [
+        "kVC-9b1Z0sM",
+        "1z3AN4QfmRQ",
+        "V9waoRlCXyk"
+      ],
+      "created_in_batch": 3
+    },
+    {
+      "topic_id": "T008",
+      "label": "Uso em contextos clínicos específicos",
+      "description": "Discussão sobre o uso de medicamentos para emagrecimento em contextos clínicos específicos, como nefropatia diabética, lipedema e outros.",
+      "evidence_video_ids": [
+        "72OGNRbQ5u0",
+        "07LJ2anYFFI",
+        "92RxRge7748"
+      ],
+      "created_in_batch": 3
+    },
+    {
+      "topic_id": "T009",
+      "label": "Efeitos colaterais específicos",
+      "description": "Discussão sobre efeitos colaterais específicos e menos comuns relacionados ao uso de medicamentos para emagrecimento.",
+      "evidence_video_ids": [
+        "d78gKdp4H5Y",
         "Z75JAveqjXI",
         "WofgTcpser8"
       ],
       "created_in_batch": 4
     },
     {
-      "topic_id": "T007",
-      "label": "Comparação com alternativas naturais ou não farmacológicas",
-      "description": "Análise de alternativas naturais, comportamentais ou não farmacológicas ao uso de medicamentos para emagrecimento, como jejum intermitente, alimentação low-carb, exercícios ou hábitos de vida.",
-      "evidence_video_ids": [
-        "Eb3MNE2j23A",
-        "JjJ8bp5zGEU",
-        "sRksXg77DQc"
-      ],
-      "created_in_batch": 4
-    },
-    {
-      "topic_id": "T008",
-      "label": "Uso de medicamentos manipulados ou falsificados",
-      "description": "Discussão sobre o uso de versões manipuladas, falsificadas ou não aprovadas de medicamentos para emagrecimento, como Ozempic ou Mounjaro, e seus riscos.",
-      "evidence_video_ids": [
-        "vVA9cPQJYz8",
-        "WuzwoqHxHuk",
-        "QSoPM5auvGU"
-      ],
-      "created_in_batch": 4
-    },
-    {
-      "topic_id": "T009",
-      "label": "Impacto em contextos sociais ou culturais",
-      "description": "Reflexão sobre o impacto social, cultural ou comportamental do uso de medicamentos para emagrecimento, como obsessão por emagrecimento, estigma, ou influências culturais (ex.: Páscoa, viagens, eventos sociais).",
-      "evidence_video_ids": [
-        "uxYQuOsnVLk",
-        "OdYhm-bhl14",
-        "NleF_IpDJwk"
-      ],
-      "created_in_batch": 4
-    },
-    {
       "topic_id": "T010",
-      "label": "Dose, desmame e manejo de medicamentos",
-      "description": "Discussão sobre a dosagem adequada, desmame, ajuste de doses e manejo de medicamentos para emagrecimento, incluindo erros comuns e como evitá-los.",
+      "label": "Uso de probióticos em conjunto",
+      "description": "Análise do uso de probióticos em conjunto com medicamentos para emagrecimento, como Mounjaro.",
       "evidence_video_ids": [
-        "UtX9ZYX0OO8",
-        "ua57BoSg5_w",
-        "a0Jy8KedlTw"
+        "MUhE9NOBpCU"
       ],
       "created_in_batch": 4
     },
     {
       "topic_id": "T011",
-      "label": "Impacto cognitivo e neurológico",
-      "description": "Discussão sobre os efeitos dos medicamentos para emagrecimento, como semaglutida e tirzepatida, no cérebro, apetite e funções cognitivas.",
+      "label": "Impactos socioeconômicos e culturais",
+      "description": "Discussão sobre os impactos socioeconômicos e culturais do uso de medicamentos para emagrecimento, como a obsolescência de produtos e a construção de cidades.",
+      "evidence_video_ids": [
+        "OdYhm-bhl14"
+      ],
+      "created_in_batch": 4
+    },
+    {
+      "topic_id": "T012",
+      "label": "Comparação com alternativas naturais",
+      "description": "Análise comparativa entre medicamentos para emagrecimento e alternativas naturais, como ozempic natural e psyllium.",
+      "evidence_video_ids": [
+        "sRksXg77DQc",
+        "JjJ8bp5zGEU"
+      ],
+      "created_in_batch": 4
+    },
+    {
+      "topic_id": "T013",
+      "label": "Uso em contextos de saúde mental",
+      "description": "Discussão sobre o uso de medicamentos para emagrecimento em contextos de saúde mental, como a obsessão e repulsa pela comida.",
+      "evidence_video_ids": [
+        "NleF_IpDJwk"
+      ],
+      "created_in_batch": 4
+    },
+    {
+      "topic_id": "T014",
+      "label": "Uso de medicamentos em contextos de saúde mental",
+      "description": "Discussão sobre o uso de medicamentos para emagrecimento em contextos de saúde mental, como compulsão por doces e obsessão alimentar.",
+      "evidence_video_ids": [
+        "JeYlFn5tRJE",
+        "Xz1FEj4e9VM"
+      ],
+      "created_in_batch": 10
+    },
+    {
+      "topic_id": "T015",
+      "label": "Impactos neurológicos e cognitivos",
+      "description": "Discussão sobre os efeitos dos medicamentos para emagrecimento no cérebro, como alterações no apetite e impactos neurológicos.",
       "evidence_video_ids": [
         "fjwBn6m7788",
         "ZGh5hcabJNc"
@@ -156,48 +191,31 @@
       "created_in_batch": 11
     },
     {
-      "topic_id": "T012",
+      "topic_id": "T016",
       "label": "Efeitos colaterais menos discutidos",
-      "description": "Análise de efeitos colaterais menos comuns ou pouco discutidos, como cegueira parcial, dor na coluna, cansaço extremo e impactos na libido.",
+      "description": "Análise de efeitos colaterais menos comuns ou pouco discutidos, como cegueira parcial e complicações graves.",
       "evidence_video_ids": [
         "f7zlY9v2XvY",
-        "phESEqAAnPQ",
-        "ixr52smfA6w",
-        "XMs9TqLaCHM"
+        "wkfAe71Af9E"
       ],
       "created_in_batch": 11
     },
     {
-      "topic_id": "T013",
-      "label": "Uso de medicamentos em contextos legais ou ilegais",
-      "description": "Discussão sobre o uso de medicamentos para emagrecimento em contextos legais, como compras no exterior, ou ilegais, como aquisição de versões não aprovadas.",
+      "topic_id": "T017",
+      "label": "Uso de medicamentos em contextos de dependência química",
+      "description": "Discussão sobre o uso de medicamentos para emagrecimento em contextos de dependência química, como o uso de cannabis.",
       "evidence_video_ids": [
-        "uBZiJqtecH4",
-        "wJ4TxkYiztA",
-        "4Qq6yTsBUgc"
+        "zIzmxVl4SlU"
       ],
       "created_in_batch": 11
     },
     {
-      "topic_id": "T014",
-      "label": "Comparação entre versões de medicamentos (ex.: Ozempic vs. Wegovy)",
-      "description": "Análise comparativa entre versões de medicamentos com o mesmo princípio ativo, como Ozempic e Wegovy (ambos com semaglutida), ou entre diferentes formulações.",
+      "topic_id": "T018",
+      "label": "Comparação entre marcas e formulações",
+      "description": "Análise comparativa entre diferentes marcas e formulações de medicamentos para emagrecimento, como Ozempic, Wegovy e Mounjaro.",
       "evidence_video_ids": [
-        "zxWQRVi5Jm0",
-        "PaCwJ4wim_g",
-        "6pyXNv3cbc8",
-        "Rac8p5U-DQs"
-      ],
-      "created_in_batch": 11
-    },
-    {
-      "topic_id": "T015",
-      "label": "Estratégias de uso e protocolos específicos",
-      "description": "Discussão sobre protocolos, dosagens, combinação de medicamentos ou estratégias específicas para maximizar resultados ou minimizar efeitos colaterais.",
-      "evidence_video_ids": [
-        "r-PHaVyhYlw",
-        "1PrTD1bor5U",
-        "SUJGSVoMQtM"
+        "It-ZalzVCEU",
+        "6pyXNv3cbc8"
       ],
       "created_in_batch": 11
     }
@@ -205,5 +223,5 @@
   "initial_taxonomy_file": null,
   "initial_taxonomy_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "initial_topics": 0,
-  "generated_topics": 15
+  "generated_topics": 18
 }
