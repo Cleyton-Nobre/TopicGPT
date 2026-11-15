@@ -1,0 +1,165 @@
+{
+  "generated_at_utc": "2026-11-15T18:39:34.565910+00:00",
+  "script": {
+    "file": "plot_classificacao.py",
+    "sha256": "2f3061a683be586bb7f9599b24d46823a10d8e997a51e11c9150278ee0fc3050"
+  },
+  "versions": {
+    "python": "3.14.4",
+    "matplotlib": "3.11.2",
+    "numpy": "2.5.4"
+  },
+  "parameters": {
+    "formats": [
+      "png",
+      "pdf"
+    ],
+    "dpi": 300,
+    "models": {
+      "deepseek_v4_1_flash": "DeepSeek V4.1 Flash",
+      "gemini_3_8_flash": "Gemini 3.8 Flash"
+    },
+    "prompts": {
+      "zero_shot": "Zero-shot",
+      "few_shot": "Few-shot",
+      "cot": "CoT"
+    }
+  },
+  "inputs": [
+    {
+      "file": "metricas.csv",
+      "sha256": "91d3b338dc9a98c3bb6ead0bcd42746cb77c7b6b39419162a90f8398e2bcec6e"
+    },
+    {
+      "file": "f1_por_classe.csv",
+      "sha256": "bc52696ef6422f0d3a31e5b9fee54bab75bd05486d0a8943df7059f5dc26f1e1"
+    },
+    {
+      "file": "confusao_deepseek_v4_1_flash__zero_shot.csv",
+      "sha256": "5b39bcde927063d7441bdeebd73644dcfb9ab41fd763c8ed7f7d65fe7b286bd9"
+    },
+    {
+      "file": "confusao_deepseek_v4_1_flash__few_shot.csv",
+      "sha256": "786ce6cea4c0851516fb61197f075a66b39c0f22ec67e8144a3b6bf03059d6d4"
+    },
+    {
+      "file": "confusao_deepseek_v4_1_flash__cot.csv",
+      "sha256": "af5536b17fcbfd57ecd9abbb923a4945ca2b0897fadaa685c51cf38e91482d5b"
+    },
+    {
+      "file": "confusao_gemini_3_8_flash__zero_shot.csv",
+      "sha256": "4840c21ee241ce0129c5eb5f34a0a7d2fc6696428d2ceb578f2644bbb4bf75f4"
+    },
+    {
+      "file": "confusao_gemini_3_8_flash__few_shot.csv",
+      "sha256": "ec5ee92c0f46d2f3b43345c92dde9e0fc76e40090260bd7f953ea8a7852a1673"
+    },
+    {
+      "file": "confusao_gemini_3_8_flash__cot.csv",
+      "sha256": "d881e56efa39ae0193c59843f69e001d285139b51c59bd6a0924c018c9d4e486"
+    }
+  ],
+  "coverage": [
+    {
+      "model": "deepseek_v4_1_flash",
+      "prompt": "zero_shot",
+      "classified": 291,
+      "total": 291
+    },
+    {
+      "model": "deepseek_v4_1_flash",
+      "prompt": "few_shot",
+      "classified": 291,
+      "total": 291
+    },
+    {
+      "model": "deepseek_v4_1_flash",
+      "prompt": "cot",
+      "classified": 291,
+      "total": 291
+    },
+    {
+      "model": "gemini_3_8_flash",
+      "prompt": "zero_shot",
+      "classified": 291,
+      "total": 291
+    },
+    {
+      "model": "gemini_3_8_flash",
+      "prompt": "few_shot",
+      "classified": 291,
+      "total": 291
+    },
+    {
+      "model": "gemini_3_8_flash",
+      "prompt": "cot",
+      "classified": 291,
+      "total": 291
+    }
+  ],
+  "notes": [
+    "Valores dos CSVs agregados; não há intervalos de confiança ou múltiplas repetições.",
+    "Diferenças entre condições são descritivas; estas figuras não testam significância.",
+    "Custo é o total registrado em usage.csv; latência é média por chamada, não duração total.",
+    "Tokens dependem do tokenizer; tokens de raciocínio não são somados novamente à saída.",
+    "Matrizes: linhas reais, colunas preditas; cores normalizadas por linha, texto com contagem e percentual."
+  ],
+  "artifacts": [
+    {
+      "file": "01_desempenho.png",
+      "sha256": "ac80765f882f189a27c54f80e5e3da879283c7324e4c6692634000e35b27e53e"
+    },
+    {
+      "file": "01_desempenho.pdf",
+      "sha256": "56da313fe9a5288df7dcb6c9aa9f39eedb251cb7a3d3ea2c02d3cb3710869c95"
+    },
+    {
+      "file": "02_variacao_vs_zero_shot.png",
+      "sha256": "68143177dd50139eecd6edf162d8008fd673d1ed403267030e1a68a2a0e013b0"
+    },
+    {
+      "file": "02_variacao_vs_zero_shot.pdf",
+      "sha256": "1bd95589b5fa9a0b09a790b064962947201ffa6980b56ce545bd6f9d3f40e085"
+    },
+    {
+      "file": "03_custo_latencia.png",
+      "sha256": "5e23c08f9a11650f48909f5d95bc9a32a18b9c38981338df3440e5f394211117"
+    },
+    {
+      "file": "03_custo_latencia.pdf",
+      "sha256": "3993ba1bf66cc3b20296d78a2031a5e2d250ce29b487d05d3fbd392ba9feb953"
+    },
+    {
+      "file": "04_tokens.png",
+      "sha256": "28c24a21e81cde0e9757b4272042d7e69b940f17fe67f59046eab1809d846a1a"
+    },
+    {
+      "file": "04_tokens.pdf",
+      "sha256": "7518d7ff6a6f5114329d2b1d44a7474bd5b196e737e3e274c55e1298da8a2422"
+    },
+    {
+      "file": "05_f1_por_classe.png",
+      "sha256": "2b5e3fd8e79a5d0f32d2d3776f3e6359a4baa31abc37cc2963b5abf81b492b8a"
+    },
+    {
+      "file": "05_f1_por_classe.pdf",
+      "sha256": "8235f48300e60b72c0e417a0d4efa7afde1e9b435bdaed35294b1c460d06baf3"
+    },
+    {
+      "file": "06_matrizes_confusao.png",
+      "sha256": "c36256bd72bd3435e9e9fce9b411da7b4fa5e10890bdf4885737c9a937d7a08b"
+    },
+    {
+      "file": "06_matrizes_confusao.pdf",
+      "sha256": "95bb975135cdd03babd242bb6d5ead38ac1775e9d24822d82585a429ff18a130"
+    },
+    {
+      "file": "07_qualidade_custo.png",
+      "sha256": "f195c2613039e27bfcfc0a7ee631ede1f840a64ca101c9677b317546eb5622a5"
+    },
+    {
+      "file": "07_qualidade_custo.pdf",
+      "sha256": "730d898f0f75b2189e18183f19aef469a627093a9082ac2b00a7295e0ee6ec83"
+    }
+  ]
+}

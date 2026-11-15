@@ -1,0 +1,7 @@
+﻿modelo,prompt,classificados,total,acuracia,f1_macro,chamadas,tentativas_falhas,tokens_entrada,tokens_saida,tokens_raciocinio,custo_usd,latencia_media_s
+deepseek_v4_1_flash,zero_shot,291,291,0.8729,0.8234,30,0,32308,4072,0,0.0066,1.3
+deepseek_v4_1_flash,few_shot,291,291,0.8694,0.8144,30,0,40751,4075,0,0.0063,1.2
+deepseek_v4_1_flash,cot,291,291,0.8419,0.8038,30,0,53843,13813,0,0.0146,2.9
+gemini_3_8_flash,zero_shot,291,291,0.8763,0.8254,30,0,33778,4312,0,0.0415,2.9
+gemini_3_8_flash,few_shot,291,291,0.8866,0.8404,30,0,41968,4768,0,0.0494,3.0
+gemini_3_8_flash,cot,291,291,0.89,0.8382,30,0,54298,14502,0,0.0951,5.7

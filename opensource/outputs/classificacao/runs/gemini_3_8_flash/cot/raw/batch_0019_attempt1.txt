@@ -1,0 +1,55 @@
+{
+  "classificacoes": [
+    {
+      "n": 1,
+      "raciocinio": "Aborda o aumento da demanda e a formação de um mercado ilegal de medicamentos, tratando de mercado e fraudes.",
+      "c": "C6"
+    },
+    {
+      "n": 2,
+      "raciocinio": "Apresenta um panorama geral explicativo sobre os princípios ativos semaglutida e tirzepatida, associado às bases científicas dos medicamentos.",
+      "c": "C7"
+    },
+    {
+      "n": 3,
+      "raciocinio": "O foco é na aplicação prática do medicamento Mounjaro acompanhada de hashtags de jornada.",
+      "c": "C1"
+    },
+    {
+      "n": 4,
+      "raciocinio": "O título foca no modo de uso da caneta injetável do Mounjaro, caracterizando administração do medicamento.",
+      "c": "C1"
+    },
+    {
+      "n": 5,
+      "raciocinio": "O foco central são os efeitos colaterais e o que esperar do tratamento em termos de tolerabilidade e segurança.",
+      "c": "C3"
+    },
+    {
+      "n": 6,
+      "raciocinio": "Trata prioritariamente de como funciona a substância no organismo para emagrecer, abordando mecanismo de ação e bases científicas.",
+      "c": "C7"
+    },
+    {
+      "n": 7,
+      "raciocinio": "Foca na magnitude e estimativa de resultados de perda de peso (quantos quilos emagrece) com o uso de Wegovy.",
+      "c": "C2"
+    },
+    {
+      "n": 8,
+      "raciocinio": "Explica o mecanismo de ação biológico do Ozempic no organismo e como ele atua no emagrecimento.",
+      "c": "C7"
+    },
+    {
+      "n": 9,
+      "raciocinio": "Questiona e aborda a segurança e os riscos envolvidos no uso do Ozempic para emagrecer.",
+      "c": "C3"
+    },
+    {
+      "n": 10,
+      "raciocinio": "Foca em registros de treino e corrida física associados a hashtags de medicamentos, abordando a prática de exercícios.",
+      "c": "C5"
+    }
+  ]
+}
+[finish_reason] stop

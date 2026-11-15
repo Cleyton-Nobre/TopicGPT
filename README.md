@@ -1,5 +1,15 @@
 # TopicGPT
 
+O experimento de classificação via OpenRouter está integrado em
+[`opensource/classificacao_experimento.py`](opensource/classificacao_experimento.py).
+O gabarito fica em `opensource/data`, os templates em `opensource/prompts/classificacao`
+e os prompts gerados, requisições, execuções e resultados em `opensource/outputs/classificacao`.
+Consulte a [organização dos arquivos e os comandos de execução](opensource/README-classificacao.md).
+Para comparar Gemini e DeepSeek com os três tipos de prompt, use
+[`opensource/plot_classificacao.py`](opensource/plot_classificacao.py).
+As figuras são salvas em `opensource/outputs/classificacao/figures`; as instruções
+estão na [documentação dos gráficos](opensource/README-classificacao.md#gráficos-de-comparação).
+
 Para executar a consolidação global de `merging.ipynb` usando o modelo aberto
 servido pelo vLLM, use [`opensource/topic_merging.py`](opensource/topic_merging.py).
 Os comandos da CLI e do Docker estão em [`opensource/README.md`](opensource/README.md).

@@ -1,0 +1,74 @@
+[SYSTEM]
+Você é um anotador especializado em classificação de textos curtos. Você recebe títulos de vídeos do YouTube, em português, sobre medicamentos para emagrecimento. Para cada título, você deve primeiro raciocinar brevemente sobre o foco principal do texto e depois atribuir exatamente uma categoria de uma lista fixa. Responda apenas com o JSON pedido.
+
+[USER]
+Classifique cada título de vídeo abaixo em UMA das categorias da lista, explicando brevemente seu raciocínio antes de definir o código final.
+
+## Categorias
+
+C0 – Nenhuma Categoria se Aplica: Se nenhum dos tópicos abaixo servir para descrever o assunto do título (ex: hashtags soltas, termos sem contexto ou assuntos não relacionados).
+C1 – Administração e conservação dos medicamentos: Orientações práticas sobre aplicação, horários, frequência, ajuste de doses e contagem de cliques, além dos cuidados de armazenamento, conservação e transporte das canetas, inclusive em viagens.
+C2 – Resultados e avaliação de alternativas para emagrecimento: Discussões sobre magnitude, velocidade e continuidade dos resultados, experiências individuais e evolução do peso, comparações entre tratamentos quanto a benefícios e tolerabilidade e alegações sobre produtos ou receitas naturais apresentados como substitutos dos medicamentos.
+C3 – Segurança e acompanhamento do tratamento: Discussões sobre quem pode ou deve utilizar os medicamentos, prescrição e supervisão profissional, riscos e efeitos adversos físicos ou psicológicos, sua prevenção e manejo e combinações com outros fármacos ou substâncias, incluindo interações e estratégias de potencialização.
+C4 – Aplicações e repercussões além do emagrecimento: Benefícios, aplicações e relações dos medicamentos com outras condições e áreas da saúde, incluindo doenças hepáticas e cardiovasculares, saúde ginecológica e procedimentos reprodutivos.
+C5 – Hábitos e manutenção do peso: Estratégias alimentares, organização das refeições, exercícios e mudanças comportamentais associados ao tratamento, incluindo desmame, suspensão dos medicamentos e prevenção do reganho de peso.
+C6 – Mercado, regulação e acesso aos medicamentos: Custos, disponibilidade e acesso pela rede pública ou por compras no exterior; aprovação sanitária, fiscalização, fraudes e contrabando; patentes e concorrência entre fabricantes; e impactos da demanda na economia e no crescimento dos países.
+C7 – Bases científicas e desenvolvimento dos medicamentos: Explicações sobre o que são os medicamentos e como atuam no organismo, articuladas à sua origem científica, aos testes e ao desenvolvimento de novos medicamentos e formulações para emagrecimento.
+C8 – Impactos sociais e culturais do uso: Discussões sobre a popularização dos medicamentos para emagrecimento, sua associação a celebridades e os debates sobre padrões corporais e aceitação do corpo.
+
+## Regras
+
+1. Analise o foco principal de cada título em uma frase curta no campo "raciocinio" antes de escolher o código no campo "c".
+2. Baseie-se apenas no conteúdo do título. Não invente informações.
+3. Se mais de uma categoria couber, escolha a que melhor descreve o foco principal do título.
+4. Avalie cada título de forma independente dos demais.
+5. Devolva uma classificação para cada título, usando o número (n) correspondente.
+
+## Exemplos de Raciocínio e Classificação
+
+Título: "#fitness #saude #fyp"
+Saída: {"raciocinio": "O título trata de um vlog genérico com hashtags soltas, sem abordar medicamentos ou temas específicos da taxonomia.", "c": "C0"}
+
+Título: "Quantos cliques girar na caneta de 1mg e como levar no avião"
+Saída: {"raciocinio": "O foco está na instrução prática de dosagem (contagem de cliques) e no transporte adequado do dispositivo em viagens.", "c": "C1"}
+
+Título: "Perdi 12kg em 2 meses: Mounjaro funciona melhor que Ozempic?"
+Saída: {"raciocinio": "Aborda a experiência individual de perda de peso (magnitude e velocidade) combinada à comparação de eficácia entre dois tratamentos.", "c": "C2"}
+
+Título: "Quem tem problemas na tireoide pode usar? Como evitar enjoo forte"
+Saída: {"raciocinio": "Trata de contraindicações médicas (quem pode usar) e do manejo de efeitos adversos físicos durante o tratamento.", "c": "C3"}
+
+Título: "Estudo mostra benefício da semaglutida para gordura no fígado e coração"
+Saída: {"raciocinio": "O tema central são os efeitos terapêuticos do fármaco em outras condições médicas (doenças hepáticas e cardiovasculares) além da perda de peso.", "c": "C4"}
+
+Título: "O que comer durante o uso e como fazer o desmame sem efeito rebote"
+Saída: {"raciocinio": "Foca em estratégias alimentares associadas ao tratamento e na suspensão gradual para evitar o reganho de peso.", "c": "C5"}
+
+Título: "Anvisa apreende canetas falsificadas e SUS avalia inclusão do remédio"
+Saída: {"raciocinio": "Discute fiscalização sanitária, fraudes/contrabando e disponibilidade do medicamento na rede pública de saúde.", "c": "C6"}
+
+Título: "Como os agonistas de GLP-1 agem no cérebro e a nova molécula em testes"
+Saída: {"raciocinio": "Explica o mecanismo de ação biológico da substância no organismo e o desenvolvimento científico de novas formulações.", "c": "C7"}
+
+Título: "A pressão estética em Hollywood e as celebridades que assumiram o uso"
+Saída: {"raciocinio": "Analisa a repercussão cultural do medicamento, sua associação com figuras públicas e debates sobre padrões corporais.", "c": "C8"}
+
+## Títulos
+
+Formato: n<TAB>título
+
+1	Como as canetas emagrecedoras funcionam no metabolismo do seu corpo (Ozempic e Mounjaro)
+2	Ozempic: A verdade que não te contaram ⚠️ #dieta #emagrecer #ozempic
+3	Mounjaro Funciona Mesmo? Ele Perdeu 23kg em 2 Meses (RELATO REAL)
+4	Efeitos colaterais do Ozempic que ninguém fala... #ozempic #standupcomedy #andrevaladao #orgulho
+5	OZEMPIC, SAXENDA, MOUNJARO: CANETAS EMAGRECEDORAS (DRA CAMILA ARAMUNI) | Na Saúde x Na Doença #037
+6	💉 **Eu e Mounjaro: A Minha Jornada de Emagrecimento e Saúde** #emagrecimentoreal
+7	Com quinta aplicação de Tirzepatida (Mounjaro) meu peso sai da casa dos 70 #tirzepatida #mounjaro
+8	Perda de Cabelo e Semaglutida O Que Você Precisa Saber
+9	Saiba quanto custa o Saxenda: comprei outra vez após 1 ano e me assustei com o preço! #liraglutida
+10	Ozempic e pedras na vesícula: pode ou não pode usar?
+
+## Formato da resposta
+
+Responda apenas com um objeto JSON no formato:
+{"classificacoes": [{"n": 1, "raciocinio": "Explicação curta do foco principal.", "c": "C3"}, {"n": 2, "raciocinio": "Explicação curta do foco principal.", "c": "C0"}, ...]}

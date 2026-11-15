@@ -1,0 +1,2 @@
+{"classificacoes": [{"n": 1, "c": "C7"}]}
+[finish_reason] stop

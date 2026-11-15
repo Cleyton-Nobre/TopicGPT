@@ -1,0 +1,55 @@
+{
+  "classificacoes": [
+    {
+      "n": 1,
+      "raciocinio": "Discute se o medicamento faz mal, focando em riscos, efeitos adversos e segurança do uso.",
+      "c": "C3"
+    },
+    {
+      "n": 2,
+      "raciocinio": "Apresenta um alimento natural (chia) como tendo o mesmo efeito ou sendo alternativa ao medicamento para emagrecimento.",
+      "c": "C2"
+    },
+    {
+      "n": 3,
+      "raciocinio": "Aborda repercussões e efeitos do medicamento na pele (área dermatológica), além do emagrecimento.",
+      "c": "C4"
+    },
+    {
+      "n": 4,
+      "raciocinio": "Compara diferentes opções de medicamentos (Ozempic, Mounjaro, Wegovy) para avaliar qual é o melhor tratamento.",
+      "c": "C2"
+    },
+    {
+      "n": 5,
+      "raciocinio": "Trata da chegada de novos medicamentos ao mercado brasileiro e concorrência/disponibilidade comercial.",
+      "c": "C6"
+    },
+    {
+      "n": 6,
+      "raciocinio": "Foca nos efeitos colaterais e adversos do medicamento e em estratégias para manejá-los e resolvê-los.",
+      "c": "C3"
+    },
+    {
+      "n": 7,
+      "raciocinio": "Aborda o acesso ao medicamento por meio de compras no exterior (Paraguai).",
+      "c": "C6"
+    },
+    {
+      "n": 8,
+      "raciocinio": "Relata a experiência pessoal e individual de uso do medicamento logo no início do tratamento.",
+      "c": "C2"
+    },
+    {
+      "n": 9,
+      "raciocinio": "Avalia a eficácia do Ozempic para emagrecer comparado a outros, abordando também seus efeitos e mecanismo.",
+      "c": "C2"
+    },
+    {
+      "n": 10,
+      "raciocinio": "Informa sobre a chegada comercial e disponibilidade do medicamento Wegovy nas farmácias.",
+      "c": "C6"
+    }
+  ]
+}
+[finish_reason] stop

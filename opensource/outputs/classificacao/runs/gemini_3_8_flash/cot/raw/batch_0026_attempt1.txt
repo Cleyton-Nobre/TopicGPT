@@ -1,0 +1,55 @@
+{
+  "classificacoes": [
+    {
+      "n": 1,
+      "raciocinio": "O título traz um alerta ('cuidado'), questiona se funciona e destaca os efeitos colaterais do Ozempic, focando em segurança e riscos.",
+      "c": "C3"
+    },
+    {
+      "n": 2,
+      "raciocinio": "O foco está na exigência de receita médica e regulação da Anvisa para os medicamentos.",
+      "c": "C6"
+    },
+    {
+      "n": 3,
+      "raciocinio": "Apresenta hashtags que associam o medicamento a outra condição de saúde (lipedema) e nutrição.",
+      "c": "C4"
+    },
+    {
+      "n": 4,
+      "raciocinio": "O foco é explicar o mecanismo de ação e o que o medicamento realmente faz no organismo.",
+      "c": "C7"
+    },
+    {
+      "n": 5,
+      "raciocinio": "Discute deficiências nutricionais como risco ou efeito adverso associado ao uso dos análogos de GLP-1.",
+      "c": "C3"
+    },
+    {
+      "n": 6,
+      "raciocinio": "Aborda diretamente um efeito colateral adverso físico (anemia) decorrente do uso do Mounjaro.",
+      "c": "C3"
+    },
+    {
+      "n": 7,
+      "raciocinio": "Trata da prevenção e manejo de efeitos adversos físicos causados pelo Mounjaro.",
+      "c": "C3"
+    },
+    {
+      "n": 8,
+      "raciocinio": "Contém apenas hashtags soltas sem contexto ou informação substantiva.",
+      "c": "C0"
+    },
+    {
+      "n": 9,
+      "raciocinio": "Aborda o estilo de vida, aparência e looks de uma celebridade após o uso do medicamento.",
+      "c": "C8"
+    },
+    {
+      "n": 10,
+      "raciocinio": "Foca em como usar o medicamento evitando efeitos adversos e mal-estar físico.",
+      "c": "C3"
+    }
+  ]
+}
+[finish_reason] stop

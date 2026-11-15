@@ -1,0 +1,55 @@
+{
+  "classificacoes": [
+    {
+      "n": 1,
+      "raciocinio": "O título foca na comparação direta entre dois tratamentos (Ozempic e Mounjaro) para avaliar qual é o melhor.",
+      "c": "C2"
+    },
+    {
+      "n": 2,
+      "raciocinio": "Trata de orientações práticas sobre o momento e dia adequado para a aplicação do medicamento.",
+      "c": "C1"
+    },
+    {
+      "n": 3,
+      "raciocinio": "O foco principal é a perda de peso e os resultados obtidos com o uso de Ozempic.",
+      "c": "C2"
+    },
+    {
+      "n": 4,
+      "raciocinio": "O canal Ciência Todo Dia foca na explicação científica, funcionamento e bases biológicas do Ozempic.",
+      "c": "C7"
+    },
+    {
+      "n": 5,
+      "raciocinio": "Apresenta uma comparação direta entre os medicamentos Ozempic e Mounjaro para avaliar eficácia/resultados.",
+      "c": "C2"
+    },
+    {
+      "n": 6,
+      "raciocinio": "Discute a segurança, riscos cirúrgicos e o acompanhamento necessário ao usar Ozempic antes de uma cirurgia.",
+      "c": "C3"
+    },
+    {
+      "n": 7,
+      "raciocinio": "Aborda o aspecto financeiro, custo e preço acessível do Ozempic, enquadrando-se em mercado e acesso.",
+      "c": "C6"
+    },
+    {
+      "n": 8,
+      "raciocinio": "Trata de cuidados, precauções e segurança durante o tratamento com Mounjaro para emagrecimento.",
+      "c": "C3"
+    },
+    {
+      "n": 9,
+      "raciocinio": "Destaca riscos e efeitos adversos graves (cegueira, retinopatia) associados ao medicamento Mounjaro.",
+      "c": "C3"
+    },
+    {
+      "n": 10,
+      "raciocinio": "Compara a eficácia e magnitude da perda de peso entre Mounjaro e Ozempic.",
+      "c": "C2"
+    }
+  ]
+}
+[finish_reason] stop

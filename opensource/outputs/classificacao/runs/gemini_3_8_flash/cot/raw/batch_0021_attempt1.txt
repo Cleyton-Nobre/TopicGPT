@@ -1,0 +1,55 @@
+{
+  "classificacoes": [
+    {
+      "n": 1,
+      "raciocinio": "Trata de orientações práticas sobre o momento e ajuste de doses do medicamento.",
+      "c": "C1"
+    },
+    {
+      "n": 2,
+      "raciocinio": "Aborda instruções práticas sobre o melhor momento e frequência/dia para a aplicação dos medicamentos.",
+      "c": "C1"
+    },
+    {
+      "n": 3,
+      "raciocinio": "Relato de experiência individual de emagrecimento (perda de 13kg) e os resultados visíveis no rosto.",
+      "c": "C2"
+    },
+    {
+      "n": 4,
+      "raciocinio": "Discute a velocidade e a magnitude dos resultados de perda de peso em determinado período com o medicamento.",
+      "c": "C2"
+    },
+    {
+      "n": 5,
+      "raciocinio": "Foca nos cuidados com a pele e manejo estético/físico decorrente do emagrecimento rápido associado ao medicamento.",
+      "c": "C3"
+    },
+    {
+      "n": 6,
+      "raciocinio": "Compara dois medicamentos em relação à magnitude e eficácia dos resultados de emagrecimento.",
+      "c": "C2"
+    },
+    {
+      "n": 7,
+      "raciocinio": "Discute a presença, repercussão e popularização do medicamento nas redes sociais e na cultura digital.",
+      "c": "C8"
+    },
+    {
+      "n": 8,
+      "raciocinio": "Analisa o aspecto de popularidade e alcance cultural/social de dois medicamentos.",
+      "c": "C8"
+    },
+    {
+      "n": 9,
+      "raciocinio": "Explica o mecanismo de ação da molécula (semaglutida) e o funcionamento científico do fármaco no organismo.",
+      "c": "C7"
+    },
+    {
+      "n": 10,
+      "raciocinio": "Compara os tratamentos para avaliar qual alternativa oferece melhores benefícios ou se adapta melhor ao indivíduo.",
+      "c": "C2"
+    }
+  ]
+}
+[finish_reason] stop

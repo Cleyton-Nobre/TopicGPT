@@ -1,0 +1,55 @@
+{
+  "classificacoes": [
+    {
+      "n": 1,
+      "raciocinio": "O título foca na explicação de como os medicamentos atuam no organismo e no metabolismo.",
+      "c": "C7"
+    },
+    {
+      "n": 2,
+      "raciocinio": "Título com tom sensacionalista e vago, com hashtags genéricas de dieta e emagrecimento sem detalhar um foco temático específico da taxonomia.",
+      "c": "C0"
+    },
+    {
+      "n": 3,
+      "raciocinio": "Trata de relato real de experiência individual com perda de peso (23kg em 2 meses) e eficácia do Mounjaro.",
+      "c": "C2"
+    },
+    {
+      "n": 4,
+      "raciocinio": "Aborda efeitos colaterais e riscos associados ao uso do Ozempic.",
+      "c": "C3"
+    },
+    {
+      "n": 5,
+      "raciocinio": "Apresenta uma visão geral e explicação científica/médica sobre o que são as canetas emagrecedoras conduzida por médica.",
+      "c": "C7"
+    },
+    {
+      "n": 6,
+      "raciocinio": "Compartilha uma experiência pessoal e a evolução individual do emagrecimento com o uso de Mounjaro.",
+      "c": "C2"
+    },
+    {
+      "n": 7,
+      "raciocinio": "Relata a evolução individual de peso ao longo das aplicações de Tirzepatida.",
+      "c": "C2"
+    },
+    {
+      "n": 8,
+      "raciocinio": "Discute a queda de cabelo como efeito adverso associado ao uso de Semaglutida.",
+      "c": "C3"
+    },
+    {
+      "n": 9,
+      "raciocinio": "Foca no preço, custo financeiro e compra do medicamento Saxenda.",
+      "c": "C6"
+    },
+    {
+      "n": 10,
+      "raciocinio": "Trata de elegibilidade, segurança e contraindicações de uso do Ozempic para quem tem pedras na vesícula.",
+      "c": "C3"
+    }
+  ]
+}
+[finish_reason] stop

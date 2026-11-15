@@ -1,0 +1,55 @@
+{
+  "classificacoes": [
+    {
+      "n": 1,
+      "raciocinio": "O título discute estratégias alimentares e dieta específica associadas ao tratamento com análogos de GLP-1.",
+      "c": "C5"
+    },
+    {
+      "n": 2,
+      "raciocinio": "O foco está nos resultados e eficácia no emagrecimento e queima de gordura ao avaliar e comparar Ozempic e Mounjaro.",
+      "c": "C2"
+    },
+    {
+      "n": 3,
+      "raciocinio": "Apresenta a bula explicando para que serve (indicações) e como tomar (administração/dosagem), com foco central em uso e segurança geral.",
+      "c": "C3"
+    },
+    {
+      "n": 4,
+      "raciocinio": "Trata diretamente da necessidade e importância da avaliação médica e supervisão profissional no tratamento com Ozempic e outros métodos.",
+      "c": "C3"
+    },
+    {
+      "n": 5,
+      "raciocinio": "Aborda o mercado farmacêutico, concorrência e chegada de versão genérica/similar do medicamento ao Brasil.",
+      "c": "C6"
+    },
+    {
+      "n": 6,
+      "raciocinio": "Oferece orientações práticas de como aplicar a caneta do medicamento associadas à experiência pessoal.",
+      "c": "C1"
+    },
+    {
+      "n": 7,
+      "raciocinio": "Aborda as informações oficiais da bula do Mounjaro, relativas a indicações, segurança e acompanhamento do fármaco.",
+      "c": "C3"
+    },
+    {
+      "n": 8,
+      "raciocinio": "Contém apenas uma sequência de hashtags soltas sem uma frase informativa ou contexto estruturado.",
+      "c": "C0"
+    },
+    {
+      "n": 9,
+      "raciocinio": "Avalia o valor e a eficácia do uso da semaglutida (Wegovy) como alternativa para o emagrecimento.",
+      "c": "C2"
+    },
+    {
+      "n": 10,
+      "raciocinio": "Trata especificamente da contagem de cliques e conversão prática de doses nas canetas de semaglutida.",
+      "c": "C1"
+    }
+  ]
+}
+[finish_reason] stop

@@ -1,0 +1,16 @@
+﻿condicao_A,condicao_B,n_comum,so_A_acerta,so_B_acerta,p_valor
+deepseek_v4_1_flash|zero_shot,deepseek_v4_1_flash|few_shot,291,9,8,1.0
+deepseek_v4_1_flash|zero_shot,deepseek_v4_1_flash|cot,291,18,9,0.1221
+deepseek_v4_1_flash|zero_shot,gemini_3_8_flash|zero_shot,291,13,14,1.0
+deepseek_v4_1_flash|zero_shot,gemini_3_8_flash|few_shot,291,11,15,0.5572
+deepseek_v4_1_flash|zero_shot,gemini_3_8_flash|cot,291,11,16,0.4421
+deepseek_v4_1_flash|few_shot,deepseek_v4_1_flash|cot,291,16,8,0.1516
+deepseek_v4_1_flash|few_shot,gemini_3_8_flash|zero_shot,291,15,17,0.8601
+deepseek_v4_1_flash|few_shot,gemini_3_8_flash|few_shot,291,13,18,0.4731
+deepseek_v4_1_flash|few_shot,gemini_3_8_flash|cot,291,11,17,0.3449
+deepseek_v4_1_flash|cot,gemini_3_8_flash|zero_shot,291,7,17,0.0639
+deepseek_v4_1_flash|cot,gemini_3_8_flash|few_shot,291,5,18,0.0106
+deepseek_v4_1_flash|cot,gemini_3_8_flash|cot,291,5,19,0.0066
+gemini_3_8_flash|zero_shot,gemini_3_8_flash|few_shot,291,3,6,0.5078
+gemini_3_8_flash|zero_shot,gemini_3_8_flash|cot,291,3,7,0.3438
+gemini_3_8_flash|few_shot,gemini_3_8_flash|cot,291,6,7,1.0

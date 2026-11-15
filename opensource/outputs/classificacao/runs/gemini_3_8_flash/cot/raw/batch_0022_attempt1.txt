@@ -1,0 +1,55 @@
+{
+  "classificacoes": [
+    {
+      "n": 1,
+      "raciocinio": "O título foca na busca por resultados de emagrecimento com Ozempic e Mounjaro.",
+      "c": "C2"
+    },
+    {
+      "n": 2,
+      "raciocinio": "Aborda a velocidade e o tempo necessário para alcançar resultados de perda de peso com Ozempic.",
+      "c": "C2"
+    },
+    {
+      "n": 3,
+      "raciocinio": "Compara diretamente dois medicamentos (Mounjaro vs. Ozempic) voltados para o emagrecimento.",
+      "c": "C2"
+    },
+    {
+      "n": 4,
+      "raciocinio": "Discute práticas inadequadas, riscos e a segurança no uso do medicamento Mounjaro.",
+      "c": "C3"
+    },
+    {
+      "n": 5,
+      "raciocinio": "Apresenta apenas frases soltas e hashtags sem contexto claro sobre o uso ou temas do medicamento.",
+      "c": "C0"
+    },
+    {
+      "n": 6,
+      "raciocinio": "Foca em estratégias e orientações alimentares após/durante o tratamento com Ozempic.",
+      "c": "C5"
+    },
+    {
+      "n": 7,
+      "raciocinio": "Questiona os potenciais malefícios, riscos e efeitos adversos do uso de Ozempic.",
+      "c": "C3"
+    },
+    {
+      "n": 8,
+      "raciocinio": "Trata dos benefícios gerais e da ação da semaglutida para a saúde de homens e mulheres.",
+      "c": "C4"
+    },
+    {
+      "n": 9,
+      "raciocinio": "Foca no alerta médico sobre riscos, problemas e efeitos adversos associados ao Ozempic.",
+      "c": "C3"
+    },
+    {
+      "n": 10,
+      "raciocinio": "Aborda diretamente os riscos e questões de segurança ao tomar Ozempic para emagrecer.",
+      "c": "C3"
+    }
+  ]
+}
+[finish_reason] stop

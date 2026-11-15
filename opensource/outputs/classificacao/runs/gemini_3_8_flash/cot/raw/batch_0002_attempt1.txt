@@ -1,0 +1,55 @@
+{
+  "classificacoes": [
+    {
+      "n": 1,
+      "raciocinio": "O título foca no preço reduzido e nas formas de adquirir/comprar o Mounjaro, abordando custos e acesso comercial.",
+      "c": "C6"
+    },
+    {
+      "n": 2,
+      "raciocinio": "Discute a indicação e segurança do uso do medicamento Saxenda em um público específico (crianças).",
+      "c": "C3"
+    },
+    {
+      "n": 3,
+      "raciocinio": "Trata de aspectos emocionais e psicológicos, especificamente o medo associado ao uso de Ozempic.",
+      "c": "C3"
+    },
+    {
+      "n": 4,
+      "raciocinio": "Apresenta uma receita natural (chá de banana) como suposta alternativa ou comparativo ao Ozempic para emagrecimento.",
+      "c": "C2"
+    },
+    {
+      "n": 5,
+      "raciocinio": "Aborda o mecanismo de funcionamento do fármaco e quem tem indicação médica para utilizar o tratamento.",
+      "c": "C7"
+    },
+    {
+      "n": 6,
+      "raciocinio": "Discute se o medicamento é suficiente por si só para emagrecer ou se exige mudanças de hábitos e estilo de vida.",
+      "c": "C5"
+    },
+    {
+      "n": 7,
+      "raciocinio": "Foca na administração prática do medicamento, especificamente na contagem e ajuste de cliques na caneta.",
+      "c": "C1"
+    },
+    {
+      "n": 8,
+      "raciocinio": "Trata das aplicações e benefícios do Mounjaro que vão além do simples emagrecimento para o qual é comumente conhecido.",
+      "c": "C4"
+    },
+    {
+      "n": 9,
+      "raciocinio": "Relato de experiência individual sobre perda de peso e rapidez dos resultados obtidos.",
+      "c": "C2"
+    },
+    {
+      "n": 10,
+      "raciocinio": "Apesar de mencionar 'como usar o mounjaro', o título mistura música, carnaval 2026 e hashtags desconexas sem foco informativo claro sobre o medicamento.",
+      "c": "C0"
+    }
+  ]
+}
+[finish_reason] stop

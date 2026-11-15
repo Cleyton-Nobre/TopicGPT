@@ -1,0 +1,55 @@
+{
+  "classificacoes": [
+    {
+      "n": 1,
+      "raciocinio": "Relata a experiência pessoal e os resultados do uso prolongado de Ozempic na perda de peso e mudanças corporais.",
+      "c": "C2"
+    },
+    {
+      "n": 2,
+      "raciocinio": "Apresenta um alerta e orientações profissionais de uma endocrinologista comparando os medicamentos quanto à segurança e supervisão médica.",
+      "c": "C3"
+    },
+    {
+      "n": 3,
+      "raciocinio": "Descreve a experiência individual com o uso de Mounjaro em eventos sociais e a relação com hábitos alimentares.",
+      "c": "C2"
+    },
+    {
+      "n": 4,
+      "raciocinio": "Alerta sobre os riscos, complicações e efeitos adversos associados ao uso de Ozempic durante procedimentos cirúrgicos.",
+      "c": "C3"
+    },
+    {
+      "n": 5,
+      "raciocinio": "Instrui de forma prática sobre a administração dos medicamentos por meio do cálculo de doses em cliques na caneta.",
+      "c": "C1"
+    },
+    {
+      "n": 6,
+      "raciocinio": "Discute a velocidade e a magnitude da perda de peso esperada no uso de Mounjaro por um período curto.",
+      "c": "C2"
+    },
+    {
+      "n": 7,
+      "raciocinio": "Relato pessoal expressando satisfação com os resultados e a perda de peso obtida com o uso de Ozempic.",
+      "c": "C2"
+    },
+    {
+      "n": 8,
+      "raciocinio": "Aborda a segurança do tratamento, destacando os efeitos colaterais e desvantagens do uso de Saxenda.",
+      "c": "C3"
+    },
+    {
+      "n": 9,
+      "raciocinio": "Explica o mecanismo de ação biológico do Mounjaro (como funciona), compara eficácia e menciona aprovação pela Anvisa.",
+      "c": "C7"
+    },
+    {
+      "n": 10,
+      "raciocinio": "Contém apenas hashtags genéricas e soltas sem desenvolvimento de contexto ou conteúdo específico.",
+      "c": "C0"
+    }
+  ]
+}
+[finish_reason] stop

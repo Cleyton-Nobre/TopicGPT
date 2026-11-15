@@ -1,0 +1,55 @@
+{
+  "classificacoes": [
+    {
+      "n": 1,
+      "raciocinio": "Compara dois tratamentos/alternativas para emagrecimento (Ozempic versus balão intragástrico) para avaliar qual é melhor.",
+      "c": "C2"
+    },
+    {
+      "n": 2,
+      "raciocinio": "Aborda a relação e aplicação do medicamento em outra condição de saúde metabólica (resistência à insulina).",
+      "c": "C4"
+    },
+    {
+      "n": 3,
+      "raciocinio": "Foca nos custos financeiros do tratamento e em como economizar dinheiro na compra do medicamento.",
+      "c": "C6"
+    },
+    {
+      "n": 4,
+      "raciocinio": "Explica a classe farmacológica e a base biológica/científica do medicamento Rybelsus.",
+      "c": "C7"
+    },
+    {
+      "n": 5,
+      "raciocinio": "Trata da interação do medicamento com álcool e da segurança/combinações de substâncias na rotina.",
+      "c": "C3"
+    },
+    {
+      "n": 6,
+      "raciocinio": "Questiona diretamente a segurança e os riscos associados ao uso de Ozempic para emagrecer.",
+      "c": "C3"
+    },
+    {
+      "n": 7,
+      "raciocinio": "Alerta sobre a alimentação e os cuidados com hábitos alimentares durante o tratamento com Ozempic.",
+      "c": "C5"
+    },
+    {
+      "n": 8,
+      "raciocinio": "Explica o mecanismo de ação do Ozempic e como as drogas emagrecedoras realmente funcionam no organismo.",
+      "c": "C7"
+    },
+    {
+      "n": 9,
+      "raciocinio": "O foco central são os riscos e efeitos adversos associados ao uso das canetas emagrecedoras.",
+      "c": "C3"
+    },
+    {
+      "n": 10,
+      "raciocinio": "Discute a segurança e os riscos potenciais do tratamento com Ozempic.",
+      "c": "C3"
+    }
+  ]
+}
+[finish_reason] stop

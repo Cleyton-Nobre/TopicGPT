@@ -1,5 +1,13 @@
 # Comparação de LLMs na geração de tópicos
 
+O experimento de **classificação** de títulos via OpenRouter usa
+[`classificacao_experimento.py`](classificacao_experimento.py) e as mesmas dependências
+de `requirements.txt`. Sua estrutura, os artefatos importados e os comandos estão em
+[`README-classificacao.md`](README-classificacao.md).
+Para visualizar seus resultados, use [`plot_classificacao.py`](plot_classificacao.py)
+com as dependências de `requirements-plots.txt`. O script grava PNGs, PDFs e um
+manifesto em `outputs/classificacao/figures`.
+
 Para a consolidação global equivalente a `merging.ipynb` com o modelo aberto,
 use o novo script **`topic_merging.py`**. Ele carrega um JSON com `topics`, calcula
 embeddings de `label: description` com `paraphrase-multilingual-MiniLM-L12-v2`,

@@ -1,0 +1,55 @@
+{
+  "classificacoes": [
+    {
+      "n": 1,
+      "raciocinio": "O título foca nos riscos e possíveis efeitos adversos associados ao uso contínuo/prolongado do Wegovy.",
+      "c": "C3"
+    },
+    {
+      "n": 2,
+      "raciocinio": "O foco está nos riscos e efeitos adversos associados aos medicamentos para emagrecimento.",
+      "c": "C3"
+    },
+    {
+      "n": 3,
+      "raciocinio": "Explica o que são e para que servem as canetas emagrecedoras, abordando suas funções e mecanismos gerais.",
+      "c": "C7"
+    },
+    {
+      "n": 4,
+      "raciocinio": "Discute o uso do medicamento para fins puramente estéticos e padrões corporais versus indicação clínica.",
+      "c": "C8"
+    },
+    {
+      "n": 5,
+      "raciocinio": "Aborda diretamente os efeitos colaterais e adversos decorrentes do uso do Ozempic.",
+      "c": "C3"
+    },
+    {
+      "n": 6,
+      "raciocinio": "Avalia o potencial e a eficácia de emagrecimento proporcionados pelo Ozempic.",
+      "c": "C2"
+    },
+    {
+      "n": 7,
+      "raciocinio": "O título consiste apenas no nome do medicamento isolado, sem contexto ou detalhamento temático.",
+      "c": "C0"
+    },
+    {
+      "n": 8,
+      "raciocinio": "Relato de experiência individual com foco no reganho de peso e resultados da utilização do medicamento.",
+      "c": "C2"
+    },
+    {
+      "n": 9,
+      "raciocinio": "Trata dos riscos, superdosagem e efeitos adversos do uso em excesso do medicamento.",
+      "c": "C3"
+    },
+    {
+      "n": 10,
+      "raciocinio": "Foca no processo de desmame do medicamento e na prevenção ou ocorrência de efeito rebote (reganho de peso).",
+      "c": "C5"
+    }
+  ]
+}
+[finish_reason] stop

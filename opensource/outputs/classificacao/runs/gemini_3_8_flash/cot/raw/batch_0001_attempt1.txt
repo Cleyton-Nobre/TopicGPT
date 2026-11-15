@@ -1,0 +1,55 @@
+{
+  "classificacoes": [
+    {
+      "n": 1,
+      "raciocinio": "Menciona a substância do medicamento e sua aplicação em outra condição de saúde, o diabetes tipo 2.",
+      "c": "C4"
+    },
+    {
+      "n": 2,
+      "raciocinio": "Trata da aprovação de um novo medicamento pela agência reguladora (ANVISA), relacionando-se à regulação sanitária.",
+      "c": "C6"
+    },
+    {
+      "n": 3,
+      "raciocinio": "Aborda o impacto do sucesso comercial do medicamento no valor de mercado da fabricante e na economia.",
+      "c": "C6"
+    },
+    {
+      "n": 4,
+      "raciocinio": "Alerta sobre os riscos severos e possíveis danos/efeitos adversos físicos do uso do medicamento.",
+      "c": "C3"
+    },
+    {
+      "n": 5,
+      "raciocinio": "Apresenta apenas o nome do medicamento acompanhado de hashtags e emoji, sem contexto ou conteúdo temático específico.",
+      "c": "C0"
+    },
+    {
+      "n": 6,
+      "raciocinio": "Divulga alimentos e receitas naturais apresentados como alternativa/substituto ao medicamento para emagrecimento.",
+      "c": "C2"
+    },
+    {
+      "n": 7,
+      "raciocinio": "Discute o custo financeiro e a variação de preço do medicamento no mercado.",
+      "c": "C6"
+    },
+    {
+      "n": 8,
+      "raciocinio": "Destaca a ampla popularização e o fenômeno de alcance global do uso do medicamento para emagrecer.",
+      "c": "C8"
+    },
+    {
+      "n": 9,
+      "raciocinio": "Questiona a confiabilidade e procedência de versões manipuladas da substância, envolvendo fiscalização, regulação e segurança de mercado.",
+      "c": "C6"
+    },
+    {
+      "n": 10,
+      "raciocinio": "Título genérico de quadro de perguntas e respostas sobre o medicamento, sem especificar nenhum tema da taxonomia.",
+      "c": "C0"
+    }
+  ]
+}
+[finish_reason] stop

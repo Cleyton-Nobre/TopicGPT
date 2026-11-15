@@ -1,0 +1,2 @@
+{"classificacoes": [{"n": 1, "raciocinio": "O título anuncia uma explicação geral sobre a semaglutida (Ozempic), sugerindo abordar o que é o medicamento e como atua, o que se enquadra nas bases científicas.", "c": "C7"}]}
+[finish_reason] stop

@@ -1,0 +1,45 @@
+[SYSTEM]
+Você é um anotador especializado em classificação de textos curtos. Você recebe títulos de vídeos do YouTube, em português, sobre medicamentos para emagrecimento, e atribui a cada título exatamente uma categoria de uma lista fixa. Responda apenas com o JSON pedido.
+
+[USER]
+Classifique cada título de vídeo abaixo em UMA das categorias da lista.
+
+## Categorias
+
+C0 – Nenhuma Categoria se Aplica: Se nenhum dos tópicos abaixo servir para descrever o assunto do título (ex: hashtags soltas, termos sem contexto ou assuntos não relacionados).
+C1 – Administração e conservação dos medicamentos: Orientações práticas sobre aplicação, horários, frequência, ajuste de doses e contagem de cliques, além dos cuidados de armazenamento, conservação e transporte das canetas, inclusive em viagens.
+C2 – Resultados e avaliação de alternativas para emagrecimento: Discussões sobre magnitude, velocidade e continuidade dos resultados, experiências individuais e evolução do peso, comparações entre tratamentos quanto a benefícios e tolerabilidade e alegações sobre produtos ou receitas naturais apresentados como substitutos dos medicamentos.
+C3 – Segurança e acompanhamento do tratamento: Discussões sobre quem pode ou deve utilizar os medicamentos, prescrição e supervisão profissional, riscos e efeitos adversos físicos ou psicológicos, sua prevenção e manejo e combinações com outros fármacos ou substâncias, incluindo interações e estratégias de potencialização.
+C4 – Aplicações e repercussões além do emagrecimento: Benefícios, aplicações e relações dos medicamentos com outras condições e áreas da saúde, incluindo doenças hepáticas e cardiovasculares, saúde ginecológica e procedimentos reprodutivos.
+C5 – Hábitos e manutenção do peso: Estratégias alimentares, organização das refeições, exercícios e mudanças comportamentais associados ao tratamento, incluindo desmame, suspensão dos medicamentos e prevenção do reganho de peso.
+C6 – Mercado, regulação e acesso aos medicamentos: Custos, disponibilidade e acesso pela rede pública ou por compras no exterior; aprovação sanitária, fiscalização, fraudes e contrabando; patentes e concorrência entre fabricantes; e impactos da demanda na economia e no crescimento dos países.
+C7 – Bases científicas e desenvolvimento dos medicamentos: Explicações sobre o que são os medicamentos e como atuam no organismo, articuladas à sua origem científica, aos testes e ao desenvolvimento de novos medicamentos e formulações para emagrecimento.
+C8 – Impactos sociais e culturais do uso: Discussões sobre a popularização dos medicamentos para emagrecimento, sua associação a celebridades e os debates sobre padrões corporais e aceitação do corpo.
+
+## Regras
+
+1. Escolha exatamente uma categoria por título e responda com o código da categoria (por exemplo, C3).
+2. Baseie-se apenas no conteúdo do título. Não invente informações.
+3. Se mais de uma categoria couber, escolha a que melhor descreve o foco principal do título.
+4. Avalie cada título de forma independente dos demais.
+5. Devolva uma classificação para cada título, usando o número (n) correspondente.
+
+## Títulos
+
+Formato: n<TAB>título
+
+1	EFEITO OZEMPIC: COMO ESSE NOVO MEDICAMENTO PODE ESTAR AFETANDO A ECONOMIA E AS PESSOAS?
+2	Transform Your Body with Manjarinho and Exercise: The Recipe for Success! #ozempic #motivation #perd
+3	Mounjaro e saúde mental: qual é a relação?
+4	Ozempic é eficaz para PERDER PESO OU EMAGRECER?
+5	Quem tem PEDRA NA VESÍCULA pode tomar MONJATO OU OZEMPIC?
+6	RISCOS e BENEFÍCIOS dos remédios para OBESIDADE (Mounjaro e Ozempic) | Muzy Explica!
+7	Calculadora Ozempic para Wegovy #telemedicina #emagrecimento #endocrinologia #dieta
+8	Avaliação bioquímica é importante para uma boa prática clínica. #wegovy #disbiose #mounjaro #ㅇyㅇ
+9	Mounjaro - Riscos e Cuidados Essenciais
+10	Piores efeitos colaterais do Mounjaro ❌️ #emagrecimento #dieta #saude #mounjaro #viral #nutri
+
+## Formato da resposta
+
+Responda apenas com um objeto JSON no formato:
+{"classificacoes": [{"n": 1, "c": "C3"}, {"n": 2, "c": "C0"}, ...]}

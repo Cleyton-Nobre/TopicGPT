@@ -1,0 +1,55 @@
+{
+  "classificacoes": [
+    {
+      "n": 1,
+      "raciocinio": "Questiona a eficácia e os resultados do Ozempic no processo de emagrecimento.",
+      "c": "C2"
+    },
+    {
+      "n": 2,
+      "raciocinio": "Aborda a rotina de hábitos, dieta e exercícios físicos (musculação, dieta do ovo) durante o uso do medicamento.",
+      "c": "C5"
+    },
+    {
+      "n": 3,
+      "raciocinio": "O foco central são os efeitos colaterais e adversos causados pelo uso do medicamento.",
+      "c": "C3"
+    },
+    {
+      "n": 4,
+      "raciocinio": "Explica o funcionamento biológico do Ozempic no organismo e como ele atua.",
+      "c": "C7"
+    },
+    {
+      "n": 5,
+      "raciocinio": "Trata da escassez do medicamento nas farmácias devido à alta demanda e à febre de compras.",
+      "c": "C6"
+    },
+    {
+      "n": 6,
+      "raciocinio": "Mostra a alimentação diária e a rotina de refeições associada ao uso do Mounjaro.",
+      "c": "C5"
+    },
+    {
+      "n": 7,
+      "raciocinio": "Foca nas orientações práticas sobre dosagem e ajuste de dose do medicamento.",
+      "c": "C1"
+    },
+    {
+      "n": 8,
+      "raciocinio": "Apresenta uma explicação abrangente sobre o que é a Tirzepatida e como atua como medicamento.",
+      "c": "C7"
+    },
+    {
+      "n": 9,
+      "raciocinio": "Aborda a atuação policial contra a importação ilegal e o contrabando do medicamento.",
+      "c": "C6"
+    },
+    {
+      "n": 10,
+      "raciocinio": "Traz alertas, cuidados e critérios de segurança e indicação antes de iniciar o uso do medicamento.",
+      "c": "C3"
+    }
+  ]
+}
+[finish_reason] stop
