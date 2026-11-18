@@ -1,0 +1,59 @@
+Você é um especialista em análise de conteúdo e comunicação em saúde.
+
+Abaixo estão três propostas de taxonomias (codebooks) desenvolvidas para classificar títulos de vídeos do YouTube sobre medicamentos e tratamentos para emagrecimento.
+
+Avalie comparativamente as três propostas, considerando exclusivamente os seguintes critérios:
+
+**1. Clareza e Exclusividade Mútua:** As categorias possuem definições claras e suficientemente distintas? Existem sobreposições semânticas ou ambiguidades que poderiam dificultar uma classificação consistente?
+
+**2. Cobertura e Utilidade Temática:** A taxonomia contempla as principais dimensões temáticas relevantes para o objeto de estudo? As categorias formam uma estrutura coerente e representativa do fenômeno investigado?
+
+**3. Adequação da Granularidade:** O nível de detalhamento é apropriado para a classificação de textos curtos? Existem categorias excessivamente abrangentes ou específicas e pouco relevantes?
+
+
+### Taxonomia A
+- **C1 – Administração e conservação dos medicamentos**: Orientações práticas sobre aplicação, horários, frequência, ajuste de doses e contagem de cliques, além dos cuidados de armazenamento, conservação e transporte das canetas, inclusive em viagens.
+- **C2 – Resultados e avaliação de alternativas para emagrecer**: Discussões sobre magnitude, velocidade e continuidade dos resultados, experiências individuais e evolução do peso, comparações entre tratamentos quanto a benefícios e tolerabilidade e alegações sobre produtos ou receitas naturais apresentados como substitutos dos medicamentos.
+- **C3 – Segurança e acompanhamento do tratamento**: Discussões sobre quem pode ou deve utilizar os medicamentos, prescrição e supervisão profissional, riscos e efeitos adversos físicos ou psicológicos, sua prevenção e manejo e combinações com outros fármacos ou substâncias, incluindo interações e estratégias de potencialização.
+- **C4 – Aplicações e repercussões além do emagrecimento**: Benefícios, aplicações e relações dos medicamentos com outras condições e áreas da saúde, incluindo doenças hepáticas e cardiovasculares, saúde ginecológica e procedimentos reprodutivos.
+- **C5 – Hábitos e manutenção do peso**: Estratégias alimentares, organização das refeições, exercícios e mudanças comportamentais associados ao tratamento, incluindo desmame, suspensão dos medicamentos e prevenção do reganho de peso.
+- **C6 – Mercado, regulação e acesso aos medicamentos**: Custos, disponibilidade e acesso pela rede pública ou por compras no exterior; aprovação sanitária, fiscalização, fraudes e contrabando; patentes e concorrência entre fabricantes; e impactos da demanda na economia e no crescimento dos países.
+- **C7 – Bases científicas e desenvolvimento dos medicamentos**: Explicações sobre o que são os medicamentos e como atuam no organismo, articuladas à sua origem científica, aos testes e ao desenvolvimento de novos medicamentos e formulações para emagrecimento.
+- **C8 – Impactos sociais e culturais do uso**: Discussões sobre a popularização dos medicamentos para emagrecer, sua associação a celebridades e os debates sobre padrões corporais e aceitação do corpo.
+
+### Taxonomia B
+- **C1 – Fundamentos e esclarecimentos sobre os medicamentos**: Explicações sobre o que são os medicamentos para emagrecimento, seus mecanismos de ação e indicações terapêuticas, incluindo esclarecimentos sobre mitos e expectativas equivocadas.
+- **C2 – Resultados e evolução do emagrecimento**: Eficácia, resposta insuficiente e evolução do peso durante o tratamento, incluindo relatos individuais, duração do uso, interrupção e manutenção ou reganho de peso.
+- **C3 – Opções terapêuticas e alternativas para emagrecer**: Comparações entre medicamentos para emagrecimento e controle do diabetes, pesquisas sobre novos tratamentos e estratégias naturais apresentadas como alternativas ou equivalentes aos fármacos.
+- **C4 – Segurança e acompanhamento clínico**: Riscos, efeitos adversos e cuidados clínicos durante o tratamento, incluindo situações como gestação, alterações oculares e bucais, associação com outros fármacos, possíveis interações e acompanhamento por profissionais de saúde.
+- **C5 – Administração e conservação dos medicamentos**: Orientações práticas sobre doses, frequência, horários de aplicação, doses esquecidas e condições de armazenamento e refrigeração.
+- **C6 – Alimentação, exercício e preservação muscular**: Alimentação, consumo de álcool e ajustes de hábitos durante o tratamento, incluindo atividade física, desempenho, força, resistência e estratégias para prevenir ou reduzir a perda de massa muscular.
+- **C7 – Mudanças estéticas corporais**: Alterações na aparência do rosto e do corpo associadas ao emagrecimento com medicamentos.
+- **C8 – Efeitos cardiometabólicos, hepáticos e renais**: Efeitos dos medicamentos sobre esteatose hepática, saúde cardiovascular e função renal, incluindo pesquisas sobre proteção de órgãos, pressão arterial e risco de infarto, derrame e morte.
+- **C9 – Sono e apneia**: Relação dos medicamentos com a melhora do sono e seu possível papel no tratamento da apneia.
+- **C10 – Efeitos cognitivos, psiquiátricos e comportamentais**: Possíveis efeitos sobre cognição, neuroproteção, demências, saúde mental, transtornos psiquiátricos, compulsão alimentar e comportamentos de dependência.
+- **C11 – Acesso, regulação e autenticidade dos medicamentos**: Custos, descontos, disponibilidade e cobertura do tratamento, além de aprovação de medicamentos e apresentações, regras de prescrição e comercialização e alertas sobre falsificações.
+- **C12 – Popularização e impactos sociais e econômicos**: Uso dos medicamentos por celebridades e repercussões sociais, culturais e econômicas de sua popularização como recurso de emagrecimento.
+- **C13 – Saúde reprodutiva, ginecológica e sexual**: Relações dos medicamentos com fertilidade, chances de gravidez, menopausa e saúde ginecológica, além de possíveis efeitos sobre libido, função erétil e características dos órgãos sexuais.
+- **C14 – Tratamento do lipedema**: Possível papel dos medicamentos para emagrecimento no tratamento do lipedema.
+- **C15 – Medicamentos e procedimentos cirúrgicos**: Relação dos medicamentos para emagrecimento com procedimentos cirúrgicos, incluindo preparação para cirurgia plástica e discussões envolvendo cirurgia bariátrica.
+- **C16 – Saúde das articulações**: Possíveis benefícios dos medicamentos para emagrecimento na saúde das articulações e no tratamento de problemas articulares.
+- **C17 – Microbiota intestinal**: Relação entre os medicamentos para emagrecimento e a composição ou o funcionamento da microbiota intestinal.
+
+### Taxonomia C
+- **C1 – Efeitos colaterais e impactos físicos**: Análise abrangente dos efeitos colaterais, riscos e impactos físicos e estéticos do uso de medicamentos para emagrecimento, incluindo complicações graves, alterações no corpo e consequências menos discutidas.
+- **C2 – Comparação entre medicamentos e alternativas**: Análise comparativa entre diferentes medicamentos para emagrecimento, suas formulações e marcas, bem como comparações com alternativas naturais, como ozempic natural e psyllium.
+- **C3 – Uso em contextos clínicos e específicos**: Discussão sobre o uso de medicamentos para emagrecimento em contextos clínicos específicos, como diabetes, nefropatia diabética, lipedema, gestação e outras condições de saúde.
+- **C4 – Uso em contextos de saúde mental e impactos neurológicos**: Análise do uso de medicamentos para emagrecimento em contextos de saúde mental, como compulsão alimentar, obsessão e repulsa pela comida, além de seus impactos neurológicos e cognitivos.
+- **C5 – Mitologias e desconstrução de mitos**: Desconstrução de mitos, mentiras e expectativas irreais sobre o uso de medicamentos para emagrecimento.
+- **C6 – Experiências pessoais e depoimentos**: Relatos de experiências pessoais, depoimentos e resultados reais de pessoas que usaram medicamentos para emagrecimento.
+- **C7 – Regulamentação, impactos socioeconômicos e culturais**: Discussão sobre regulamentações, notícias, impactos socioeconômicos e culturais do uso de medicamentos para emagrecimento, incluindo contextos de dependência química e obsolescência de produtos.
+- **C8 – Uso de probióticos em conjunto**: Análise do uso de probióticos em conjunto com medicamentos para emagrecimento, como Mounjaro.
+
+### Resultado esperado
+
+Avalie brevemente cada taxonomia à luz dos três critérios, destacando seus principais pontos fortes e limitações.
+
+Em seguida, compare diretamente as propostas, identificando em quais aspectos cada uma se destaca ou apresenta desvantagens.
+
+Conclua indicando qual taxonomia é a mais robusta para o objetivo da pesquisa, justificando o veredito com evidências concretas das categorias e descrições. Caso duas ou mais propostas sejam equivalentes, ou nenhuma seja claramente superior, explicite isso em vez de forçar uma escolha.
