@@ -8,7 +8,7 @@ Para visualizar seus resultados, use [`plot_classificacao.py`](plot_classificaca
 com as dependências de `requirements-plots.txt`. O script grava PNGs, PDFs e um
 manifesto em `outputs/classificacao/figures`.
 
-Para a consolidação global equivalente a `merging.ipynb` com o modelo aberto,
+Para a consolidação global equivalente a [`notebooks/merging.ipynb`](notebooks/merging.ipynb) com o modelo aberto,
 use o novo script **`topic_merging.py`**. Ele carrega um JSON com `topics`, calcula
 embeddings de `label: description` com `paraphrase-multilingual-MiniLM-L12-v2`,
 seleciona pares com similaridade cosseno **maior ou igual a `0.5`** e os ordena
@@ -24,7 +24,7 @@ docker compose -f docker-compose.yml -f docker-compose.merge.yml up \
 ```
 
 Essa execução carrega o modelo de `MODEL_ID`, instala as dependências de mesclagem
-e processa, por padrão, `data/topics_final_order.json`. A primeira execução também
+e processa, por padrão, `data/taxonomias/14B-topics_final_order.json`. A primeira execução também
 baixa o modelo de embeddings; o cache fica em `hf-cache`. Para consolidar a ordem
 embaralhada ou uma saída da geração, informe os caminhos vistos pelo contêiner:
 
@@ -51,7 +51,7 @@ Instale as dependências e execute a CLI:
 ```bash
 python3 -m pip install -r requirements-merging.txt
 python3 topic_merging.py \
-  --input data/topics_final_order.json \
+  --input data/taxonomias/14B-topics_final_order.json \
   --output outputs/mesclagem/taxonomia_mesclada.json \
   --base-url http://localhost:8000/v1 \
   --model topic-local
@@ -88,7 +88,7 @@ As chamadas usam Chat Completions e diferem no identificador do modelo,
 endpoint, credencial e temperatura. O processamento, os prompts, o esquema JSON com IDs restritos
 ao lote, a validação, as tentativas e o formato dos resultados são compartilhados.
 
-O notebook atualmente na raiz contém uma implementação independente mais antiga.
+O notebook [`notebooks/topic_generation_two_order_experiments_v4.ipynb`](notebooks/topic_generation_two_order_experiments_v4.ipynb) contém uma implementação independente mais antiga.
 As configurações e regras descritas abaixo se aplicam à CLI e ao Docker.
 
 Os parâmetros experimentais ficam em **`experiment_config.json`**:
@@ -157,8 +157,8 @@ Informe os caminhos pela CLI:
 
 ```bash
 python3 topic_generation.py --provider openai \
-  --initial-taxonomy-original data/topics_final_order.json \
-  --initial-taxonomy-shuffled data/topics_final_shuff.json
+  --initial-taxonomy-original data/taxonomias/14B-topics_final_order.json \
+  --initial-taxonomy-shuffled data/taxonomias/14B-topics_final_shuff.json
 ```
 
 Cada ordem tem duas possibilidades: **começar vazia** ou **começar com os K tópicos
@@ -176,8 +176,8 @@ INITIAL_TAXONOMY_SHUFFLED=
 Para o Docker importar os arquivos, configure os caminhos vistos pelo contêiner:
 
 ```dotenv
-INITIAL_TAXONOMY_ORIGINAL=/app/data/topics_final_order.json
-INITIAL_TAXONOMY_SHUFFLED=/app/data/topics_final_shuff.json
+INITIAL_TAXONOMY_ORIGINAL=/app/data/taxonomias/14B-topics_final_order.json
+INITIAL_TAXONOMY_SHUFFLED=/app/data/taxonomias/14B-topics_final_shuff.json
 ```
 
 As escolhas são independentes: uma ordem pode começar vazia e a outra com K tópicos.

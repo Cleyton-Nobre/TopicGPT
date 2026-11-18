@@ -6,7 +6,7 @@ services:
       # A consolidação global inclui todos os tópicos e pares no mesmo prompt.
       MAX_MODEL_LEN: ${MERGE_MAX_MODEL_LEN:-32768}
       VLLM_BASE_URL: http://127.0.0.1:8000/v1
-      MERGE_INPUT: ${MERGE_INPUT:-/app/data/topics_final_order.json}
+      MERGE_INPUT: ${MERGE_INPUT:-/app/data/taxonomias/14B-topics_final_order.json}
       MERGE_OUTPUT: ${MERGE_OUTPUT:-/app/outputs/mesclagem/taxonomia_mesclada.json}
     volumes:
       - ./topic_merging.py:/app/topic_merging.py
