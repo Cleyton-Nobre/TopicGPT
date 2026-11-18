@@ -13,7 +13,7 @@ from unittest.mock import patch
 import numpy as np
 
 
-NOTEBOOK = Path(__file__).resolve().parents[2] / "comparacao_taxonomias.ipynb"
+NOTEBOOK = Path(__file__).resolve().parents[1] / "notebooks" / "comparacao_taxonomias.ipynb"
 
 
 class TaxonomyComparisonTest(unittest.TestCase):

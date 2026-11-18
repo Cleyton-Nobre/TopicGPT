@@ -36,15 +36,17 @@ DRY_RUN_PRINT_BATCHES = 1            # quantos prompts imprimir na tela, por tax
 MAX_BATCHES_PER_RUN = None           # máximo de lotes NOVOS (chamadas) por execução do script, somando
                                      # todas as taxonomias (None = todos). Rodar de novo continua.
 
+BASE_DIR = Path(__file__).resolve().parent   # caminhos padrão são relativos a este script
+
 # As 4 taxonomias, executadas nesta ordem. Nome -> arquivo (.jsonl com um grupo por linha,
 # {"label": ..., "description": ...}; também são aceitos .json no formato {"groups": [...]}).
 TAXONOMY_FILES = {
     "taxonomia_1": r"C:\Users\Thales Henrique\Documents\trabalho LLM\topic_generation\gpt6\experiment_1_original_order\taxonomia_mesclada.json",
     "taxonomia_2": r"C:\Users\Thales Henrique\Documents\trabalho LLM\topic_generation\gpt6\experiment_2_shuffled_order\taxonomia_mesclada.json",
-    "taxonomia_3": r"C:\Users\Thales Henrique\Documents\trabalho LLM\topic_generation\mistral\14B-taxonomia_mesclada_order.json",
-    "taxonomia_4": r"C:\Users\Thales Henrique\Documents\trabalho LLM\topic_generation\mistral\14B-taxonomia_mesclada_shuff.json",
+    "taxonomia_3": BASE_DIR / "data" / "taxonomias" / "14B-taxonomia_mesclada_order.json",
+    "taxonomia_4": BASE_DIR / "data" / "taxonomias" / "14B-taxonomia_mesclada_shuff.json",
 }
-INPUT_FILE = "triagem.jsonl"
+INPUT_FILE = BASE_DIR / "data" / "triagem.jsonl"
 ID_FIELD = "video_id"                # coluna com o identificador
 TITLE_FIELD = "title"                # coluna com o título
 
@@ -61,7 +63,7 @@ NONE_LABEL = "Nenhuma das categorias"
 NONE_CODE = "C0"                     # código curto da opção "nenhuma serve"
 # Raciocínio no OpenRouter: {"enabled": False} desliga; None = não envia o parâmetro (padrão do modelo).
 REASONING = {"enabled": False}
-OUTPUT_DIR = Path("triagem_sonnet")   # Estrutura: OUTPUT_DIR/<taxonomia>/{prompts,raw,parsed,...}
+OUTPUT_DIR = BASE_DIR / "outputs" / "triagem_sonnet"   # Estrutura: OUTPUT_DIR/<taxonomia>/{prompts,raw,parsed,...}
 # -----------------------------------------------------------------------------
 
 SYSTEM_PROMPT = (

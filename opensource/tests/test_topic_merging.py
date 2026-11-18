@@ -82,7 +82,7 @@ class TopicMergingTest(unittest.TestCase):
         return merging.parse_args(["--input", str(self.input), "--output", str(self.output), *extra])
 
     def test_prompts_and_embedding_model_match_reference_notebook(self):
-        notebook_path = Path(merging.__file__).resolve().parents[1] / "merging.ipynb"
+        notebook_path = Path(merging.__file__).resolve().parent / "notebooks" / "merging.ipynb"
         notebook = json.loads(notebook_path.read_text(encoding="utf-8"))
         source = "\n".join("".join(cell["source"]) for cell in notebook["cells"] if cell["cell_type"] == "code")
         constants = {}
