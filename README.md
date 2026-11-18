@@ -1,7 +1,5 @@
 # TopicGPT
 
-> **Novo aqui?** Veja o [guia do código e da estrutura do repositório](GUIA_DO_CODIGO.md).
-
 O experimento de classificação via OpenRouter está integrado em
 [`opensource/classificacao_experimento.py`](opensource/classificacao_experimento.py).
 O gabarito fica em `opensource/data`, os templates em `opensource/prompts/classificacao`
